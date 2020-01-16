@@ -176,7 +176,10 @@
 <h2 id="3-申请GitHub账号"><a href="#3-申请GitHub账号" class="headerlink" title="3.申请GitHub账号"></a>3.申请GitHub账号</h2><p>打开GitHub官网<a href="https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。" target="_blank" rel="noopener">https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。</a></p>
 <h2 id="4-配置SSH"><a href="#4-配置SSH" class="headerlink" title="4.配置SSH"></a>4.配置SSH</h2><h3 id="用记事本打开公钥–复制公钥的方法"><a href="#用记事本打开公钥–复制公钥的方法" class="headerlink" title="用记事本打开公钥–复制公钥的方法"></a>用记事本打开公钥–复制公钥的方法</h3><p>找到公钥文件rsa.pub，选择打开方式为记事本</p>
 <h3 id="直接用记事本打开"><a href="#直接用记事本打开" class="headerlink" title="直接用记事本打开"></a>直接用记事本打开</h3><p>用 clip &lt; ~/.ssh/id_rsa.pub来复制公钥到粘贴板上</p>
-<h3 id="用查看是否存在公钥的命令来查看"><a href="#用查看是否存在公钥的命令来查看" class="headerlink" title="用查看是否存在公钥的命令来查看"></a>用查看是否存在公钥的命令来查看</h3><p>cat ~/.ssh/id_rsa.pub</p>
+<h3 id="用查看是否存在公钥的命令来查看"><a href="#用查看是否存在公钥的命令来查看" class="headerlink" title="用查看是否存在公钥的命令来查看"></a>用查看是否存在公钥的命令来查看</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+
+
 <h3 id="添加公钥到远端的SSH里面"><a href="#添加公钥到远端的SSH里面" class="headerlink" title="添加公钥到远端的SSH里面"></a>添加公钥到远端的SSH里面</h3><p>比如：用的是阿里云则关联到code.aliyun.com；</p>
 <p>我们用的是github的密钥管理处:</p>
 <p>（1）github 添加 SSH ：点击自己右上角头像，选择 Settings，点击 SSH and GPG keys ，点击 New SSH key，添加 SSH 即可。</p>
@@ -212,11 +215,16 @@
 <p><img src="C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113222402929.png" alt="image-20200113222402929"></p>
 <h2 id="7-编写、发布文章"><a href="#7-编写、发布文章" class="headerlink" title="7.编写、发布文章"></a>7.编写、发布文章</h2><h3 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h3><p>打开Git Bush，输入命令：hexo new “article title”<br>这时候在博客目录 \hexo\source\ _posts 下将会看到 article title.md 文件，用MarkDown编辑器编辑好文章之后即可发布</p>
 <p>右击选中仓库使用gitbush输入命令：(不必打开server)</p>
-<p>比如：hexo new “钰兔大王的第一个博客”，在我的仓库文件夹（\lyc-yy\source\ _posts ）下就会有钰兔大王的第一个博客.md</p>
+<p>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;钰兔大王的第一个博客&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在我的仓库文件夹（\lyc-yy\source\ _posts ）下就会有钰兔大王的第一个博客.md</p>
 <p>用以下命令进行必要的操作：</p>
-<p>hexo g    //  生成<br>hexo d    //  部署</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g    &#x2F;&#x2F;  生成</span><br><span class="line">hexo d    &#x2F;&#x2F;  部署</span><br></pre></td></tr></table></figure>
+
 <p>或者</p>
-<p>hexo g -d</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
 <p>这时打开你的Github pages和Coding pages主页地址即可看到自己的博客</p>
 <h2 id="8-关联-GitHub"><a href="#8-关联-GitHub" class="headerlink" title="8.关联 GitHub"></a>8.关联 GitHub</h2><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><ol>
 <li>登录您的 GitHub 账号，新建名称为<code>您的用户名.github.io</code>的仓库。假设我的 GitHub 账号的用户名是 <code>luxun</code>，那么我就应该新建名称为<code>luxun.github.io</code>的仓库。</li>
@@ -225,7 +233,7 @@
 <li>点击<code>Create Repository</code>完成创建。</li>
 </ol>
 <h3 id="开启-GitHub-Pages"><a href="#开启-GitHub-Pages" class="headerlink" title="开启 GitHub Pages"></a>开启 GitHub Pages</h3><p>点击<code>Settings</code>，你将会打开这个库的 Settings 页面，向下拖动，直到看见 GitHub Pages，如图：</p>
-<p><a href="https://camo.githubusercontent.com/bf5629a7167f6a0f931edd10a231e1520793e202/68747470733a2f2f6f6f6f2e306f302e6f6f6f2f323031372f31302f30362f353964366531306239636235662e706e67" target="_blank" rel="noopener"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jYW1vLmdpdGh1YnVzZXJjb250ZW50LmNvbS9iZjU2MjlhNzE2N2Y2YTBmOTMxZWRkMTBhMjMxZTE1MjA3OTNlMjAyLzY4NzQ3NDcwNzMzYTJmMmY2ZjZmNmYyZTMwNmYzMDJlNmY2ZjZmMmYzMjMwMzEzNzJmMzEzMDJmMzAzNjJmMzUzOTY0MzY2NTMxMzA2MjM5NjM2MjM1NjYyZTcwNmU2Nw?x-oss-process=image/format,png" alt="gh-p"></a></p>
+<p><img src="D:%5Clyc-yy%5Csource%5Cimges%5C11.png" alt=""></p>
 <h3 id="修改全局配置文件"><a href="#修改全局配置文件" class="headerlink" title="修改全局配置文件"></a>修改全局配置文件</h3><p><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">Hexo 官方文档</a>中有对全局配置的详细说明，推荐阅读。</p>
 <blockquote>
 <p>修改本地所有的配置文件时，注意所有的冒号<code>:</code>后边都要加一个空格，否则执行 Hexo 命令时会报错，一定注意。</p>
@@ -263,11 +271,15 @@
 <p>比如我下载的是Again主题或者3-hexo，</p>
 <p>那我就把文件名改成Again或者3-hexo。</p>
 <p>(3).修改<code>_config.yml</code>文件，修改成</p>
-<p>theme: Again</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: Again</span><br></pre></td></tr></table></figure>
+
 <p>或者</p>
-<p>theme: 3-hexo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: 3-hexo</span><br></pre></td></tr></table></figure>
+
 <p>(4).修改博客主题最后一招</p>
-<p>在gitBush里输入命令hexo g -d更改主题，</p>
+<p>在gitBush里输入命令更改主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
 <p>若得到网页主题更改出错，尝试输入hexo clean,清除之前乱七八糟的信息后，再输入hexo g -d更改主题。</p>
 
     </div>
