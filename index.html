@@ -167,14 +167,11 @@
 
     
         <div class="content">
-            <h1 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h1><p>1.安装Node.js</p>
-<p>打开Node.js中文官网<a href="http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。" target="_blank" rel="noopener">http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。</a></p>
-<p>2.安装Git</p>
-<p>配置SSH打开该网址<a href="https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git" target="_blank" rel="noopener">https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git</a> Bush。</p>
-<p>3.申请GitHub账号</p>
-<p>打开GitHub官网<a href="https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。" target="_blank" rel="noopener">https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。</a></p>
-<p>4.配置SSH</p>
-<h3 id="用记事本打开公钥–复制公钥的方法"><a href="#用记事本打开公钥–复制公钥的方法" class="headerlink" title="用记事本打开公钥–复制公钥的方法"></a>用记事本打开公钥–复制公钥的方法</h3><h3 id="直接用记事本打开"><a href="#直接用记事本打开" class="headerlink" title="直接用记事本打开"></a>直接用记事本打开</h3><p>用 clip &lt; ~/.ssh/id_rsa.pub来复制公钥到粘贴板上</p>
+            <h1 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h1><h2 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1.安装Node.js"></a>1.安装Node.js</h2><p>打开Node.js中文官网<a href="http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。" target="_blank" rel="noopener">http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。</a></p>
+<h2 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2.安装Git"></a>2.安装Git</h2><p>配置SSH打开该网址<a href="https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git" target="_blank" rel="noopener">https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git</a> Bush。</p>
+<h2 id="3-申请GitHub账号"><a href="#3-申请GitHub账号" class="headerlink" title="3.申请GitHub账号"></a>3.申请GitHub账号</h2><p>打开GitHub官网<a href="https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。" target="_blank" rel="noopener">https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。</a></p>
+<h2 id="4-配置SSH"><a href="#4-配置SSH" class="headerlink" title="4.配置SSH"></a>4.配置SSH</h2><h3 id="用记事本打开公钥–复制公钥的方法"><a href="#用记事本打开公钥–复制公钥的方法" class="headerlink" title="用记事本打开公钥–复制公钥的方法"></a>用记事本打开公钥–复制公钥的方法</h3><p>找到公钥文件rsa.pub，选择打开方式为记事本</p>
+<h3 id="直接用记事本打开"><a href="#直接用记事本打开" class="headerlink" title="直接用记事本打开"></a>直接用记事本打开</h3><p>用 clip &lt; ~/.ssh/id_rsa.pub来复制公钥到粘贴板上</p>
 <h3 id="用查看是否存在公钥的命令来查看"><a href="#用查看是否存在公钥的命令来查看" class="headerlink" title="用查看是否存在公钥的命令来查看"></a>用查看是否存在公钥的命令来查看</h3><p>cat ~/.ssh/id_rsa.pub</p>
 <h3 id="添加公钥到远端的SSH里面"><a href="#添加公钥到远端的SSH里面" class="headerlink" title="添加公钥到远端的SSH里面"></a>添加公钥到远端的SSH里面</h3><p>比如：用的是阿里云则关联到code.aliyun.com；</p>
 <p>我们用的是github的密钥管理处:</p>
@@ -182,8 +179,7 @@
 <p>成功添加公钥：</p>
 <p><img src="C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113205711130.png" alt="image-20200113205711130"></p>
 <p>（2）阿里云 添加 SSH ：在项目主页，点击设置→SSH公钥→增加SSH密钥→把本地公钥复制到“公钥”框里→输入标题(必填项，可以设置家或者公司等标识)→最后点击“增加密钥”即可。</p>
-<p>5.搭建Hexo</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，<strong>cd</strong>进这个文件夹，输入下面的命令来进行安装。</p>
+<h2 id="5-搭建Hexo"><a href="#5-搭建Hexo" class="headerlink" title="5.搭建Hexo"></a>5.搭建Hexo</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，<strong>cd</strong>进这个文件夹，输入下面的命令来进行安装。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
 
 <h3 id="升级-非必需"><a href="#升级-非必需" class="headerlink" title="升级(非必需)"></a>升级(非必需)</h3><p>更新hexo到最新版。</p>
@@ -205,23 +201,20 @@
 
 <p>输上述命令得到hexo原生态官网地址：(允许github突破防火墙)</p>
 <p><img src="C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200114165026871.png" alt="image-20200114165026871"></p>
-<p>6.上传GitHub与Coding<br>建立仓库<br>在GitHub上建立一个仓库，其名称必须为your_name.github.io,比如我的是 Doenitz.github.io。同理，在Coding上建立一个仓库，其名称最好为your_name，比如我的是 hitler97。</p>
-<p>配置文件<br>打开根目录下的_config.yml，找到Deployment，然后按照如下修改：</p>
+<h2 id="6-上传GitHub与Coding"><a href="#6-上传GitHub与Coding" class="headerlink" title="6.上传GitHub与Coding"></a>6.上传GitHub与Coding</h2><h3 id="建立仓库"><a href="#建立仓库" class="headerlink" title="建立仓库"></a>建立仓库</h3><p>在GitHub上建立一个仓库，其名称必须为your_name.github.io,比如我的是 lyc-rabbit.github.io。同理，在Coding上建立一个仓库，其名称最好为your_name，比如我的是 lyc-rabbit。</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>打开根目录下的_config.yml，找到Deployment，然后按照如下修改：</p>
 <p>deploy:<br>  type: git<br>  repository:<br>  github:<a href="mailto:git@github.com">git@github.com</a>:your_name/your_name.github.io.git<br>  coding: <a href="mailto:git@git.coding.net">git@git.coding.net</a>:your_name/your_name.git<br>  branch: master</p>
 <p>比如我就按以下形式配置：</p>
-<p>deploy:<br>  type: git<br>  repository:<br>    github: <a href="mailto:git@github.com">git@github.com</a>:Doenitz/Doenitz.github.io.git<br>    coding: <a href="mailto:git@git.coding.net">git@git.coding.net</a>:hitler97/hitler97.git<br>    branch: master<br>我的:</p>
 <p><img src="C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113222402929.png" alt="image-20200113222402929"></p>
-<p>7.编写、发布文章<br>打开Git Bush，新建一篇文章：</p>
-<p>hexo new “article title”<br>这时候在博客目录 \hexo\source\ _posts 下将会看到 article title.md 文件，用MarkDown编辑器编辑好文章之后即可发布</p>
+<h2 id="7-编写、发布文章"><a href="#7-编写、发布文章" class="headerlink" title="7.编写、发布文章"></a>7.编写、发布文章</h2><h3 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h3><p>打开Git Bush，输入命令：hexo new “article title”<br>这时候在博客目录 \hexo\source\ _posts 下将会看到 article title.md 文件，用MarkDown编辑器编辑好文章之后即可发布</p>
 <p>右击选中仓库使用gitbush输入命令：(不必打开server)</p>
-<p>hexo new “钰兔大王的第一个博客”</p>
-<p>文章：</p>
+<p>比如：hexo new “钰兔大王的第一个博客”，在我的仓库文件夹（\lyc-yy\source\ _posts ）下就会有钰兔大王的第一个博客.md</p>
+<p>用以下命令进行必要的操作：</p>
 <p>hexo g    //  生成<br>hexo d    //  部署</p>
 <p>或者</p>
 <p>hexo g -d</p>
 <p>这时打开你的Github pages和Coding pages主页地址即可看到自己的博客</p>
-<p>8.关联 GitHub</p>
-<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><ol>
+<h2 id="8-关联-GitHub"><a href="#8-关联-GitHub" class="headerlink" title="8.关联 GitHub"></a>8.关联 GitHub</h2><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><ol>
 <li>登录您的 GitHub 账号，新建名称为<code>您的用户名.github.io</code>的仓库。假设我的 GitHub 账号的用户名是 <code>luxun</code>，那么我就应该新建名称为<code>luxun.github.io</code>的仓库。</li>
 <li><code>Description</code>可写可不写，随意。</li>
 <li>勾上<code>Initialize this repository with a README</code>。</li>
@@ -231,17 +224,16 @@
 <p><a href="https://camo.githubusercontent.com/bf5629a7167f6a0f931edd10a231e1520793e202/68747470733a2f2f6f6f6f2e306f302e6f6f6f2f323031372f31302f30362f353964366531306239636235662e706e67" target="_blank" rel="noopener"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jYW1vLmdpdGh1YnVzZXJjb250ZW50LmNvbS9iZjU2MjlhNzE2N2Y2YTBmOTMxZWRkMTBhMjMxZTE1MjA3OTNlMjAyLzY4NzQ3NDcwNzMzYTJmMmY2ZjZmNmYyZTMwNmYzMDJlNmY2ZjZmMmYzMjMwMzEzNzJmMzEzMDJmMzAzNjJmMzUzOTY0MzY2NTMxMzA2MjM5NjM2MjM1NjYyZTcwNmU2Nw?x-oss-process=image/format,png" alt="gh-p"></a></p>
 <h3 id="修改全局配置文件"><a href="#修改全局配置文件" class="headerlink" title="修改全局配置文件"></a>修改全局配置文件</h3><p><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">Hexo 官方文档</a>中有对全局配置的详细说明，推荐阅读。</p>
 <blockquote>
-<p>小坑提醒，修改本地所有的配置文件时，注意所有的冒号<code>:</code>后边都要加一个空格，否则执行 Hexo 命令时会报错，一定注意。</p>
+<p>修改本地所有的配置文件时，注意所有的冒号<code>:</code>后边都要加一个空格，否则执行 Hexo 命令时会报错，一定注意。</p>
 </blockquote>
 <p>找到本地<code>blog</code>文件夹下<code>_config.yml</code>，打开后滑到最后，修改成下边的样子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;xxx&#x2F;xxx.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
-<p>您需要将<code>repository</code>后的所有<code>xxx</code>换成你自己的用户名，或者也可以在下图位置获取：</p>
-<p><a href="https://camo.githubusercontent.com/6d9ac169f0d7ce162c61926fbc7438be266647c3/68747470733a2f2f692e6c6f6c692e6e65742f323031372f31302f30362f353964373166333333313334332e706e67" target="_blank" rel="noopener"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jYW1vLmdpdGh1YnVzZXJjb250ZW50LmNvbS82ZDlhYzE2OWYwZDdjZTE2MmM2MTkyNmZiYzc0MzhiZTI2NjY0N2MzLzY4NzQ3NDcwNzMzYTJmMmY2OTJlNmM2ZjZjNjkyZTZlNjU3NDJmMzIzMDMxMzcyZjMxMzAyZjMwMzYyZjM1Mzk2NDM3MzE2NjMzMzMzMzMxMzMzNDMzMmU3MDZlNjc?x-oss-process=image/format,png" alt="https 地址"></a></p>
+<p>您需要将<code>repository</code>后的所有<code>xxx</code>换成你自己的用户名，或者也可以在，code&lt;&gt;下的Clone or download里。</p>
 <p>然后，您需要为自己配置身份信息，终端输入<code>yourname</code>和<code>youremail</code>换成您自己的 GitHub 用户名和邮箱)：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
 
-<p>终端<code>cd</code>到<code>blog</code>文件夹下执行生成静态页面命令：</p>
+<p>终端(CMD)<code>cd</code>到<code>blog</code>文件夹下执行生成静态页面命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 
 <p>此时若出现如下报错：</p>
@@ -259,7 +251,20 @@
 
 <p>完成安装之后，再次执行<code>hexo g</code>和<code>hexo d</code>命令。</p>
 <p>随后按照提示，分别输入自己的 GitHub 用户名和密码，开始上传。</p>
-<p>完成上传之后，通过<code>http://xxx.github.io/</code> (<code>xxx</code>换成您自己的仓库名，也就是用户名)来访问自己刚刚上传的网站。</p>
+<p>完成上传之后，通过<code>http://xxx.github.io/</code></p>
+<p> (<code>xxx</code>换成您自己的仓库名，也就是用户名，比如我的就是lyc-rabbit)来访问自己刚刚上传的网站。</p>
+<h2 id="9-修改博客主题"><a href="#9-修改博客主题" class="headerlink" title="9.修改博客主题"></a>9.修改博客主题</h2><p>(1).在官网下载主题</p>
+<p><a href="https://hexo.io/themes/解压到你所用的仓库的themes文件内。" target="_blank" rel="noopener">https://hexo.io/themes/解压到你所用的仓库的themes文件内。</a></p>
+<p>(2).修改文件名为官网主题同名</p>
+<p>比如我下载的是Again主题或者3-hexo，</p>
+<p>那我就把文件名改成Again或者3-hexo。</p>
+<p>(3).修改<code>_config.yml</code>文件，修改成</p>
+<p>theme: Again</p>
+<p>或者</p>
+<p>theme: 3-hexo</p>
+<p>(4).修改博客主题最后一招</p>
+<p>在gitBush里输入命令hexo g -d更改主题，</p>
+<p>若得到网页主题更改出错，尝试输入hexo clean,清除之前乱七八糟的信息后，再输入hexo g -d更改主题。</p>
 
         </div>
     
@@ -383,7 +388,7 @@
                 <ul class="list-inline footer-social-icons">
                     
                     <li class="list-inline-item">
-                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust" target="_blank" rel="noopener">
+                        <a href="https://github.com/lyc-rabbit/lyc-rabbit.github.io" target="_blank" rel="noopener">
                             <span class="footer-icon-container">
                                 <i class="fa fa-github"></i>
                             </span>
@@ -392,7 +397,7 @@
                     
                     
                     <li class="list-inline-item">
-                        <a href="https://twitter.com/?lang=en" target="_blank" rel="noopener">
+                        <a href="\#">
                             <span class="footer-icon-container">
                                 <i class="fa fa-twitter"></i>
                             </span>
@@ -401,7 +406,7 @@
                     
                     
                     <li class="list-inline-item">
-                        <a href="https://www.facebook.com/" target="_blank" rel="noopener">
+                        <a href="\#">
                             <span class="footer-icon-container">
                                 <i class="fa fa-facebook"></i>
                             </span>
@@ -410,7 +415,7 @@
                     
                     
                     <li class="list-inline-item">
-                        <a href="https://www.instagram.com/" target="_blank" rel="noopener">
+                        <a href="\#">
                             <span class="footer-icon-container">
                                 <i class="fa fa-instagram"></i>
                             </span>
@@ -419,7 +424,7 @@
                     
                     
                     <li class="list-inline-item">
-                        <a href="https://dribbble.com/" target="_blank" rel="noopener">
+                        <a href="\#">
                             <span class="footer-icon-container">
                                 <i class="fa fa-dribbble"></i>
                             </span>
@@ -428,7 +433,7 @@
                     
                     
                     <li class="list-inline-item">
-                        <a href="https://plus.google.com/" target="_blank" rel="noopener">
+                        <a href="https://www.google.cn/" target="_blank" rel="noopener">
                             <span class="footer-icon-container">
                                 <i class="fa fa-google-plus"></i>
                             </span>
@@ -437,7 +442,7 @@
                     
                     
                     <li class="list-inline-item">
-                        <a href="https://www.behance.net/" target="_blank" rel="noopener">
+                        <a href="\#">
                             <span class="footer-icon-container">
                                 <i class="fa fa-behance"></i>
                             </span>
@@ -446,7 +451,7 @@
                     
                     
                     <li class="list-inline-item">
-                        <a href="https://500px.com/" target="_blank" rel="noopener">
+                        <a href="\#">
                             <span class="footer-icon-container">
                                 <i class="fa fa-500px"></i>
                             </span>
@@ -455,7 +460,7 @@
                     
                     
                     <li class="list-inline-item">
-                        <a href="mailto:test@example.com">
+                        <a href="mailto:2405310636@qq.com">
                             <span class="footer-icon-container">
                                 <i class="fa fa-envelope-o"></i>
                             </span>
