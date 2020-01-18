@@ -173,7 +173,7 @@
         <!-- Post Content -->
         <h1 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h1><h2 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1.安装Node.js"></a>1.安装Node.js</h2><p>打开Node.js中文官网<a href="http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。" target="_blank" rel="noopener">http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。</a></p>
 <h2 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2.安装Git"></a>2.安装Git</h2><p>配置SSH打开该网址<a href="https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git" target="_blank" rel="noopener">https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git</a> Bush。</p>
-<h2 id="3-申请GitHub账号"><a href="#3-申请GitHub账号" class="headerlink" title="3.申请GitHub账号"></a>3.申请GitHub账号</h2><p>打开GitHub官网<a href="https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。" target="_blank" rel="noopener">https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。</a></p>
+<h2 id="3-申请GitHub账号"><a href="#3-申请GitHub账号" class="headerlink" title="3.申请GitHub账号"></a>3.申请GitHub账号</h2><p>打开GitHub官网<a href="https://github.com/，申请其账号，并配置好SSH。" target="_blank" rel="noopener">https://github.com/，申请其账号，并配置好SSH。</a></p>
 <h2 id="4-配置SSH"><a href="#4-配置SSH" class="headerlink" title="4.配置SSH"></a>4.配置SSH</h2><h3 id="用记事本打开公钥–复制公钥的方法"><a href="#用记事本打开公钥–复制公钥的方法" class="headerlink" title="用记事本打开公钥–复制公钥的方法"></a>用记事本打开公钥–复制公钥的方法</h3><p>找到公钥文件rsa.pub，选择打开方式为记事本</p>
 <h3 id="直接用记事本打开"><a href="#直接用记事本打开" class="headerlink" title="直接用记事本打开"></a>直接用记事本打开</h3><p>用 clip &lt; ~/.ssh/id_rsa.pub来复制公钥到粘贴板上</p>
 <h3 id="用查看是否存在公钥的命令来查看"><a href="#用查看是否存在公钥的命令来查看" class="headerlink" title="用查看是否存在公钥的命令来查看"></a>用查看是否存在公钥的命令来查看</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
@@ -185,7 +185,7 @@
 <p>（1）github 添加 SSH ：点击自己右上角头像，选择 Settings，点击 SSH and GPG keys ，点击 New SSH key，添加 SSH 即可。</p>
 <p>成功添加公钥：</p>
 <blockquote>
-<img src="post-name/SSH.png">
+<img src="/2020/01/14/Node+git+hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/SSH.png">
 </blockquote>
 <p>（2）阿里云 添加 SSH ：在项目主页，点击设置→SSH公钥→增加SSH密钥→把本地公钥复制到“公钥”框里→输入标题(必填项，可以设置家或者公司等标识)→最后点击“增加密钥”即可。</p>
 <h2 id="5-搭建Hexo"><a href="#5-搭建Hexo" class="headerlink" title="5.搭建Hexo"></a>5.搭建Hexo</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，<strong>cd</strong>进这个文件夹，输入下面的命令来进行安装。</p>
@@ -209,7 +209,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
 <p>输上述命令得到hexo原生态官网地址：(允许github突破防火墙)</p>
-<img src="post-name/main.png">
+<img src="/2020/01/14/Node+git+hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/main.png">
 
 
 
@@ -218,7 +218,7 @@
 <p>deploy:<br>  type: git<br>  repository:<br>  github:<a href="mailto:git@github.com">git@github.com</a>:your_name/your_name.github.io.git<br>  coding: <a href="mailto:git@git.coding.net">git@git.coding.net</a>:your_name/your_name.git<br>  branch: master</p>
 <p>比如我就按以下形式配置：</p>
 <blockquote>
-<img src="post-name/o.png">
+<img src="/2020/01/14/Node+git+hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/o.png">
 </blockquote>
 <h2 id="7-编写、发布文章"><a href="#7-编写、发布文章" class="headerlink" title="7.编写、发布文章"></a>7.编写、发布文章</h2><h3 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h3><p>打开Git Bush，输入命令：hexo new “article title”<br>这时候在博客目录 \hexo\source\ _posts 下将会看到 article title.md 文件，用MarkDown编辑器编辑好文章之后即可发布</p>
 <p>右击选中仓库使用gitbush输入命令：(不必打开server)</p>
