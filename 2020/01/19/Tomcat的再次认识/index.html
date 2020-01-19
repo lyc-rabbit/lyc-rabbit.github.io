@@ -10,6 +10,14 @@
 
     <!--Description-->
     
+        <meta name="description" content="Tomcat的再次认识1.下载tomcat
+官网：http://tomcat.apache.org/
+选择合适的压缩包，比如我的是win10且64字节，我就选64的。
+解压到自己想放的地方。
+2.启动tomcat的方法
+(1).双击tomcat/bin/startup.bat（不要关闭这个窗口）
+(">
+    
 
     <!--Author-->
     
@@ -18,7 +26,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="钰兔大王的第一个博客"/>
+        <meta property="og:title" content="Tomcat的再次认识"/>
     
 
     <!--Open Graph Description-->
@@ -43,7 +51,7 @@
 
     <!-- Title -->
     
-    <title>钰兔大王的第一个博客 - 钰兔大王的世界</title>
+    <title>Tomcat的再次认识 - 钰兔大王的世界</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -149,13 +157,13 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2020/01/14/%E9%92%B0%E5%85%94%E5%A4%A7%E7%8E%8B%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/">
-                钰兔大王的第一个博客
+            <a href="/2020/01/19/Tomcat%E7%9A%84%E5%86%8D%E6%AC%A1%E8%AE%A4%E8%AF%86/">
+                Tomcat的再次认识
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2020-01-14</span>
+                <span class="date">2020-01-19</span>
             
             
             
@@ -168,7 +176,57 @@
         
 
         <!-- Post Content -->
-        
+        <h1 id="Tomcat的再次认识"><a href="#Tomcat的再次认识" class="headerlink" title="Tomcat的再次认识"></a>Tomcat的再次认识</h1><p>1.下载tomcat</p>
+<p>官网：<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">http://tomcat.apache.org/</a></p>
+<p>选择合适的压缩包，比如我的是win10且64字节，我就选64的。</p>
+<p>解压到自己想放的地方。</p>
+<p>2.启动tomcat的方法</p>
+<p>(1).双击tomcat/bin/startup.bat（不要关闭这个窗口）</p>
+<p>(2).在浏览器输入</p>
+<blockquote>
+<p>localhost:8080</p>
+</blockquote>
+<blockquote>
+<p>127.0.0.1:8080</p>
+</blockquote>
+<blockquote>
+<p>机主地址:8080</p>
+</blockquote>
+<p>(端口号看个人，可以根据需要去修改)</p>
+<p>2.如何查看本机IP</p>
+<p>(1).在CMD中输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/19/Tomcat%E7%9A%84%E5%86%8D%E6%AC%A1%E8%AE%A4%E8%AF%86/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200117205311744.png" alt="image-20200117205311744" style="zoom: 67%;">
+
+<p>(2).IPv4地址</p>
+<p>比如我的IP为 192.168.1.110</p>
+<p>3.tomcat启动可能出现的问题</p>
+<p>(1).startup.bat双击后一闪而过：<br>原因：没配置好JAVA_HOME环境变量（jdk的目录没有配置到PATH的环境变量里），tomcat找不到jdk；</p>
+<p>解决：用JAVA_HOME替换掉jdk的在PATH中到配置等意的地方。</p>
+<p>(2).startup.bat启动报错：</p>
+<p>原因：已经开启了startup.bat，端口号被占用</p>
+<p>解决：</p>
+<p>[1].找到占用的端口号，并找到对应的进程，杀死该进程：</p>
+<p>在CMD中输入</p>
+<p>netstat-ano</p>
+<p>得到所有程序的端口号；</p>
+<p>右击任务栏选择管理器，</p>
+<p>在查看中打开PID，</p>
+<p>把PID对应于端口号的进程右击结束，一般选择杀死进程。</p>
+<p>[2].修改自身的端口号：<br>tomcat/conf/server.xml右击文本打开，</p>
+<p>大致在69行，出现port=”8080”和redirectPort=”8443”随你修改，然后保存；</p>
+<p>大致在116行，也改端口号；</p>
+<p>大致在22行，也改；</p>
+<p>一般会把port改成80，即http协议的默认端口号，访问的时候，就可以不用输入80；</p>
+<p>端口号改了以后，访问的端口号也要记得保持一致。</p>
+<p>4.tomcat的关闭</p>
+<p>(1).强制关闭：</p>
+<p>点击x</p>
+<p>(2).正常关闭：<br>tomcat/bin/shutdown.bat双击</p>
+<p>或者</p>
+<p>tomcat/bin/startup.bat双击开启的窗口里输入Ctrl+c</p>
+
     </div>
 
     
@@ -205,15 +263,15 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/01/19/Tomcat%E7%9A%84%E5%86%8D%E6%AC%A1%E8%AE%A4%E8%AF%86/">Tomcat的再次认识</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/01/16/post-name/">post_name</a>
             </li>
             
             <li>
                 <a class="footer-post" href="/2020/01/14/Node+git+hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">Node+git+hexo搭建博客</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/01/14/%E9%92%B0%E5%85%94%E5%A4%A7%E7%8E%8B%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/">钰兔大王的第一个博客</a>
             </li>
             
             <li>
