@@ -328,7 +328,8 @@ tomcat/webapps/新建文件夹/新建.html文件
 <p>​                查找web.xml文件，是否有对应的<url-pattern>标签体内容和资源路径一致即demo1；</url-pattern></p>
 <p>​                    如果有，则在找到对应的<servlet-class>全类名，tomcat将全类名对应的字节码文件加载进内存</servlet-class></p>
 <p>​                  （Class.forName()）并创建对象（class.newInstance()），然后调用方法。</p>
-<h5 id="5-知识点：Servlet中的5个方法之3的说明"><a href="#5-知识点：Servlet中的5个方法之3的说明" class="headerlink" title="(5).知识点：Servlet中的5个方法之3的说明"></a>(5).知识点：Servlet中的5个方法之3的说明</h5><h6 id="1-Servlet被创建：执行init方法，只执行一次："><a href="#1-Servlet被创建：执行init方法，只执行一次：" class="headerlink" title="[1].Servlet被创建：执行init方法，只执行一次："></a>[1].Servlet被创建：执行init方法，只执行一次：</h6><p>Servlet的init方法，只执行一次，说明一个Servlet在内存中只存在一个对象，Servlet是单例的；</p>
+<h5 id="5-知识点：Servlet中的5个方法之3的说明"><a href="#5-知识点：Servlet中的5个方法之3的说明" class="headerlink" title="(5).知识点：Servlet中的5个方法之3的说明"></a>(5).知识点：Servlet中的5个方法之3的说明</h5><p>[1].Servlet被创建：执行init方法，只执行一次：</p>
+<p>Servlet的init方法，只执行一次，说明一个Servlet在内存中只存在一个对象，Servlet是单例的；</p>
 <ul>
 <li>​    问题：多个用户访问时，可能存在安全问题；</li>
 <li>​    解决：尽量不要在Servlet中定义成员变量，即使定义了一个成员变量就不要对它修改，但是可以定义局部变量。</li>
@@ -342,8 +343,10 @@ tomcat/webapps/新建文件夹/新建.html文件
 </ul>
 </li>
 </ul>
-<h6 id="2-Servlet提供服务：执行service方法，执行多次："><a href="#2-Servlet提供服务：执行service方法，执行多次：" class="headerlink" title="[2].Servlet提供服务：执行service方法，执行多次："></a>[2].Servlet提供服务：执行service方法，执行多次：</h6><p>每次浏览器访问Servlet时，service方法都会被调用一次。</p>
-<h6 id="3-Servlet被销毁：执行destroy方法，只执行一次："><a href="#3-Servlet被销毁：执行destroy方法，只执行一次：" class="headerlink" title="[3].Servlet被销毁：执行destroy方法，只执行一次："></a>[3].Servlet被销毁：执行destroy方法，只执行一次：</h6><p>服务器被正常关闭时，执行destroy方法后，Servlet被销毁。</p>
+<p>[2].Servlet提供服务：执行service方法，执行多次：</p>
+<p>每次浏览器访问Servlet时，service方法都会被调用一次。</p>
+<p>[3].Servlet被销毁：执行destroy方法，只执行一次：</p>
+<p>服务器被正常关闭时，执行destroy方法后，Servlet被销毁。</p>
 <h3 id="3-步入Servlet"><a href="#3-步入Servlet" class="headerlink" title="3.步入Servlet"></a>3.步入Servlet</h3><ol>
 <li><h4 id="Servlet–接口-第2点讲的-："><a href="#Servlet–接口-第2点讲的-：" class="headerlink" title="Servlet–接口(第2点讲的)："></a>Servlet–接口(第2点讲的)：</h4><ul>
 <li><p>代码：</p>
@@ -490,18 +493,57 @@ tomcat/webapps/新建文件夹/新建.html文件
 </li>
 <li><p>方法：</p>
 <ol>
-<li><h6 id="获取请求方式：GET"><a href="#获取请求方式：GET" class="headerlink" title="获取请求方式：GET"></a>获取请求方式：GET</h6><p>String getMethod()</p>
+<li><p>获取请求方式：GET</p>
+<p>String getMethod()</p>
 </li>
-<li><h6 id="（-）获取虚拟目录：-javaLearn20110"><a href="#（-）获取虚拟目录：-javaLearn20110" class="headerlink" title="（*）获取虚拟目录：/javaLearn20110"></a>（*）获取虚拟目录：/javaLearn20110</h6><p>String getContextPath()</p>
+<li><p>（*）获取虚拟目录：/javaLearn20110</p>
+<p>String getContextPath()</p>
 </li>
-<li><h6 id="获取Servlet路径：-demo4"><a href="#获取Servlet路径：-demo4" class="headerlink" title="获取Servlet路径：/demo4"></a>获取Servlet路径：/demo4</h6><p>String getServletPath()</p>
+<li><p>获取Servlet路径：/demo4</p>
+<p>String getServletPath()</p>
 </li>
-<li><h6 id="获取get方式请求参数：name-zhangsan"><a href="#获取get方式请求参数：name-zhangsan" class="headerlink" title="获取get方式请求参数：name=zhangsan"></a>获取get方式请求参数：name=zhangsan</h6><p>String getQueryString()</p>
+<li><p>获取get方式请求参数：name=zhangsan</p>
+<p>String getQueryString()</p>
 </li>
-<li><h6 id="（-）获取请求URL：-javaLearn20110-demo4"><a href="#（-）获取请求URL：-javaLearn20110-demo4" class="headerlink" title="（*）获取请求URL：/javaLearn20110/demo4"></a>（*）获取请求URL：/javaLearn20110/demo4</h6><p>String getRequestURI()        /javaLearn20110/demo4</p>
+<li><p>（*）获取请求URL：/javaLearn20110/demo4</p>
+<p>String getRequestURI()        /javaLearn20110/demo4</p>
 <p>StringBuffer getRequestURL()    <a href="http://localhost/javaLearn20110/demo4" target="_blank" rel="noopener">http://localhost/javaLearn20110/demo4</a></p>
+<p>URI：统一资源标识符：/javaLearn20110/demo4（范围更大，应用到权限控制框架）</p>
+<p>URL：统一资源定位符：<a href="http://localhost/javaLearn20110/demo4" target="_blank" rel="noopener">http://localhost/javaLearn20110/demo4</a></p>
+</li>
+<li><p>获取协议及版本：HTTP/1.1</p>
+<p>String getProtocol()</p>
+</li>
+<li><p>获取客户机的IP地址：</p>
+<p>String getRemoteAddr()</p>
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemo1"</span>)</span><br><span class="line">          <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemo1</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;    </span><br><span class="line">              <span class="meta">@Override</span>    </span><br><span class="line">              <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;        </span><br><span class="line">                  String method=req.getMethod();        </span><br><span class="line">                  String contextPath=req.getContextPath();       </span><br><span class="line">                  String servletPath=req.getServletPath();        </span><br><span class="line">                  String queryString=req.getQueryString();        </span><br><span class="line">                  String requestURI=req.getRequestURI();        </span><br><span class="line">                  StringBuffer requestURL=req.getRequestURL();        </span><br><span class="line">                  String protocol=req.getProtocol();        </span><br><span class="line">                  String remoteAddr=req.getRemoteAddr();        System.out.println(<span class="string">"method "</span>+method+<span class="string">"\ncontextPath "</span>+contextPath+<span class="string">"\nservletPath "</span>+servletPath        +<span class="string">"\nqueryString "</span>+queryString+<span class="string">"\nrequestURI "</span>+requestURI+<span class="string">"\nrequestURL "</span>+requestURL        +<span class="string">"\nprotocol "</span>+protocol+<span class="string">"\nremoteAddr "</span>+remoteAddr);   </span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+</li>
+<li><p>运行:</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120160530198.png" alt="image-20200120160530198" style="zoom: 67%;">
+
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120160505655.png" alt="image-20200120160505655" style="zoom: 50%;">
+</li>
+</ul>
+</li>
+<li><p><strong>获取请求头数据</strong>：</p>
+<ul>
+<li><p>方法：</p>
+<p>String getHeader(String name)：通过请求头的名称获取请求头的值</p>
+<p>Enumeration<String> getHeaderNames()：获取所有的请求头名称</String></p>
+<ul>
+<li>(1).应用getHeaderNames()的代码：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Overrideprotected</span> </span><br><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;    </span><br><span class="line">     Enumeration&lt;String&gt; headerNames=req.getHeaderNames();    </span><br><span class="line">     <span class="keyword">while</span> (headerNames.hasMoreElements())&#123;        </span><br><span class="line">         String name=headerNames.nextElement();        </span><br><span class="line">         String value=req.getHeader(name);</span><br><span class="line">         System.out.println(<span class="string">"name:"</span>+name+<span class="string">"value:"</span>+value);    </span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(1).得到地址的系列信息，运行截图：</li>
+</ul>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120162838736.png" alt="image-20200120162838736" style="zoom: 50%;">
+
+
 </li>
 </ul>
 </li>
@@ -510,58 +552,19 @@ tomcat/webapps/新建文件夹/新建.html文件
 </ol>
 </li>
 </ul>
-<pre><code>        URI：统一资源标识符：/javaLearn20110/demo4（范围更大，应用到权限控制框架）
-
-        URL：统一资源定位符：http://localhost/javaLearn20110/demo4
-
-     6. ###### 获取协议及版本：HTTP/1.1
-
-        String getProtocol()
-
-     7. ###### 获取客户机的IP地址：
-
-        String getRemoteAddr()
-
-        代码：
-
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemo1"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemo1</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;    </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;        </span><br><span class="line">        String method=req.getMethod();        </span><br><span class="line">        String contextPath=req.getContextPath();       </span><br><span class="line">        String servletPath=req.getServletPath();        </span><br><span class="line">        String queryString=req.getQueryString();        </span><br><span class="line">        String requestURI=req.getRequestURI();        </span><br><span class="line">        StringBuffer requestURL=req.getRequestURL();        </span><br><span class="line">        String protocol=req.getProtocol();        </span><br><span class="line">        String remoteAddr=req.getRemoteAddr();        System.out.println(<span class="string">"method "</span>+method+<span class="string">"\ncontextPath "</span>+contextPath+<span class="string">"\nservletPath "</span>+servletPath        +<span class="string">"\nqueryString "</span>+queryString+<span class="string">"\nrequestURI "</span>+requestURI+<span class="string">"\nrequestURL "</span>+requestURL        +<span class="string">"\nprotocol "</span>+protocol+<span class="string">"\nremoteAddr "</span>+remoteAddr);   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-   - 运行:
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120160530198.png&quot; alt=&quot;image-20200120160530198&quot; style=&quot;zoom: 67%;&quot; /&gt;
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120160505655.png&quot; alt=&quot;image-20200120160505655&quot; style=&quot;zoom: 50%;&quot; /&gt;
-
-2. **获取请求头数据**：
-
-   - ###### 方法：
-
-     String getHeader(String name)：通过请求头的名称获取请求头的值
-
-     Enumeration&lt;String&gt; getHeaderNames()：获取所有的请求头名称
-
-     - ###### (1).应用getHeaderNames()的代码：
-
-     <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Overrideprotected</span> </span><br><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;    </span><br><span class="line">     Enumeration&lt;String&gt; headerNames=req.getHeaderNames();    </span><br><span class="line">     <span class="keyword">while</span> (headerNames.hasMoreElements())&#123;        </span><br><span class="line">         String name=headerNames.nextElement();        </span><br><span class="line">         String value=req.getHeader(name);</span><br><span class="line">         System.out.println(<span class="string">"name:"</span>+name+<span class="string">"value:"</span>+value);    </span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-     - ###### (1).得到地址的系列信息，运行截图：
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120162838736.png&quot; alt=&quot;image-20200120162838736&quot; style=&quot;zoom: 50%;&quot; /&gt;
-
-
-     - ###### (2).应用getHeader(&quot;user-agent&quot;)的代码：
+<pre><code>     - (2).应用getHeader(&quot;user-agent&quot;)的代码：
 
        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requsetDemo3"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemo3</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;  </span><br><span class="line">        String agent=req.getHeader(<span class="string">"user-agent"</span>); </span><br><span class="line">        <span class="comment">//解决浏览器兼容性问题       </span></span><br><span class="line">        <span class="keyword">if</span> (agent.contains(<span class="string">"Chrome"</span>))&#123;     </span><br><span class="line">            <span class="comment">//是谷歌          </span></span><br><span class="line">            System.out.println(<span class="string">"it is 谷歌"</span>);    </span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (agent.contains(<span class="string">"Firefox"</span>))&#123;   </span><br><span class="line">            <span class="comment">//火狐           </span></span><br><span class="line">            System.out.println(<span class="string">"it is 火狐"</span>);  </span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-   - ###### (3).应用getHeader(&quot;referer&quot;)的代码：
+   - (3).应用getHeader(&quot;referer&quot;)的代码：
 
      <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requsetDemo4"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requsetDemo4</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//请求头数据</span></span><br><span class="line">        String referer=req.getHeader(<span class="string">"referer"</span>);</span><br><span class="line">        System.out.println(referer);</span><br><span class="line">        <span class="comment">//防盗链</span></span><br><span class="line">        <span class="comment">//如果请求头数据包含了null，表示是本地访问，是get</span></span><br><span class="line">        <span class="keyword">if</span> (referer!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//如果请求头数据包含了/requsetDemo4，也表示正常访问，是post</span></span><br><span class="line">            <span class="keyword">if</span> (referer.contains(<span class="string">"/requsetDemo4"</span>))&#123;</span><br><span class="line">                System.out.println(<span class="string">"正常访问"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"您使用的是非法路径"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-   -  ###### (3).配置我将它指定在了main，在得到的地址后面要加上/webapp/Login.html得到页面
+   -  (3).配置我将它指定在了main，在得到的地址后面要加上/webapp/Login.html得到页面
 
-   -  ###### (3).得到了跳转的来由地址：
+   -  (3).得到了跳转的来由地址：
 
-        ###### 操作：
+        操作：
 
 &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120165226570.png&quot; alt=&quot;image-20200120165226570&quot; style=&quot;zoom: 80%;&quot; /&gt;
 
@@ -575,13 +578,13 @@ tomcat/webapps/新建文件夹/新建.html文件
 
    - **获取参数步骤**：
 
-     1. ###### 获取流对象：
+     1. 获取流对象：
 
         (1).第一种：BufferedReader getReader()：获取字符输入流，只能操作字符数据；
 
         (2).第二种：ServletInputStream getInputStream()：获取字节输入流，可以操作所有类型的数据；
 
-     2. ###### 从流对象中拿数据：
+     2. 从流对象中拿数据：
 
         (1).第一种对象对应：
 
@@ -608,7 +611,8 @@ tomcat/webapps/新建文件夹/新建.html文件
 <li><h5 id="其他功能："><a href="#其他功能：" class="headerlink" title="其他功能："></a><strong>其他功能：</strong></h5><ol>
 <li><p><strong>获取请求参数的通用方式（POST）</strong>：</p>
 <ol>
-<li><h6 id="（-）String-getParameter-String-name-："><a href="#（-）String-getParameter-String-name-：" class="headerlink" title="（*）String getParameter(String name)："></a>（*）String getParameter(String name)：</h6><p>根据参数名称获取数值   username=zhangsan&amp;password=123，如在getParameter的括号中填入username就可以获取到zhangsan，获取同一个name属性的一个值的方法；</p>
+<li><p>（*）String getParameter(String name)：</p>
+<p>根据参数名称获取数值   username=zhangsan&amp;password=123，如在getParameter的括号中填入username就可以获取到zhangsan，获取同一个name属性的一个值的方法；</p>
 <ul>
 <li><p>应用getParameter的 regist2.html代码：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>regist2<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--action指定到的项目为requestDemoOther1--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther1"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span>    </span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -647,7 +651,7 @@ tomcat/webapps/新建文件夹/新建.html文件
 
    &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121172903379.png&quot; alt=&quot;image-20200121172903379&quot; style=&quot;zoom:67%;&quot; /&gt;
 
-2. ###### String getParameterValues(String name)：
+2. String getParameterValues(String name)：
 
    根据参数名称获取数值的数组   hobby=xx&amp;hobby=game,如在getParameterValues的括号中填入hobby就可以获取到xx和game的数组，多用于复选框，获取同一个name属性的多个值的方法；
 
@@ -669,7 +673,7 @@ tomcat/webapps/新建文件夹/新建.html文件
 
      &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121175244913.png&quot; alt=&quot;image-20200121175244913&quot; style=&quot;zoom: 50%;&quot; /&gt;
 
-3. ###### Enumeration&lt;String&gt; getParameterNames()：获取所有请求参数的名称；
+3. Enumeration&lt;String&gt; getParameterNames()：获取所有请求参数的名称；
 
    （用此不能获得同一name属性多个值，只取第一个）
 
@@ -695,7 +699,7 @@ tomcat/webapps/新建文件夹/新建.html文件
 
      &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121180351169.png&quot; alt=&quot;image-20200121180351169&quot; style=&quot;zoom: 50%;&quot; /&gt;
 
-4. ###### （*）Map&lt;String,String[]&gt; getParameterMap()：获取所有参数的map集合，键值对集合；
+4. （*）Map&lt;String,String[]&gt; getParameterMap()：获取所有参数的map集合，键值对集合；
 
    （用此可以取得同一name属性的一个值或者多个值，霸王）
 
@@ -713,7 +717,7 @@ tomcat/webapps/新建文件夹/新建.html文件
 
      &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121200300360.png&quot; alt=&quot;image-20200121200300360&quot; style=&quot;zoom:50%;&quot; /&gt;
 
-5. ###### 解决使用.html和post方法时发生的中文乱码问题（注意：在tomcat 8以后，get方法的使用已经解决了中文乱码问题）：
+5. 解决使用.html和post方法时发生的中文乱码问题（注意：在tomcat 8以后，get方法的使用已经解决了中文乱码问题）：
 
    - 解决：添加一行代码于post方法里
 
