@@ -10,8 +10,10 @@
 
     <!--Description-->
     
-        <meta name="description" content="搭建博客1.安装Node.js打开Node.js中文官网http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。
-2.安装Git配置SSH打开该网址https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git Bush">
+        <meta name="description" content="搭建博客1.安装Node.js
+打开Node.js中文官网http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。
+2.安装Git
+配置SSH打开该网址https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git Bu">
     
 
     <!--Author-->
@@ -21,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Node+git+hexo搭建博客"/>
+        <meta property="og:title" content="hexo+git+node搭建博客"/>
     
 
     <!--Open Graph Description-->
@@ -46,7 +48,7 @@
 
     <!-- Title -->
     
-    <title>Node+git+hexo搭建博客 - 钰兔大王的世界</title>
+    <title>hexo+git+node搭建博客 - 钰兔大王的世界</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -152,13 +154,13 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2020/01/14/Node+git+hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
-                Node+git+hexo搭建博客
+            <a href="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+                hexo+git+node搭建博客
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2020-01-14</span>
+                <span class="date">2020-01-22</span>
             
             
             
@@ -171,92 +173,98 @@
         
 
         <!-- Post Content -->
-        <h1 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h1><h2 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1.安装Node.js"></a>1.安装Node.js</h2><p>打开Node.js中文官网<a href="http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。" target="_blank" rel="noopener">http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。</a></p>
-<h2 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2.安装Git"></a>2.安装Git</h2><p>配置SSH打开该网址<a href="https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git" target="_blank" rel="noopener">https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git</a> Bush。</p>
-<h2 id="3-申请GitHub账号"><a href="#3-申请GitHub账号" class="headerlink" title="3.申请GitHub账号"></a>3.申请GitHub账号</h2><p>打开GitHub官网<a href="https://github.com/，申请其账号，并配置好SSH。" target="_blank" rel="noopener">https://github.com/，申请其账号，并配置好SSH。</a></p>
-<h2 id="4-配置SSH"><a href="#4-配置SSH" class="headerlink" title="4.配置SSH"></a>4.配置SSH</h2><h3 id="公钥配置方法"><a href="#公钥配置方法" class="headerlink" title="公钥配置方法"></a>公钥配置方法</h3><p>执行以下语句来生成本地公钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;&quot;</span><br></pre></td></tr></table></figure>
-
-
-<p>这个指令会要求你提供一个 位置和文件名 去存放键值对和密码，可以一直点击 Enter键 去使用默认值。</p>
-<p>最好的情况是一个密码对应一个ssh key，但也不是非得这样去做，就像上面我们跳过创建密码这个步骤；<br>设置的密码不能被修改，也不可以被获取。</p>
-<h3 id="用记事本打开公钥–复制公钥的方法"><a href="#用记事本打开公钥–复制公钥的方法" class="headerlink" title="用记事本打开公钥–复制公钥的方法"></a>用记事本打开公钥–复制公钥的方法</h3><p>按照路径 C:/Users/Admin/.ssh，找到该文件夹找到公钥文件rsa.pub，选择打开方式为记事本</p>
-<h3 id="用CMD得到公钥"><a href="#用CMD得到公钥" class="headerlink" title="用CMD得到公钥"></a>用CMD得到公钥</h3><p> 输入clip &lt; ~/.ssh/id_rsa.pub来复制公钥到粘贴板上</p>
-<h3 id="用GETBASH来查看"><a href="#用GETBASH来查看" class="headerlink" title="用GETBASH来查看"></a>用GETBASH来查看</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="添加公钥到远端的SSH里面"><a href="#添加公钥到远端的SSH里面" class="headerlink" title="添加公钥到远端的SSH里面"></a>添加公钥到远端的SSH里面</h3><p>我们用的是github的密钥管理处:</p>
+        <h1 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h1><p>1.安装Node.js</p>
+<p>打开Node.js中文官网<a href="http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。" target="_blank" rel="noopener">http://nodejs.cn/，根据你的系统版本下载相应的安装文件，然后一路默认安装即可。</a></p>
+<p>2.安装Git</p>
+<p>配置SSH打开该网址<a href="https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git" target="_blank" rel="noopener">https://git-for-windows.github.io/，然后根据你的系统版本下载相应Git</a> Bush。</p>
+<p>3.申请GitHub账号</p>
+<p>打开GitHub官网<a href="https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。" target="_blank" rel="noopener">https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。</a></p>
+<h2 id="git账户"><a href="#git账户" class="headerlink" title="git账户"></a>git账户</h2><p>lyc-rabbit</p>
+<p>ofuckyou1999</p>
+<p><a href="mailto:2405310636@qq.com">2405310636@qq.com</a></p>
+<p>仓库名字：lyc-yy</p>
+<p>4.配置SSH</p>
+<h2 id="公钥默认密码"><a href="#公钥默认密码" class="headerlink" title="公钥默认密码"></a>公钥默认密码</h2><p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113174857833.png" alt="image-20200113174857833"></p>
+<h2 id="用记事本打开公钥–复制公钥的方法"><a href="#用记事本打开公钥–复制公钥的方法" class="headerlink" title="用记事本打开公钥–复制公钥的方法"></a>用记事本打开公钥–复制公钥的方法</h2><h3 id="直接用记事本打开"><a href="#直接用记事本打开" class="headerlink" title="直接用记事本打开"></a>直接用记事本打开</h3><p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113175038761.png" alt="image-20200113175038761"></p>
+<h3 id="用-clip-lt-ssh-id-rsa-pub来复制公钥到粘贴板上"><a href="#用-clip-lt-ssh-id-rsa-pub来复制公钥到粘贴板上" class="headerlink" title="用 clip &lt; ~/.ssh/id_rsa.pub来复制公钥到粘贴板上"></a>用 clip &lt; ~/.ssh/id_rsa.pub来复制公钥到粘贴板上</h3><p>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDHdI7+wG461mhVgngSCQWTY5FyI75FjzHo5Z83jEQ1BbSHyN16JlmZs7uNqnyrXC05tqrl1c0zyGB2ek9M3f6VkPXxmlod/oS8uTclfwMMYcgsrtiLR/+o7I1oamM+lWADJ0uEIf5c/S86k63syJpAyati40G9WQdFR2asQ3hVq585iT3OurftuiZfFPNZ4PYKXMy+Rdcw/M9Qi39dDmm6MoQmcMaw/6iMfxgKlm8ZgDoTkQPKvSx/1yTveGwujIChufA3tyhVg0+dp0oOqOb/Kj/5CmBJe8iaHKBue3o0S3wiYpvNaUUDNplQbHiwkvLFJ0knmzY3nr/dv9nYVw304mJeTToCq69cxAIsn3SgeahH+lD6gKrpVhg9/QEpFQJSdMb+MKyCaTTD1lkTQxojAd7SNtEop41Z5Gcf5oN/EckcopxcS5LkwKdk7tzAMTSCky0DowxPZyDgFcZJ4oHAglFJo3s+OhuilDMc8khfsVRB1z+f+OKd+2sBuTT5wHs= </p>
+<h3 id="用查看是否存在公钥的命令来查看"><a href="#用查看是否存在公钥的命令来查看" class="headerlink" title="用查看是否存在公钥的命令来查看"></a>用查看是否存在公钥的命令来查看</h3><p>cat ~/.ssh/id_rsa.pub</p>
+<h2 id="添加公钥到远端的SSH里面"><a href="#添加公钥到远端的SSH里面" class="headerlink" title="添加公钥到远端的SSH里面"></a>添加公钥到远端的SSH里面</h2><p>比如：用的是阿里云则关联到code.aliyun.com；</p>
+<p>我们用的是github的密钥管理处:</p>
 <p>（1）github 添加 SSH ：点击自己右上角头像，选择 Settings，点击 SSH and GPG keys ，点击 New SSH key，添加 SSH 即可。</p>
 <p>成功添加公钥：</p>
-<blockquote>
-<img src="/2020/01/14/Node+git+hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/SSH.png">
-</blockquote>
-<p>（2）阿里云 添加 SSH ：在项目主页，点击设置→SSH公钥→增加SSH密钥→把本地公钥复制到“公钥”框里→输入标题(必填项，可以设置家或者公司等标识)→最后点击“增加密钥”即可。</p>
-<h2 id="5-搭建Hexo"><a href="#5-搭建Hexo" class="headerlink" title="5.搭建Hexo"></a>5.搭建Hexo</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，<strong>cd</strong>进这个文件夹，输入下面的命令来进行安装。</p>
+<p>C:\Users\Fantastic.ssh</p>
+<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113205619222.png" alt="image-20200113205619222"></p>
+<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113205711130.png" alt="image-20200113205711130"></p>
+<p>（2）阿里云 添加 SSH ：在项目主页，点击设置→SSH公钥→增加SSH密钥→把本地公钥复制到“公钥”框里→输入标题(必填项，可以设置家或者公司等标识)→最后点击“增加密钥”即可。<br>原文链接：<a href="https://blog.csdn.net/qq_42351033/article/details/99182662" target="_blank" rel="noopener">https://blog.csdn.net/qq_42351033/article/details/99182662</a></p>
+<p>5.搭建Hexo</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，<strong>cd</strong>进这个文件夹，输入下面的命令来进行安装。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
 
+<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113210827331.png" alt="image-20200113210827331"></p>
 <h3 id="升级-非必需"><a href="#升级-非必需" class="headerlink" title="升级(非必需)"></a>升级(非必需)</h3><p>更新hexo到最新版。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update hexo -g</span><br></pre></td></tr></table></figure>
 
 <h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>在文件夹里右键，点击Git Bush，输入下面的命令。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
 
+<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113211159557.png" alt="image-20200113211159557"></p>
 <h3 id="生成网站"><a href="#生成网站" class="headerlink" title="生成网站"></a>生成网站</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
 
 <p>或者</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 
+<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113212446467.png" alt="image-20200113212446467"></p>
 <h3 id="本地服务器调试"><a href="#本地服务器调试" class="headerlink" title="本地服务器调试"></a>本地服务器调试</h3><p>右击选中仓库，选择gitbush输入命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
 <p>或者</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
+<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200114114031935.png" alt="image-20200114114031935"></p>
 <p>输上述命令得到hexo原生态官网地址：(允许github突破防火墙)</p>
-<img src="/2020/01/14/Node+git+hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/main.png">
-
-
-
-<h2 id="6-上传GitHub与Coding"><a href="#6-上传GitHub与Coding" class="headerlink" title="6.上传GitHub与Coding"></a>6.上传GitHub与Coding</h2><h3 id="建立仓库"><a href="#建立仓库" class="headerlink" title="建立仓库"></a>建立仓库</h3><p>在GitHub上建立一个仓库，其名称必须为your_name.github.io,比如我的是 lyc-rabbit.github.io。同理，在Coding上建立一个仓库，其名称最好为your_name，比如我的是 lyc-rabbit。</p>
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>打开根目录下的_config.yml，找到Deployment，然后按照如下修改：</p>
+<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200114165026871.png" alt="image-20200114165026871"></p>
+<p>6.上传GitHub与Coding<br>建立仓库<br>在GitHub上建立一个仓库，其名称必须为your_name.github.io,比如我的是 Doenitz.github.io。同理，在Coding上建立一个仓库，其名称最好为your_name，比如我的是 hitler97。</p>
+<p>配置文件<br>打开根目录下的_config.yml，找到Deployment，然后按照如下修改：</p>
 <p>deploy:<br>  type: git<br>  repository:<br>  github:<a href="mailto:git@github.com">git@github.com</a>:your_name/your_name.github.io.git<br>  coding: <a href="mailto:git@git.coding.net">git@git.coding.net</a>:your_name/your_name.git<br>  branch: master</p>
 <p>比如我就按以下形式配置：</p>
-<blockquote>
-<img src="/2020/01/14/Node+git+hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/o.png">
-</blockquote>
-<h2 id="7-编写、发布文章"><a href="#7-编写、发布文章" class="headerlink" title="7.编写、发布文章"></a>7.编写、发布文章</h2><h3 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h3><p>打开Git Bush，输入命令：hexo new “article title”<br>这时候在博客目录 \hexo\source\ _posts 下将会看到 article title.md 文件，用MarkDown编辑器编辑好文章之后即可发布</p>
+<p>deploy:<br>  type: git<br>  repository:<br>    github: <a href="mailto:git@github.com">git@github.com</a>:Doenitz/Doenitz.github.io.git<br>    coding: <a href="mailto:git@git.coding.net">git@git.coding.net</a>:hitler97/hitler97.git<br>    branch: master<br>我的:</p>
+<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113222402929.png" alt="image-20200113222402929"></p>
+<p>7.编写、发布文章<br>打开Git Bush，新建一篇文章：</p>
+<p>hexo new “article title”<br>这时候在博客目录 \hexo\source\ _posts 下将会看到 article title.md 文件，用MarkDown编辑器编辑好文章之后即可发布</p>
 <p>右击选中仓库使用gitbush输入命令：(不必打开server)</p>
-<p>比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;钰兔大王的第一个博客&quot;</span><br></pre></td></tr></table></figure>
-
-<p>在我的仓库文件夹（\lyc-yy\source\ _posts ）下就会有钰兔大王的第一个博客.md</p>
-<p>用以下命令进行必要的操作：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g    &#x2F;&#x2F;  生成</span><br><span class="line">hexo d    &#x2F;&#x2F;  部署</span><br></pre></td></tr></table></figure>
-
+<p>hexo new “钰兔大王的第一个博客”</p>
+<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200114115515936.png" alt="image-20200114115515936"></p>
+<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200114115606559.png" alt="image-20200114115606559"></p>
+<p>文章：</p>
+<p>hexo g    //  生成<br>hexo d    //  部署</p>
 <p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
+<p>hexo g -d</p>
 <p>这时打开你的Github pages和Coding pages主页地址即可看到自己的博客</p>
-<h2 id="8-关联-GitHub"><a href="#8-关联-GitHub" class="headerlink" title="8.关联 GitHub"></a>8.关联 GitHub</h2><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><ol>
+<p>更改端口号：</p>
+<p>在.yml文件中添加</p>
+<p>server:<br>  port: 5000<br>  compress: true<br>  header: true</p>
+<p>8.关联 GitHub</p>
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><ol>
 <li>登录您的 GitHub 账号，新建名称为<code>您的用户名.github.io</code>的仓库。假设我的 GitHub 账号的用户名是 <code>luxun</code>，那么我就应该新建名称为<code>luxun.github.io</code>的仓库。</li>
 <li><code>Description</code>可写可不写，随意。</li>
 <li>勾上<code>Initialize this repository with a README</code>。</li>
 <li>点击<code>Create Repository</code>完成创建。</li>
 </ol>
-<h3 id="开启-GitHub-Pages"><a href="#开启-GitHub-Pages" class="headerlink" title="开启 GitHub Pages"></a>开启 GitHub Pages</h3><p>点击<code>Settings</code>，你将会打开这个库的 Settings 页面，向下拖动，直到看见 GitHub Pages</p>
+<h3 id="开启-GitHub-Pages"><a href="#开启-GitHub-Pages" class="headerlink" title="开启 GitHub Pages"></a>开启 GitHub Pages</h3><p>点击<code>Settings</code>，你将会打开这个库的 Settings 页面，向下拖动，直到看见 GitHub Pages，如图：</p>
+<p><a href="https://camo.githubusercontent.com/bf5629a7167f6a0f931edd10a231e1520793e202/68747470733a2f2f6f6f6f2e306f302e6f6f6f2f323031372f31302f30362f353964366531306239636235662e706e67" target="_blank" rel="noopener"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jYW1vLmdpdGh1YnVzZXJjb250ZW50LmNvbS9iZjU2MjlhNzE2N2Y2YTBmOTMxZWRkMTBhMjMxZTE1MjA3OTNlMjAyLzY4NzQ3NDcwNzMzYTJmMmY2ZjZmNmYyZTMwNmYzMDJlNmY2ZjZmMmYzMjMwMzEzNzJmMzEzMDJmMzAzNjJmMzUzOTY0MzY2NTMxMzA2MjM5NjM2MjM1NjYyZTcwNmU2Nw?x-oss-process=image/format,png" alt="gh-p"></a></p>
 <h3 id="修改全局配置文件"><a href="#修改全局配置文件" class="headerlink" title="修改全局配置文件"></a>修改全局配置文件</h3><p><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">Hexo 官方文档</a>中有对全局配置的详细说明，推荐阅读。</p>
 <blockquote>
-<p>修改本地所有的配置文件时，注意所有的冒号<code>:</code>后边都要加一个空格，否则执行 Hexo 命令时会报错，一定注意。</p>
+<p>小坑提醒，修改本地所有的配置文件时，注意所有的冒号<code>:</code>后边都要加一个空格，否则执行 Hexo 命令时会报错，一定注意。</p>
 </blockquote>
 <p>找到本地<code>blog</code>文件夹下<code>_config.yml</code>，打开后滑到最后，修改成下边的样子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;xxx&#x2F;xxx.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
-<p>您需要将<code>repository</code>后的所有<code>xxx</code>换成你自己的用户名，或者也可以在，code&lt;&gt;下的Clone or download里。</p>
+<p>您需要将<code>repository</code>后的所有<code>xxx</code>换成你自己的用户名，或者也可以在下图位置获取：</p>
+<p><a href="https://camo.githubusercontent.com/6d9ac169f0d7ce162c61926fbc7438be266647c3/68747470733a2f2f692e6c6f6c692e6e65742f323031372f31302f30362f353964373166333333313334332e706e67" target="_blank" rel="noopener"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jYW1vLmdpdGh1YnVzZXJjb250ZW50LmNvbS82ZDlhYzE2OWYwZDdjZTE2MmM2MTkyNmZiYzc0MzhiZTI2NjY0N2MzLzY4NzQ3NDcwNzMzYTJmMmY2OTJlNmM2ZjZjNjkyZTZlNjU3NDJmMzIzMDMxMzcyZjMxMzAyZjMwMzYyZjM1Mzk2NDM3MzE2NjMzMzMzMzMxMzMzNDMzMmU3MDZlNjc?x-oss-process=image/format,png" alt="https 地址"></a></p>
 <p>然后，您需要为自己配置身份信息，终端输入<code>yourname</code>和<code>youremail</code>换成您自己的 GitHub 用户名和邮箱)：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
 
-<p>终端(CMD)<code>cd</code>到<code>blog</code>文件夹下执行生成静态页面命令：</p>
+<p>终端<code>cd</code>到<code>blog</code>文件夹下执行生成静态页面命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 
 <p>此时若出现如下报错：</p>
@@ -274,25 +282,12 @@
 
 <p>完成安装之后，再次执行<code>hexo g</code>和<code>hexo d</code>命令。</p>
 <p>随后按照提示，分别输入自己的 GitHub 用户名和密码，开始上传。</p>
-<p>完成上传之后，通过<code>http://xxx.github.io/</code></p>
-<p> (<code>xxx</code>换成您自己的仓库名，也就是用户名，比如我的就是lyc-rabbit)来访问自己刚刚上传的网站。</p>
-<h2 id="9-修改博客主题"><a href="#9-修改博客主题" class="headerlink" title="9.修改博客主题"></a>9.修改博客主题</h2><p>(1).在官网下载主题</p>
-<p><a href="https://hexo.io/themes/解压到你所用的仓库的themes文件内。" target="_blank" rel="noopener">https://hexo.io/themes/解压到你所用的仓库的themes文件内。</a></p>
-<p>(2).修改文件名为官网主题同名</p>
-<p>比如我下载的是Again主题或者3-hexo，</p>
-<p>那我就把文件名改成Again或者3-hexo。</p>
-<p>点进主题的个人</p>
-<p>(3).修改<code>_config.yml</code>文件，修改成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: Again</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: 3-hexo</span><br></pre></td></tr></table></figure>
-
-<p>(4).修改博客主题最后一招</p>
-<p>在gitBush里输入命令更改主题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>若得到网页主题更改出错，尝试输入hexo clean,清除之前乱七八糟的信息后，再输入hexo g -d更改主题。</p>
+<p>完成上传之后，通过<code>http://xxx.github.io/</code> (<code>xxx</code>换成您自己的仓库名，也就是用户名)来访问自己刚刚上传的网站。</p>
+<p>9.修改博客主题</p>
+<p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+<p>在官网下载主题到仓库themes文件内，修改文件名为官网主题同名。</p>
+<p>hexo g -d更改主题。</p>
+<p>若得到网页主题出错，输入hexo clean,再输入hexo g -d</p>
 
     </div>
 
@@ -330,6 +325,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">hexo+git+node搭建博客</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/">Tomcat和web结合</a>
             </li>
             
@@ -339,10 +338,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/01/16/post-name/">post_name</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/01/14/Node+git+hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">Node+git+hexo搭建博客</a>
             </li>
             
         </ul>
