@@ -472,7 +472,8 @@
 <p>​    |    实现<br>org.apache.catalina.connector.RequestFacade 类（tomcat）</p>
 </li>
 <li><h5 id="request功能："><a href="#request功能：" class="headerlink" title="request功能："></a><strong>request功能：</strong></h5><ol>
-<li><h6 id="获取请求消息数据："><a href="#获取请求消息数据：" class="headerlink" title="获取请求消息数据："></a>获取请求消息数据：</h6><ol>
+<li><p>获取请求消息数据：</p>
+<ol>
 <li><p><strong>获取请求行数据</strong>：</p>
 <ul>
 <li><p>GET /javaLearn20110/demo4?name=zhangsan  HTTP/1.1</p>
@@ -515,206 +516,174 @@
 </ul>
 </li>
 <li><p><strong>获取请求头数据</strong>：</p>
-<ul>
-<li><p>方法：</p>
+<p>方法：</p>
 <p>String getHeader(String name)：通过请求头的名称获取请求头的值</p>
 <p>Enumeration<String> getHeaderNames()：获取所有的请求头名称</String></p>
 <ul>
 <li>(1).应用getHeaderNames()的代码：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Overrideprotected</span> </span><br><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;    </span><br><span class="line">     Enumeration&lt;String&gt; headerNames=req.getHeaderNames();    </span><br><span class="line">     <span class="keyword">while</span> (headerNames.hasMoreElements())&#123;        </span><br><span class="line">         String name=headerNames.nextElement();        </span><br><span class="line">         String value=req.getHeader(name);</span><br><span class="line">         System.out.println(<span class="string">"name:"</span>+name+<span class="string">"value:"</span>+value);    </span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Overrideprotected</span> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;    </span><br><span class="line">    Enumeration&lt;String&gt; headerNames=req.getHeaderNames();    </span><br><span class="line">    <span class="keyword">while</span> (headerNames.hasMoreElements())&#123;        </span><br><span class="line">        String name=headerNames.nextElement();        </span><br><span class="line">        String value=req.getHeader(name);</span><br><span class="line">        System.out.println(<span class="string">"name:"</span>+name+<span class="string">"value:"</span>+value);    </span><br><span class="line"> &#125;&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>(1).得到地址的系列信息，运行截图：</p>
+<li><p>得到地址的系列信息，运行截图：</p>
 <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120162838736.png" alt="image-20200120162838736" style="zoom: 50%;"> 
 </li>
 <li><p>(2).应用getHeader(“user-agent”)的代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requsetDemo3"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemo3</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        String agent=req.getHeader(<span class="string">"user-agent"</span>);</span><br><span class="line">        <span class="comment">//解决浏览器兼容性问题</span></span><br><span class="line">        <span class="keyword">if</span> (agent.contains(<span class="string">"Chrome"</span>))&#123;</span><br><span class="line">            <span class="comment">//是谷歌</span></span><br><span class="line">            System.out.println(<span class="string">"it is 谷歌"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (agent.contains(<span class="string">"Firefox"</span>))&#123;</span><br><span class="line">            <span class="comment">//火狐</span></span><br><span class="line">            System.out.println(<span class="string">"it is 火狐"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 </li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<pre><code>     - (3).应用getHeader(&quot;referer&quot;)的代码：
-
-
+<li><p>(3).应用getHeader(“referer”)的代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requsetDemo4"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requsetDemo4</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//请求头数据</span></span><br><span class="line">        String referer=req.getHeader(<span class="string">"referer"</span>);</span><br><span class="line">        System.out.println(referer);</span><br><span class="line">        <span class="comment">//防盗链</span></span><br><span class="line">        <span class="comment">//如果请求头数据包含了null，表示是本地访问，是get</span></span><br><span class="line">        <span class="keyword">if</span> (referer!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//如果请求头数据包含了/requsetDemo4，也表示正常访问，是post</span></span><br><span class="line">            <span class="keyword">if</span> (referer.contains(<span class="string">"/requsetDemo4"</span>))&#123;</span><br><span class="line">                System.out.println(<span class="string">"正常访问"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"您使用的是非法路径"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置我将它指定在了main，在得到的地址后面要加上/webapp/Login.html得到页面</p>
+</li>
+<li><p>得到了跳转的来由地址：<br>操作：</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120165226570.png" alt="image-20200120165226570" style="zoom: 80%;">
 
-- (3).配置我将它指定在了main，在得到的地址后面要加上/webapp/Login.html得到页面
+  <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120165247074.png" alt="image-20200120165247074" style="zoom:67%;">
 
-   -  (3).得到了跳转的来由地址：
-     操作：
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120165151345.png" alt="image-20200120165151345" style="zoom: 67%;">
+</li>
+</ul>
+</li>
+<li><p><strong>获取请求体数据</strong>：</p>
+</li>
+</ol>
+<ul>
+<li><p>请求体：只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数</p>
+</li>
+<li><p>获取参数步骤：</p>
+<ol>
+<li><p>获取流对象：</p>
+<p>(1).第一种：BufferedReader getReader()：获取字符输入流，只能操作字符数据；</p>
+<p>(2).第二种：ServletInputStream getInputStream()：获取字节输入流，可以操作所有类型的数据；</p>
+</li>
+<li><p>从流对象中拿数据：</p>
+<p>(1).第一种对象对应：</p>
+<p>String line=null;<br>while ((line=br.readLine()) !=null){System.out.println(line); } </p>
+<p>(2).第二种对象对应：待写</p>
+</li>
+</ol>
+</li>
+<li><p>应用BufferedReader getReader()的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemo5"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemo5</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123; </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span>   </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123; </span><br><span class="line">        <span class="comment">//获取字符流  </span></span><br><span class="line">        BufferedReader br = req.getReader();      </span><br><span class="line">        <span class="comment">//读取数据    </span></span><br><span class="line">        String line=<span class="keyword">null</span>;     </span><br><span class="line">        <span class="keyword">while</span> ((line=br.readLine()) !=<span class="keyword">null</span>)&#123;  </span><br><span class="line">            System.out.println(line);    </span><br><span class="line">        &#125;     </span><br><span class="line">        <span class="comment">//这个流不用关闭，因为是通过request得到的 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-&lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120165226570.png&quot; alt=&quot;image-20200120165226570&quot; style=&quot;zoom: 80%;&quot; /&gt;
+<p>regist.html代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--关键是form这一行响应和指定方法--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemo5"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>应用BufferedReader getReader()的截图：</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121113929600.png" alt="image-20200121113929600" style="zoom:80%;">
 
-​     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120165247074.png&quot; alt=&quot;image-20200120165247074&quot; style=&quot;zoom:67%;&quot; /&gt;
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121113907726.png" alt="image-20200121113907726" style="zoom:80%;">
 
-&lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120165151345.png&quot; alt=&quot;image-20200120165151345&quot; style=&quot;zoom: 67%;&quot; /&gt;
-
-3. **获取请求体数据**：
-
-   - **请求体**：只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数
-
-   - **获取参数步骤**：
-
-     1. 获取流对象：
-
-        (1).第一种：BufferedReader getReader()：获取字符输入流，只能操作字符数据；
-
-        (2).第二种：ServletInputStream getInputStream()：获取字节输入流，可以操作所有类型的数据；
-
-     2. 从流对象中拿数据：
-
-        (1).第一种对象对应：
-
-        String line=null;     
-        while ((line=br.readLine()) !=null){System.out.println(line); } 
-
-        (2).第二种对象对应：待写
-
-   - 应用BufferedReader getReader()的代码：
-
-     <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemo5"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemo5</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123; </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span>   </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123; </span><br><span class="line">        <span class="comment">//获取字符流  </span></span><br><span class="line">        BufferedReader br = req.getReader();      </span><br><span class="line">        <span class="comment">//读取数据    </span></span><br><span class="line">        String line=<span class="keyword">null</span>;     </span><br><span class="line">        <span class="keyword">while</span> ((line=br.readLine()) !=<span class="keyword">null</span>)&#123;  </span><br><span class="line">            System.out.println(line);    </span><br><span class="line">        &#125;     </span><br><span class="line">        <span class="comment">//这个流不用关闭，因为是通过request得到的 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-     regist.html代码：
-
-     <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--关键是form这一行响应和指定方法--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemo5"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-   - 应用BufferedReader getReader()的截图：
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121113929600.png&quot; alt=&quot;image-20200121113929600&quot; style=&quot;zoom:80%;&quot; /&gt;
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121113907726.png&quot; alt=&quot;image-20200121113907726&quot; style=&quot;zoom:80%;&quot; /&gt;
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121114013422.png&quot; alt=&quot;image-20200121114013422&quot; style=&quot;zoom: 50%;&quot; /&gt;</code></pre><ul>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121114013422.png" alt="image-20200121114013422" style="zoom: 50%;">
+</li>
+</ul>
+</li>
+</ol>
+</li>
 <li><h5 id="其他功能："><a href="#其他功能：" class="headerlink" title="其他功能："></a><strong>其他功能：</strong></h5><ol>
 <li><p><strong>获取请求参数的通用方式（POST）</strong>：</p>
 <ol>
-<li><p>（*）String getParameter(String name)：</p>
+<li><p>String getParameter(String name)：</p>
 <p>根据参数名称获取数值   username=zhangsan&amp;password=123，如在getParameter的括号中填入username就可以获取到zhangsan，获取同一个name属性的一个值的方法；</p>
-<ul>
-<li><p>应用getParameter的 regist2.html代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>regist2<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--action指定到的项目为requestDemoOther1--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther1"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span>    </span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>（1）应用getParameter的 regist2.html代码：</p>
 </li>
-<li><p>应用getParameter的java代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemoOther1"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemoOther1</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;    </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//得到浏览器地址里面输入的username对应的 值        </span></span><br><span class="line">        String username = req.getParameter(<span class="string">"username"</span>); </span><br><span class="line">        System.out.println(<span class="string">"get:\n"</span>+username);  </span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;       </span><br><span class="line">        <span class="comment">//根据参数名称获取参数  </span></span><br><span class="line">        <span class="comment">//得到 form表单里面对应的name属性的值 在浏览器里的 值    </span></span><br><span class="line">        String username = req.getParameter(<span class="string">"username"</span>);  </span><br><span class="line">        System.out.println(<span class="string">"post:\n"</span>+username);  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>应用getParameter的截图：</p>
+</ol>
+<!DOCTYPE html><html lang="en">
+       <head>
+           <meta charset="UTF-8"> 
+           <title>regist2</title>
+       <meta name="generator" content="Hexo 4.2.0"></head>
+       <body>
+           <!--action指定到的项目为requestDemoOther1-->
+           <form action="/javaLearn20119/requestDemoOther1" method="post">    
+               <input type="text" placeholder="请输入用户名：" name="username"><br>    
+               <input type="password" placeholder="请输入密码：" name="password"><br>    
+               <input type="submit" value="注册">
+           </form>
+       </body>
+   </html>
+   （1）应用getParameter的java代码：
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemoOther1"</span>)</span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemoOther1</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;    </span><br><span class="line">       <span class="meta">@Override</span>    </span><br><span class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">           <span class="comment">//得到浏览器地址里面输入的username对应的 值        </span></span><br><span class="line">           String username = req.getParameter(<span class="string">"username"</span>); </span><br><span class="line">           System.out.println(<span class="string">"get:\n"</span>+username);  </span><br><span class="line">       &#125;   </span><br><span class="line">       <span class="meta">@Override</span>  </span><br><span class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;       </span><br><span class="line">           <span class="comment">//根据参数名称获取参数  </span></span><br><span class="line">           <span class="comment">//得到 form表单里面对应的name属性的值 在浏览器里的 值    </span></span><br><span class="line">           String username = req.getParameter(<span class="string">"username"</span>);  </span><br><span class="line">           System.out.println(<span class="string">"post:\n"</span>+username);  </span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>   （1）应用getParameter的截图：</p>
 <ul>
 <li><p>调用GET方法得到的截图：（在浏览器里输入地址定位项目后，输入?username=lyc）</p>
 <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121173604032.png" alt="image-20200121173604032" style="zoom:67%;">
 
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121173634031.png" alt="image-20200121173634031" style="zoom:67%;">
+</li>
+<li><p>调用POST方法得到的截图：（在浏览器里输入地址定位到.html文件，填写form表单的数据后，会action跳转到指定的项目，而项目post方法会得到名为username的值）</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121172721866.png" alt="image-20200121172721866" style="zoom:67%;">
 
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121172658639.png" alt="image-20200121172658639" style="zoom:67%;">
 
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121172903379.png" alt="image-20200121172903379" style="zoom:67%;">
 </li>
 </ul>
 </li>
-</ul>
+<li><p>String getParameterValues(String name)：</p>
+<p>根据参数名称获取数值的数组   hobby=xx&amp;hobby=game,如在getParameterValues的括号中填入hobby就可以获取到xx和game的数组，多用于复选框，获取同一个name属性的多个值的方法；</p>
+<p>（2）应用getParameterValues的regist2.html文件代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther1"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"game"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"sing"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"study"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"run"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>   （2）应用getParameterValues的 java代码：</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span>   </span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;     </span><br><span class="line"> <span class="comment">//根据参数名称获取参数     </span></span><br><span class="line">       <span class="comment">//得到 form表单里面对应的name属性的值 在浏览器里的 值</span></span><br><span class="line"> String[] hobbies = req.getParameterValues(<span class="string">"hobby"</span>);    </span><br><span class="line">       <span class="keyword">for</span> (String hobby:hobbies)&#123;            </span><br><span class="line">           System.out.println(hobby);                        </span><br><span class="line">       &#125;  </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>   （2）应用getParameterValues的运行截图：</p>
+   <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121175210583.png" alt="image-20200121175210583" style="zoom: 50%;">
+
+   <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121175146568.png" alt="image-20200121175146568" style="zoom:67%;">
+
+   <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121175244913.png" alt="image-20200121175244913" style="zoom: 50%;">
+
+<ol start="3">
+<li><p>Enumeration<String> getParameterNames()：获取所有请求参数的名称；</String></p>
+<p>（用此不能获得同一name属性多个值，只取第一个）</p>
+<p>（3）应用getParameterNames的java代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   Enumeration&lt;String&gt; parameterNames = req.getParameterNames();</span><br><span class="line"><span class="keyword">while</span> (parameterNames.hasMoreElements())&#123;</span><br><span class="line">    String name=parameterNames.nextElement();   </span><br><span class="line">    System.out.println(name);  </span><br><span class="line">    String value=req.getParameter(name);  </span><br><span class="line">      System.out.println(value);    </span><br><span class="line">       System.out.println(<span class="string">"---------"</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）应用getParameterNames的regist2.html文件代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther1"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span>    </span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"game"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"sing"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"study"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"run"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（3）应用getParameterNames的截图：</p>
+<p>!<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121180328850.png" alt="image-20200121180328850" style="zoom: 50%;"></p>
+  <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121180351169.png" alt="image-20200121180351169" style="zoom: 50%;">
+
+<ol start="4">
+<li><p>Map&lt;String,String[]&gt; getParameterMap()：获取所有参数的map集合，键值对集合；</p>
+<p>（用此可以取得同一name属性的一个值或者多个值，霸王）</p>
+<p>（4）应用getParameterMap的java代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String[]&gt; parameterMap = req.getParameterMap();</span><br><span class="line">  <span class="comment">//遍历Set&lt;String&gt;</span></span><br><span class="line">    keyset = parameterMap.keySet();</span><br><span class="line">  <span class="keyword">for</span> (String name:keyset)&#123;  </span><br><span class="line">      <span class="comment">//根据键获取值 </span></span><br><span class="line">         String[] values = parameterMap.get(name);  </span><br><span class="line">         System.out.println(name); </span><br><span class="line">         <span class="keyword">for</span> (String value:values)&#123; </span><br><span class="line">             System.out.println(value);  </span><br><span class="line">         &#125;   </span><br><span class="line">         System.out.println(<span class="string">"++++++++++++"</span>);</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+<p>（4）应用getParameterMap的regist2.html文件代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther1"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line"> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"game"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"sing"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"study"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"run"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（4）应用getParameterMap的截图：</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121200300360.png" alt="image-20200121200300360" style="zoom:67%;">
+</li>
+<li><p>解决使用.html和post方法时发生的中文乱码问题（注意：在tomcat 8以后，get方法的使用已经解决了中文乱码问题）：</p>
+<p>解决：添加一行代码于post方法里</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121201925661.png" alt="image-20200121201925661" style="zoom:67%;">
+
+  <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121201844312.png" alt="image-20200121201844312" style="zoom:67%;">
+
+
+
+
 </li>
 </ol>
 </li>
 </ol>
 </li>
+</ol>
+</li>
 </ul>
-<pre><code>       &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121173634031.png&quot; alt=&quot;image-20200121173634031&quot; style=&quot;zoom:67%;&quot; /&gt;
-
-     - 调用POST方法得到的截图：（在浏览器里输入地址定位到.html文件，填写form表单的数据后，会action跳转到指定的项目，而项目post方法会得到名为username的值）
-
-   &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121172721866.png&quot; alt=&quot;image-20200121172721866&quot; style=&quot;zoom:67%;&quot; /&gt;
-
-
-
-   &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121172658639.png&quot; alt=&quot;image-20200121172658639&quot; style=&quot;zoom:67%;&quot; /&gt;
-
-
-
-   &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121172903379.png&quot; alt=&quot;image-20200121172903379&quot; style=&quot;zoom:67%;&quot; /&gt;
-
-2. String getParameterValues(String name)：
-
-   根据参数名称获取数值的数组   hobby=xx&amp;hobby=game,如在getParameterValues的括号中填入hobby就可以获取到xx和game的数组，多用于复选框，获取同一个name属性的多个值的方法；
-
-   - 应用getParameterValues的regist2.html文件代码：
-
-     <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther1"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"game"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"sing"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"study"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"run"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-   - 应用getParameterValues的 java代码：
-
-     <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span>   </span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;     </span><br><span class="line">    <span class="comment">//根据参数名称获取参数     </span></span><br><span class="line">    <span class="comment">//得到 form表单里面对应的name属性的值 在浏览器里的 值</span></span><br><span class="line">    String[] hobbies = req.getParameterValues(<span class="string">"hobby"</span>);    </span><br><span class="line">    <span class="keyword">for</span> (String hobby:hobbies)&#123;            </span><br><span class="line">        System.out.println(hobby);                        </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-   - 应用getParameterValues的运行截图：
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121175210583.png&quot; alt=&quot;image-20200121175210583&quot; style=&quot;zoom: 50%;&quot; /&gt;
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121175146568.png&quot; alt=&quot;image-20200121175146568&quot; style=&quot;zoom:67%;&quot; /&gt;
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121175244913.png&quot; alt=&quot;image-20200121175244913&quot; style=&quot;zoom: 50%;&quot; /&gt;
-
-3. Enumeration&lt;String&gt; getParameterNames()：获取所有请求参数的名称；
-
-   （用此不能获得同一name属性多个值，只取第一个）
-
-   - 应用getParameterNames的java代码：
-
-     <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Enumeration&lt;String&gt; parameterNames = req.getParameterNames();</span><br><span class="line"><span class="keyword">while</span> (parameterNames.hasMoreElements())&#123;</span><br><span class="line">    String name=parameterNames.nextElement();   </span><br><span class="line">    System.out.println(name);  </span><br><span class="line">    String value=req.getParameter(name);  </span><br><span class="line">    System.out.println(value);    </span><br><span class="line">    System.out.println(<span class="string">"---------"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-   - 应用getParameterNames的regist2.html文件代码：
-
-         &lt;form action=&quot;/javaLearn20119/requestDemoOther1&quot; method=&quot;post&quot;&gt;    
-             &lt;input type=&quot;text&quot; placeholder=&quot;请输入用户名：&quot; name=&quot;username&quot;&gt;&lt;br&gt;   
-             &lt;input type=&quot;password&quot; placeholder=&quot;请输入密码：&quot; name=&quot;password&quot;&gt;&lt;br&gt;    
-             &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;game&quot;&gt;&lt;br&gt;    
-             &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;sing&quot;&gt;&lt;br&gt;   
-             &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;study&quot;&gt;&lt;br&gt;   
-             &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;run&quot;&gt;&lt;br&gt;
-             &lt;input type=&quot;submit&quot; value=&quot;注册&quot;&gt;
-         &lt;/form&gt;
-
-   - 应用getParameterNames的截图：
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121180328850.png&quot; alt=&quot;image-20200121180328850&quot; style=&quot;zoom: 50%;&quot; /&gt;
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121180351169.png&quot; alt=&quot;image-20200121180351169&quot; style=&quot;zoom: 50%;&quot; /&gt;
-
-4. （*）Map&lt;String,String[]&gt; getParameterMap()：获取所有参数的map集合，键值对集合；
-
-   （用此可以取得同一name属性的一个值或者多个值，霸王）
-
-   - 应用getParameterMap的java代码：
-
-     <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String[]&gt; parameterMap = req.getParameterMap();</span><br><span class="line"><span class="comment">//遍历Set&lt;String&gt;</span></span><br><span class="line">keyset = parameterMap.keySet();</span><br><span class="line"><span class="keyword">for</span> (String name:keyset)&#123;  </span><br><span class="line">    <span class="comment">//根据键获取值 </span></span><br><span class="line">    String[] values = parameterMap.get(name);  </span><br><span class="line">    System.out.println(name); </span><br><span class="line">    <span class="keyword">for</span> (String value:values)&#123; </span><br><span class="line">        System.out.println(value);  </span><br><span class="line">    &#125;   </span><br><span class="line">    System.out.println(<span class="string">"++++++++++++"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-   - 应用getParameterMap的regist2.html文件代码：
-
-     <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther1"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"game"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"sing"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"study"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"run"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-   - 应用getParameterMap的截图：
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121200121144.png&quot; alt=&quot;image-20200121200121144&quot; style=&quot;zoom: 50%;&quot; /&gt;
-
-     &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121200300360.png&quot; alt=&quot;image-20200121200300360&quot; style=&quot;zoom:50%;&quot; /&gt;
-
-5. 解决使用.html和post方法时发生的中文乱码问题（注意：在tomcat 8以后，get方法的使用已经解决了中文乱码问题）：
-
-   - 解决：添加一行代码于post方法里
-
-   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br></pre></td></tr></table></figure>
-
-   - 效果：
-
-   &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121201925661.png&quot; alt=&quot;image-20200121201925661&quot; style=&quot;zoom:67%;&quot; /&gt;
-
-   &lt;img src=&quot;C:\Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121201844312.png&quot; alt=&quot;image-20200121201844312&quot; style=&quot;zoom:67%;&quot; /&gt;</code></pre><ol start="2">
+<ol start="2">
 <li><p><strong>请求转发：一种在服务器内部的资源跳转方式</strong></p>
 <p>步骤：</p>
 <ul>
