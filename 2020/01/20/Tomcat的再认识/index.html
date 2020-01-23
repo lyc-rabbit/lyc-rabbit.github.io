@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tomcat的再认识 - 钰兔大王的世界</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="lyc,"> 
+    <meta name="description" content="Tomcat的再次认识1.下载tomcat官网：http://tomcat.apache.org/
+选择合适的压缩包，比如我的是win10且64字节，我就选64的。
+解压到自己想放的地方。
+2.启动,"> 
+    <meta name="author" content="Lyc"> 
+    <link rel="alternative" href="atom.xml" title="钰兔大王的世界" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">钰兔大王的世界</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">Tomcat的再认识</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Tomcat的再认识</h1>
+        <div class="stuff">
+            <span>一月 20, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Tomcat的再次认识"><a href="#Tomcat的再次认识" class="headerlink" title="Tomcat的再次认识"></a>Tomcat的再次认识</h1><h2 id="1-下载tomcat"><a href="#1-下载tomcat" class="headerlink" title="1.下载tomcat"></a>1.下载tomcat</h2><p>官网：<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">http://tomcat.apache.org/</a></p>
+<p>选择合适的压缩包，比如我的是win10且64字节，我就选64的。</p>
+<p>解压到自己想放的地方。</p>
+<h2 id="2-启动tomcat的方法"><a href="#2-启动tomcat的方法" class="headerlink" title="2.启动tomcat的方法"></a>2.启动tomcat的方法</h2><h4 id="1-双击tomcat-bin-startup-bat（不要关闭这个窗口）"><a href="#1-双击tomcat-bin-startup-bat（不要关闭这个窗口）" class="headerlink" title="(1).双击tomcat/bin/startup.bat（不要关闭这个窗口）"></a>(1).双击tomcat/bin/startup.bat（不要关闭这个窗口）</h4><h4 id="2-在浏览器输入"><a href="#2-在浏览器输入" class="headerlink" title="(2).在浏览器输入"></a>(2).在浏览器输入</h4><blockquote>
+<p>localhost:8080</p>
+</blockquote>
+<blockquote>
+<p>127.0.0.1:8080</p>
+</blockquote>
+<blockquote>
+<p>机主地址:8080</p>
+</blockquote>
+<p>(端口号看个人，可以根据需要去修改)</p>
+<h2 id="3-如何查看本机IP"><a href="#3-如何查看本机IP" class="headerlink" title="3.如何查看本机IP"></a>3.如何查看本机IP</h2><h4 id="1-在CMD中输入"><a href="#1-在CMD中输入" class="headerlink" title="(1).在CMD中输入"></a>(1).在CMD中输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-IPv4地址"><a href="#2-IPv4地址" class="headerlink" title="(2).IPv4地址"></a>(2).IPv4地址</h4><h2 id="4-tomcat启动可能出现的问题"><a href="#4-tomcat启动可能出现的问题" class="headerlink" title="4.tomcat启动可能出现的问题"></a>4.tomcat启动可能出现的问题</h2><h4 id="1-startup-bat双击后一闪而过："><a href="#1-startup-bat双击后一闪而过：" class="headerlink" title="(1).startup.bat双击后一闪而过："></a>(1).startup.bat双击后一闪而过：</h4><p>原因：没配置好JAVA_HOME环境变量（jdk的目录没有配置到PATH的环境变量里），tomcat找不到jdk；</p>
+<p>解决：用JAVA_HOME替换掉jdk的在PATH中到配置等意的地方。</p>
+<h4 id="2-startup-bat启动报错："><a href="#2-startup-bat启动报错：" class="headerlink" title="(2).startup.bat启动报错："></a>(2).startup.bat启动报错：</h4><p>原因：已经开启了startup.bat，端口号被占用</p>
+<p>解决：</p>
+<h5 id="1-找到占用的端口号，并找到对应的进程，杀死该进程："><a href="#1-找到占用的端口号，并找到对应的进程，杀死该进程：" class="headerlink" title="[1].找到占用的端口号，并找到对应的进程，杀死该进程："></a>[1].找到占用的端口号，并找到对应的进程，杀死该进程：</h5><p>在CMD中输入</p>
+<p>netstat-ano</p>
+<p>得到所有程序的端口号；</p>
+<p>右击任务栏选择管理器，</p>
+<p>在查看中打开PID，</p>
+<p>把PID对应于端口号的进程右击结束，一般选择杀死进程。</p>
+<h5 id="2-修改自身的端口号："><a href="#2-修改自身的端口号：" class="headerlink" title="[2].修改自身的端口号："></a>[2].修改自身的端口号：</h5><p>tomcat/conf/server.xml右击文本打开，</p>
+<p>大致在69行，出现port=”8080”和redirectPort=”8443”随你修改，然后保存；</p>
+<p>大致在116行，也改端口号；</p>
+<p>大致在22行，也改；</p>
+<p>一般会把port改成80，即http协议的默认端口号，访问的时候，就可以不用输入80；</p>
+<p>端口号改了以后，访问的端口号也要记得保持一致。</p>
+<h2 id="5-tomcat的关闭"><a href="#5-tomcat的关闭" class="headerlink" title="5.tomcat的关闭"></a>5.tomcat的关闭</h2><h4 id="1-强制关闭："><a href="#1-强制关闭：" class="headerlink" title="(1).强制关闭："></a>(1).强制关闭：</h4><p>点击x</p>
+<h4 id="2-正常关闭："><a href="#2-正常关闭：" class="headerlink" title="(2).正常关闭："></a>(2).正常关闭：</h4><p>tomcat/bin/shutdown.bat双击</p>
+<p>或者</p>
+<p>tomcat/bin/startup.bat双击开启的窗口里输入Ctrl+c</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://music.163.com/outchain/player?type=2&id=477293112&auto=1&height=66'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://music.163.com/outchain/player?type=2&id=85571&auto=1&height=66'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Tomcat的再次认识"><span class="toc-number">1.</span> <span class="toc-text">Tomcat的再次认识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-下载tomcat"><span class="toc-number">1.1.</span> <span class="toc-text">1.下载tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-启动tomcat的方法"><span class="toc-number">1.2.</span> <span class="toc-text">2.启动tomcat的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-双击tomcat-bin-startup-bat（不要关闭这个窗口）"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">(1).双击tomcat&#x2F;bin&#x2F;startup.bat（不要关闭这个窗口）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-在浏览器输入"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">(2).在浏览器输入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-如何查看本机IP"><span class="toc-number">1.3.</span> <span class="toc-text">3.如何查看本机IP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-在CMD中输入"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">(1).在CMD中输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-IPv4地址"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">(2).IPv4地址</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-tomcat启动可能出现的问题"><span class="toc-number">1.4.</span> <span class="toc-text">4.tomcat启动可能出现的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-startup-bat双击后一闪而过："><span class="toc-number">1.4.0.1.</span> <span class="toc-text">(1).startup.bat双击后一闪而过：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-startup-bat启动报错："><span class="toc-number">1.4.0.2.</span> <span class="toc-text">(2).startup.bat启动报错：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-找到占用的端口号，并找到对应的进程，杀死该进程："><span class="toc-number">1.4.0.2.1.</span> <span class="toc-text">[1].找到占用的端口号，并找到对应的进程，杀死该进程：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-修改自身的端口号："><span class="toc-number">1.4.0.2.2.</span> <span class="toc-text">[2].修改自身的端口号：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-tomcat的关闭"><span class="toc-number">1.5.</span> <span class="toc-text">5.tomcat的关闭</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-强制关闭："><span class="toc-number">1.5.0.1.</span> <span class="toc-text">(1).强制关闭：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-正常关闭："><span class="toc-number">1.5.0.2.</span> <span class="toc-text">(2).正常关闭：</span></a></li></ol></li></ol></li></ol></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

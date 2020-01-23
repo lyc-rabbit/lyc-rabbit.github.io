@@ -1,0 +1,766 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tomcat和web结合 - 钰兔大王的世界</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="lyc,"> 
+    <meta name="description" content="Tomcat和web结合
+一切如果的事，都是在不成功之后要考虑的；
+一切知识点，都不用你动手，只要了解；
+一切动词，都需要你的行动。
+一、单纯和网页1.基础部署方式（开发者）：
+新建(路径)：
+
+t,"> 
+    <meta name="author" content="Lyc"> 
+    <link rel="alternative" href="atom.xml" title="钰兔大王的世界" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">钰兔大王的世界</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">Tomcat和web结合</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Tomcat和web结合</h1>
+        <div class="stuff">
+            <span>一月 22, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>Tomcat和web结合</p>
+<p>一切如果的事，都是在不成功之后要考虑的；</p>
+<p>一切知识点，都不用你动手，只要了解；</p>
+<p>一切动词，都需要你的行动。</p>
+<h2 id="一、单纯和网页"><a href="#一、单纯和网页" class="headerlink" title="一、单纯和网页"></a>一、单纯和网页</h2><h3 id="1-基础部署方式（开发者）："><a href="#1-基础部署方式（开发者）：" class="headerlink" title="1.基础部署方式（开发者）："></a>1.基础部署方式（开发者）：</h3><ul>
+<li>新建(路径)：</li>
+</ul>
+<p>tomcat/webapps/新建文件夹/新建.html文件</p>
+<ul>
+<li>查看(虚拟目录)：</li>
+</ul>
+<p>输入地址（localhost:8080）/新建文件夹名/新建.html文件名</p>
+<p>比如：</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200117215243800.png" alt="image-20200117215243800" style="zoom: 67%;">
+
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200117213820614.png" alt="image-20200117213820614" style="zoom: 67%;">
+
+
+
+<h3 id="2-更加简化的部署（运行和维护人员）："><a href="#2-更加简化的部署（运行和维护人员）：" class="headerlink" title="2.更加简化的部署（运行和维护人员）："></a>2.更加简化的部署（运行和维护人员）：</h3><ul>
+<li>修改：</li>
+</ul>
+<p>把写好的.html文件打包成.war包，复制到webapps里（这步伴随war包的自动解压，新建文件夹和.html文件）；</p>
+<p>而删除.war包，会伴随相应文件的删除哦。</p>
+<ul>
+<li>查看：</li>
+</ul>
+<p>输入地址（localhost:8080）/新建文件夹名/新建.html文件名</p>
+<h3 id="3-更方便的部署（运行和维护人员）："><a href="#3-更方便的部署（运行和维护人员）：" class="headerlink" title="3.更方便的部署（运行和维护人员）："></a>3.更方便的部署（运行和维护人员）：</h3><h4 id="1-使用tomcat自带的-xml文件"><a href="#1-使用tomcat自带的-xml文件" class="headerlink" title="(1).使用tomcat自带的.xml文件"></a>(1).使用tomcat自带的.xml文件</h4><ul>
+<li>修改：</li>
+</ul>
+<p>文本打开tomcat/conf/server.xml（应确保startup.bat已经关闭），找到并修改，保存，关闭一条龙：</p>
+<HOST>
+
+<!--标签里面部署项目-->
+
+<Cntext docbase="D:\software\tomcat9.0\webapps\hello" path="/lyc">
+
+</Cntext></HOST>
+
+<p>其中docBase是.html在本地的目录，而path是虚拟目录由自己定义，用于浏览器对其进行访问。</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200117215212801.png" alt="image-20200117215212801" style="zoom: 67%;">
+
+<ul>
+<li><p>查看：</p>
+<p>startup.bat启动tomcat，并保持开启状态，</p>
+<p>在浏览器里，输入地址/path对应的虚拟路径/.html文件；</p>
+<p>比如：</p>
+<p>localhost:8080/lyc/hello.html</p>
+</li>
+</ul>
+<h4 id="2-还可以自己新建-xml文件"><a href="#2-还可以自己新建-xml文件" class="headerlink" title="(2).还可以自己新建.xml文件"></a>(2).还可以自己新建.xml文件</h4><ul>
+<li>新建：</li>
+</ul>
+<p>tomcat/conf/Catalina/localhost/新建.xml文件，文本打开.xml文件并在文件内写：</p>
+<Cntext docbase="D:\software\tomcat9.0\webapps\hello">
+
+<p>其中没有path（虚拟路径）；</p>
+<ul>
+<li>查看：</li>
+</ul>
+<p>输入地址/新建.xml文件名/.html文件名</p>
+<ul>
+<li>另外：</li>
+</ul>
+<p>要是修改成.xml_bak文件，即每开一次服务器，可使用该文件部署的.html文件一次。</p>
+<h2 id="二、动态项目"><a href="#二、动态项目" class="headerlink" title="二、动态项目"></a>二、动态项目</h2><h3 id="1-部署tomcat于项目"><a href="#1-部署tomcat于项目" class="headerlink" title="1.部署tomcat于项目"></a>1.部署tomcat于项目</h3><h4 id="1-用maven的wepapp，或者用Java-Enterprise的Web-Application-4-0-新建项目："><a href="#1-用maven的wepapp，或者用Java-Enterprise的Web-Application-4-0-新建项目：" class="headerlink" title="(1).用maven的wepapp，或者用Java Enterprise的Web Application(4.0)新建项目："></a>(1).用maven的wepapp，或者用Java Enterprise的Web Application(4.0)新建项目：</h4><p>核心目录结构：</p>
+<p>–项目的根目录src</p>
+<p>  –main</p>
+<p>​     –java(Sources Root文件和WEB-INF并排)</p>
+<p>​         –servlet包</p>
+<p>​             –ServletDemo类</p>
+<p>​     –webapp（有该目录的项目被称为动态项目）</p>
+<p>​          –WEB-INF（使用@WebServlet注解时可以不用）</p>
+<p>​              – web.xml:：web项目的核心配置文件（使用@WebServlet注解时可以不用）</p>
+<p>​              –classes：放置字节码文件的目录（或者写在target里面，而使用@WebServlet注解时可以不用）</p>
+<p>​              –lib：放置依赖的jar包（或者放在External Libraries里面）</p>
+<p>​                        servlet-api-3.1.0.jar（接口Servlet）；</p>
+<p>​                        jsp-api-2.0.jar；</p>
+<p>​                       mysql-connector-java-5.1.47-bin.jar（连接数据库）；</p>
+<p>​            –若新建.html文件在这里，则Run/Debug Configurations的Smart Tomcat的Deployment Directory选中该项目的WEB-INF</p>
+<p>​    –新建.html文件在这里，Run/Debug Configurations的Smart Tomcat的Deployment Directory选中该项目，虚拟目录为/webapp/新建.html文件名，总之定位+虚拟目录要定位到.html文件</p>
+<p>​    –index.jsp（相当于html页面）</p>
+<p>–target</p>
+<h4 id="2-部署tomcat："><a href="#2-部署tomcat：" class="headerlink" title="(2)部署tomcat："></a>(2)部署tomcat：</h4><ul>
+<li><p>Run/Debug Configurations的Smart Tomcat的Deployment Directory选中该项目（如果没有做这一步会报错com.intellij.execution.ExecutionException: The Module Root specified is not a module according to Intellij，找不到作用对象）</p>
+<p>比如我的就是：</p>
+<p>D:\project\javaLearn20110\src\main\webapp</p>
+</li>
+<li><p>勾选After launch，运行项目的时候就会在控制台显示这个项目的访问地址，可以在浏览器手动指定要访问的.html文件</p>
+<p>比如：</p>
+<p><a href="http://localhost:8080/javaLearn20110/LoginIndex.html" target="_blank" rel="noopener">http://localhost:8080/javaLearn20110/LoginIndex.html</a></p>
+<p>如果只选中项目，则可以在index.jsp里面写html页面，通过<a href="http://localhost:8080/javaLearn20110/或者http://localhost:8080/javaLearn20110/index.jsp来访问。" target="_blank" rel="noopener">http://localhost:8080/javaLearn20110/或者http://localhost:8080/javaLearn20110/index.jsp来访问。</a></p>
+<p>如果，你不想勾选，你就自己想</p>
+</li>
+</ul>
+<h4 id="3-如果部署tomcat于项目后，没有target解决办法"><a href="#3-如果部署tomcat于项目后，没有target解决办法" class="headerlink" title="(3).如果部署tomcat于项目后，没有target解决办法:"></a>(3).如果部署tomcat于项目后，没有target解决办法:</h4><p>Project Settings–&gt;Artifacts–&gt;+–&gt;javaFx Application–&gt;choose your project</p>
+<p>并勾选Include in project build</p>
+<h4 id="4-如果当你修改html页面后，而网页并没有修改，重启一下你的IDEA"><a href="#4-如果当你修改html页面后，而网页并没有修改，重启一下你的IDEA" class="headerlink" title="(4).如果当你修改html页面后，而网页并没有修改，重启一下你的IDEA"></a>(4).如果当你修改html页面后，而网页并没有修改，重启一下你的IDEA</h4><h3 id="2-Servlet入门"><a href="#2-Servlet入门" class="headerlink" title="2.Servlet入门"></a>2.Servlet入门</h3><h5 id="1-创建JavaEE项目，在Sources-Root目录下新建-web-servlet-ServletDemo1；"><a href="#1-创建JavaEE项目，在Sources-Root目录下新建-web-servlet-ServletDemo1；" class="headerlink" title="(1).创建JavaEE项目，在Sources Root目录下新建/web/servlet/ServletDemo1；"></a>(1).创建JavaEE项目，在Sources Root目录下新建/web/servlet/ServletDemo1；</h5><h5 id="2-定义一个类implements-Servlet，实现Servlet接口（注意导入servlet-api-jar，不然会认不出Servlet），即：public-class-ServletDemo1-implements-Servlet；"><a href="#2-定义一个类implements-Servlet，实现Servlet接口（注意导入servlet-api-jar，不然会认不出Servlet），即：public-class-ServletDemo1-implements-Servlet；" class="headerlink" title="(2).定义一个类implements Servlet，实现Servlet接口（注意导入servlet-api.jar，不然会认不出Servlet），即：public class ServletDemo1 implements Servlet；"></a>(2).定义一个类implements Servlet，实现Servlet接口（注意导入servlet-api.jar，不然会认不出Servlet），即：public class ServletDemo1 implements Servlet；</h5><p>servlet就是一个接口，定义了java类被浏览器访问到（tomcat识别）的规则；</p>
+<h5 id="3-实现接口的5个方法Alt-Enter，类ServletDemo1中service-ServletRequest-servletRequest-ServletResponse-servletResponse-方法是提供服务的，可以在里面写东西-比如写System-out-println-“Hello-Servlet”"><a href="#3-实现接口的5个方法Alt-Enter，类ServletDemo1中service-ServletRequest-servletRequest-ServletResponse-servletResponse-方法是提供服务的，可以在里面写东西-比如写System-out-println-“Hello-Servlet”" class="headerlink" title="(3).实现接口的5个方法Alt+Enter，类ServletDemo1中service(ServletRequest servletRequest, ServletResponse servletResponse)方法是提供服务的，可以在里面写东西:比如写System.out.println(“Hello Servlet”);"></a>(3).实现接口的5个方法Alt+Enter，类ServletDemo1中service(ServletRequest servletRequest, ServletResponse servletResponse)方法是提供服务的，可以在里面写东西:比如写System.out.println(“Hello Servlet”);</h5><h5 id="4-配置Servlet（Run-Debug-Configurations定位到项目的webapp）并启动项目："><a href="#4-配置Servlet（Run-Debug-Configurations定位到项目的webapp）并启动项目：" class="headerlink" title="(4).配置Servlet（Run/Debug Configurations定位到项目的webapp）并启动项目："></a>(4).配置Servlet（Run/Debug Configurations定位到项目的webapp）并启动项目：</h5><ul>
+<li>Servlet第一种配置，在web.xml文件进行配置，在webapp容器内添加：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>         <span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/javaee"</span>         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span>         </span></span><br><span class="line"><span class="tag"><span class="attr">id</span>=<span class="string">"WebApp_ID"</span> <span class="attr">version</span>=<span class="string">"2.5"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span>    </span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demo1<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>    </span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>servlet.ServletDemo1<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span>    </span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>demo1<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>    </span><br><span class="line">	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/demo1<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>其中:</p>
+<ul>
+<li><p>后文基于Servlet2.5版本：</p>
+<p><servlet-name>给此servlet取名</servlet-name>;</p>
+<p><servlet-class>指定class类的路径即全类名，从sources root文件下开始指定</servlet-class>;</p>
+<p><servlet-name>指定哪个servlet</servlet-name>;</p>
+<p><url-pattern>给指定的servlet设置虚拟路径</url-pattern>。</p>
+</li>
+<li><p>Servlet第二种配置，如果用的是Servlet3.0版本时：</p>
+<p>支持注解配置，可以不用web.xml了</p>
+<p>步骤：</p>
+<ol>
+<li><p>创建JavaEE项目，选择Servlet的版本3.0以上，可以不创建web.xml</p>
+</li>
+<li><p>定义一个类，实现Servlet接口</p>
+</li>
+<li><p>在类上使用一个@WebServlet(“写资源名称”)注解，进行配置:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/demo"</span>)</span><br><span class="line">&lt;!--或者--&gt;</span><br><span class="line"><span class="meta">@WebServlet</span>(urlPatterns=<span class="string">"/demo"</span>)</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200119192510334.png" alt="image-20200119192510334" style="zoom: 50%;">
+
+
+
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>启动项目，运行效果：</li>
+</ul>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200118171134386.png" alt="image-20200118171134386" style="zoom: 67%;">
+
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200118171652371.png" alt="image-20200118171652371" style="zoom: 67%;">
+
+<ul>
+<li>理解：当服务器接收到客户端浏览器的请求后，会解析请求URL路径，获取访问Servlet的资源路径即/demo1；</li>
+</ul>
+<p>​                查找web.xml文件，是否有对应的<url-pattern>标签体内容和资源路径一致即demo1；</url-pattern></p>
+<p>​                    如果有，则在找到对应的<servlet-class>全类名，tomcat将全类名对应的字节码文件加载进内存</servlet-class></p>
+<p>​                  （Class.forName()）并创建对象（class.newInstance()），然后调用方法。</p>
+<h5 id="5-知识点：Servlet中的5个方法之3的说明"><a href="#5-知识点：Servlet中的5个方法之3的说明" class="headerlink" title="(5).知识点：Servlet中的5个方法之3的说明"></a>(5).知识点：Servlet中的5个方法之3的说明</h5><p>[1].Servlet被创建：执行init方法，只执行一次：</p>
+<p>Servlet的init方法，只执行一次，说明一个Servlet在内存中只存在一个对象，Servlet是单例的；</p>
+<ul>
+<li>​    问题：多个用户访问时，可能存在安全问题；</li>
+<li>​    解决：尽量不要在Servlet中定义成员变量，即使定义了一个成员变量就不要对它修改，但是可以定义局部变量。</li>
+</ul>
+<p>Servlet什么时候被创建？</p>
+<ul>
+<li>默认情况，第一次被访问时，Servlet被创建</li>
+<li>可以配置执行Servlet的创建时机：在<servlet></servlet>标签里添加<load-on-startup></load-on-startup><ul>
+<li>第一次被访问时(就是在浏览器)，创建，<load-on-startup>值为负整数</load-on-startup>，默认值为-1;</li>
+<li>在服务器启动时(就是启动项目)，创建，<load-on-startup>值为0或正整数</load-on-startup>;</li>
+</ul>
+</li>
+</ul>
+<p>[2].Servlet提供服务：执行service方法，执行多次：</p>
+<p>每次浏览器访问Servlet时，service方法都会被调用一次。</p>
+<p>[3].Servlet被销毁：执行destroy方法，只执行一次：</p>
+<p>服务器被正常关闭时，执行destroy方法后，Servlet被销毁。</p>
+<h3 id="3-步入Servlet"><a href="#3-步入Servlet" class="headerlink" title="3.步入Servlet"></a>3.步入Servlet</h3><ol>
+<li><h4 id="Servlet–接口-第2点讲的-："><a href="#Servlet–接口-第2点讲的-：" class="headerlink" title="Servlet–接口(第2点讲的)："></a>Servlet–接口(第2点讲的)：</h4><ul>
+<li><p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = <span class="string">"/demo"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">servletDemo</span> <span class="keyword">implements</span> <span class="title">Servlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig servletConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServletConfig <span class="title">getServletConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"demo...."</span>);</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="meta">@Override</span>   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="GenericServlet–抽象类："><a href="#GenericServlet–抽象类：" class="headerlink" title="GenericServlet–抽象类："></a>GenericServlet–抽象类：</h4><p>将Servlet接口中其他的方法做了默认空实现，只将service()方法做为抽象；</p>
+<p>将来定义Servlet类时，可以继承GenericServlet，可以只实现service()方法。</p>
+<ul>
+<li><p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/demo2"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">servletDemo2</span> <span class="keyword">extends</span> <span class="title">GenericServlet</span> </span>&#123;    </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"demo2..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="HttpServlet–抽象类："><a href="#HttpServlet–抽象类：" class="headerlink" title="HttpServlet–抽象类："></a>HttpServlet–抽象类：</h4><p>（对http协议的一种封装，简化操作）</p>
+<ol>
+<li><p>定义类继承HttpServlet：public class servletDemo3 extends HttpServlet；</p>
+</li>
+<li><p>用第二种简便方法配置Servlet;</p>
+<ul>
+<li>即在定义的方法上添加@WebServlet(“/xxx”)</li>
+<li>也可以定义多个访问路径@WebServlet({“访问路径1”,”访问路径2”,”/xxx”})，如：@WebServlet({“/d4”,”/dd4”,”/ddd4”})</li>
+<li>或把访问路径写成”/lyc/*”，则在浏览器访问可用 /lyc/任何字符 来访问*</li>
+<li><em>另外有特殊的配置写法@WebServlet(“</em>.do”)，在浏览器里写xx.do可以访问，如：<a href="http://localhost:8080/javaLearn20119/demo4.do" target="_blank" rel="noopener">http://localhost:8080/javaLearn20119/demo4.do</a></li>
+</ul>
+</li>
+<li><p>复写doGet/doPost方法：输入doPost和doGet用Alt+Enter，复写方法；</p>
+</li>
+<li><p>启动项目，浏览器输入@WebServlet后的urlPatterns，如：<a href="http://localhost:8080/javaLearn20119/demo3，则调用doGet方法。" target="_blank" rel="noopener">http://localhost:8080/javaLearn20119/demo3，则调用doGet方法。</a></p>
+<p>启动项目，浏览器输入webapp文件下的.html文件名，如：<a href="http://localhost:8080/javaLearn20119/Login.html，则调用doPost方法。" target="_blank" rel="noopener">http://localhost:8080/javaLearn20119/Login.html，则调用doPost方法。</a></p>
+</li>
+</ol>
+<ul>
+<li><p>怎么查看你用的是哪个方法呢？很简单，在doGet方法和doPost方法里写两个代表性sout就好啦！</p>
+<ul>
+<li>其中java代码为：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = <span class="string">"/demo3"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">servletDemo3</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;    </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;        </span><br><span class="line">        System.out.println(<span class="string">"doGet"</span>); </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;        </span><br><span class="line">        System.out.println(<span class="string">"doPost"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>其中Login.html文件核心内容为：</p>
+<body>
+<form action="/javaLearn20119/demo3" method="post">
+   <input name="username"> 
+   <input type="submit" value="提交">
+</form>
+</body>
+
+</li>
+</ul>
+<p>文件中的路径为/xxx/xxx是两层路径；</p>
+<p>文件中的form的method指定响应是post，如果指定的是get则调用的是doGet方法。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-HTTP协议"><a href="#4-HTTP协议" class="headerlink" title="4. HTTP协议"></a>4. HTTP协议</h3><h4 id="1-（知识点）概念：Hyper-Text-Transfer-Protocol-超文本传输协议"><a href="#1-（知识点）概念：Hyper-Text-Transfer-Protocol-超文本传输协议" class="headerlink" title="1.（知识点）概念：Hyper Text Transfer Protocol 超文本传输协议"></a>1.（知识点）概念：Hyper Text Transfer Protocol 超文本传输协议</h4><ul>
+<li><h5 id="传输协议：定义了客户端和服务微崭通信时，发送数据的格式。"><a href="#传输协议：定义了客户端和服务微崭通信时，发送数据的格式。" class="headerlink" title="传输协议：定义了客户端和服务微崭通信时，发送数据的格式。"></a>传输协议：定义了客户端和服务微崭通信时，发送数据的格式。</h5></li>
+<li><h5 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h5></li>
+</ul>
+<p>基于TCP/IP的高级协议</p>
+<p>​    默认端口号：80</p>
+<p>  ​    基于请求/响应模型的：一次请求对应一次响应<br>​    无状态的：每次请求之间相互独立的，不能交互数据</p>
+<ul>
+<li><h5 id="历史版本："><a href="#历史版本：" class="headerlink" title="历史版本："></a>历史版本：</h5><ul>
+<li>1.0：每次请求响应都会及建立新的连接。</li>
+<li>1.1：复用连接，在给服务端发送数据前，浏览器会等一会，若还有数据发送过来，则会替换掉刚刚的数据发送给服务端。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-（知识点）请求消息数据格式："><a href="#2-（知识点）请求消息数据格式：" class="headerlink" title="2.（知识点）请求消息数据格式："></a>2.（知识点）请求消息数据格式：</h4><ul>
+<li><h5 id="请求行："><a href="#请求行：" class="headerlink" title="请求行："></a>请求行：</h5><p>请求方式    请求url            请求协议</p>
+<p>GET            /Login.html    HTTP/1.1</p>
+<p>请求方式：<br>HTTP协议的7种请求方式，其常用的两种的比较呀：</p>
+<ul>
+<li><p>GET：</p>
+<ol>
+<li>请求参数在请求行中，在url后</li>
+<li>请求的url是有限制的</li>
+<li>不太安全</li>
+</ol>
+</li>
+<li><p>POST</p>
+<ol>
+<li>请求参数在请求体中</li>
+<li>请求的url是没有限制的</li>
+<li>相对安全</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h5 id="请求头"><a href="#请求头" class="headerlink" title="请求头:"></a>请求头:</h5></li>
+</ul>
+<p>请求头名称：请求头值</p>
+<p>请求头常见的有：</p>
+<ul>
+<li><p>User-Agent：浏览器告诉服务器，我访问你使用的浏览器版本信息，可以在服务器端获取该头的信息，解决浏览器的兼容性问题；</p>
+</li>
+<li><p>Referer:<a href="http://localhost/Login.html" target="_blank" rel="noopener">http://localhost/Login.html</a></p>
+<p>告诉服务器，当前请求从哪里来？</p>
+<ul>
+<li><p>作用：</p>
+<ol>
+<li>防盗链</li>
+<li>统计工作        </li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h5 id="请求空行："><a href="#请求空行：" class="headerlink" title="请求空行："></a>请求空行：</h5></li>
+</ul>
+<p>空行，在请求头和请求体中间起分隔作用</p>
+<ul>
+<li><h5 id="请求体："><a href="#请求体：" class="headerlink" title="请求体："></a>请求体：</h5></li>
+</ul>
+<p>请求消息的字符串格式：</p>
+<p>(1).（GET方式的请求头）</p>
+<p>  GET/Login.html HTTP/1.1<br>  Host:localhost<br>  user-Agent:Mozilla/5,e (Mindows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0<br>  Acept:text/html.applicalion/xhtml+xml.application/xml;q=0.9,<em>/</em>;q=0.8<br>Acept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</p>
+<p>  Referer:<a href="http://localhost/Login.htmlAccept-Encoding:gzip,deflate" target="_blank" rel="noopener">http://localhost/Login.htmlAccept-Encoding:gzip,deflate</a><br>  Connection:keep-alive<br>Upgrade-Insecure-Requests：1</p>
+<p>（请求体：GET没有请求体）</p>
+<p>(2).（POST方式的请求头）</p>
+<p>  POST/Login.html HTTP/1.1<br>  Host:localhost<br>  user-Agent:Mozilla/5,e (Mindows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0<br>  Acept:text/html.applicalion/xhtml+xml.application/xml;q=0.9,* / *;q=0.8<br>  Acept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2<br>Accept-Encoding:gzip,deflate</p>
+<p>Referer:<a href="http://localhost/Login.html" target="_blank" rel="noopener">http://localhost/Login.html</a></p>
+<p>  Connection:keep-alive<br>Upgrade-Insecure-Requests：1</p>
+<p>（请求体）</p>
+<p>  username=zhangsan</p>
+<h4 id="3-Request和Response"><a href="#3-Request和Response" class="headerlink" title="3.Request和Response:"></a>3.Request和Response:</h4><ul>
+<li><h5 id="request对象和response对象的原理"><a href="#request对象和response对象的原理" class="headerlink" title="request对象和response对象的原理:"></a><strong>request对象和response对象的原理:</strong></h5><ol>
+<li>request和response对象是由服务器创建的，我们来使用它们；</li>
+<li>request对象是来获取请求消息，response来设置响应消息；</li>
+</ol>
+</li>
+<li><h5 id="request对象继承体系结构："><a href="#request对象继承体系结构：" class="headerlink" title="request对象继承体系结构："></a><strong>request对象继承体系结构：</strong></h5><p>ServletRequest        –接口</p>
+<p>​    |    继承</p>
+<p>HttpServletRequest    –接口</p>
+<p>​    |    实现<br>org.apache.catalina.connector.RequestFacade 类（tomcat）</p>
+</li>
+<li><h5 id="request功能："><a href="#request功能：" class="headerlink" title="request功能："></a><strong>request功能：</strong></h5><ol>
+<li><p>获取请求消息数据：</p>
+<ol>
+<li><p><strong>获取请求行数据</strong>：</p>
+<ul>
+<li><p>GET /javaLearn20110/demo4?name=zhangsan  HTTP/1.1</p>
+</li>
+<li><p>方法：</p>
+<ol>
+<li><p>获取请求方式：GET</p>
+<p>String getMethod()</p>
+</li>
+<li><p>（*）获取虚拟目录：/javaLearn20110</p>
+<p>String getContextPath()</p>
+</li>
+<li><p>获取Servlet路径：/demo4</p>
+<p>String getServletPath()</p>
+</li>
+<li><p>获取get方式请求参数：name=zhangsan</p>
+<p>String getQueryString()</p>
+</li>
+<li><p>（*）获取请求URL：/javaLearn20110/demo4</p>
+<p>String getRequestURI()        /javaLearn20110/demo4</p>
+<p>StringBuffer getRequestURL()    <a href="http://localhost/javaLearn20110/demo4" target="_blank" rel="noopener">http://localhost/javaLearn20110/demo4</a></p>
+<p>URI：统一资源标识符：/javaLearn20110/demo4（范围更大，应用到权限控制框架）</p>
+<p>URL：统一资源定位符：<a href="http://localhost/javaLearn20110/demo4" target="_blank" rel="noopener">http://localhost/javaLearn20110/demo4</a></p>
+</li>
+<li><p>获取协议及版本：HTTP/1.1</p>
+<p>String getProtocol()</p>
+</li>
+<li><p>获取客户机的IP地址：</p>
+<p>String getRemoteAddr()</p>
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemo1"</span>)</span><br><span class="line">          <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemo1</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;    </span><br><span class="line">              <span class="meta">@Override</span>    </span><br><span class="line">              <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;        </span><br><span class="line">                  String method=req.getMethod();        </span><br><span class="line">                  String contextPath=req.getContextPath();       </span><br><span class="line">                  String servletPath=req.getServletPath();        </span><br><span class="line">                  String queryString=req.getQueryString();        </span><br><span class="line">                  String requestURI=req.getRequestURI();        </span><br><span class="line">                  StringBuffer requestURL=req.getRequestURL();        </span><br><span class="line">                  String protocol=req.getProtocol();        </span><br><span class="line">                  String remoteAddr=req.getRemoteAddr();        System.out.println(<span class="string">"method "</span>+method+<span class="string">"\ncontextPath "</span>+contextPath+<span class="string">"\nservletPath "</span>+servletPath        +<span class="string">"\nqueryString "</span>+queryString+<span class="string">"\nrequestURI "</span>+requestURI+<span class="string">"\nrequestURL "</span>+requestURL        +<span class="string">"\nprotocol "</span>+protocol+<span class="string">"\nremoteAddr "</span>+remoteAddr);   </span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>运行:</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120160530198.png" alt="image-20200120160530198" style="zoom: 67%;">
+
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120160505655.png" alt="image-20200120160505655" style="zoom: 50%;">
+</li>
+</ul>
+</li>
+<li><p><strong>获取请求头数据</strong>：</p>
+<p>方法：</p>
+<p>String getHeader(String name)：通过请求头的名称获取请求头的值</p>
+<p>Enumeration<String> getHeaderNames()：获取所有的请求头名称</String></p>
+<ul>
+<li>(1).应用getHeaderNames()的代码：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Overrideprotected</span> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;    </span><br><span class="line">    Enumeration&lt;String&gt; headerNames=req.getHeaderNames();    </span><br><span class="line">    <span class="keyword">while</span> (headerNames.hasMoreElements())&#123;        </span><br><span class="line">        String name=headerNames.nextElement();        </span><br><span class="line">        String value=req.getHeader(name);</span><br><span class="line">        System.out.println(<span class="string">"name:"</span>+name+<span class="string">"value:"</span>+value);    </span><br><span class="line"> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>得到地址的系列信息，运行截图：</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120162838736.png" alt="image-20200120162838736" style="zoom: 50%;"> 
+</li>
+<li><p>(2).应用getHeader(“user-agent”)的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requsetDemo3"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemo3</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        String agent=req.getHeader(<span class="string">"user-agent"</span>);</span><br><span class="line">        <span class="comment">//解决浏览器兼容性问题</span></span><br><span class="line">        <span class="keyword">if</span> (agent.contains(<span class="string">"Chrome"</span>))&#123;</span><br><span class="line">            <span class="comment">//是谷歌</span></span><br><span class="line">            System.out.println(<span class="string">"it is 谷歌"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (agent.contains(<span class="string">"Firefox"</span>))&#123;</span><br><span class="line">            <span class="comment">//火狐</span></span><br><span class="line">            System.out.println(<span class="string">"it is 火狐"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(3).应用getHeader(“referer”)的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requsetDemo4"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requsetDemo4</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//请求头数据</span></span><br><span class="line">        String referer=req.getHeader(<span class="string">"referer"</span>);</span><br><span class="line">        System.out.println(referer);</span><br><span class="line">        <span class="comment">//防盗链</span></span><br><span class="line">        <span class="comment">//如果请求头数据包含了null，表示是本地访问，是get</span></span><br><span class="line">        <span class="keyword">if</span> (referer!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//如果请求头数据包含了/requsetDemo4，也表示正常访问，是post</span></span><br><span class="line">            <span class="keyword">if</span> (referer.contains(<span class="string">"/requsetDemo4"</span>))&#123;</span><br><span class="line">                System.out.println(<span class="string">"正常访问"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"您使用的是非法路径"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置我将它指定在了main，在得到的地址后面要加上/webapp/Login.html得到页面</p>
+</li>
+<li><p>得到了跳转的来由地址：<br>操作：</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120165226570.png" alt="image-20200120165226570" style="zoom: 80%;">
+
+  <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120165247074.png" alt="image-20200120165247074" style="zoom:67%;">
+
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200120165151345.png" alt="image-20200120165151345" style="zoom: 67%;">
+</li>
+</ul>
+</li>
+<li><p><strong>获取请求体数据</strong>：</p>
+</li>
+</ol>
+<ul>
+<li><p>请求体：只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数</p>
+</li>
+<li><p>获取参数步骤：</p>
+<ol>
+<li><p>获取流对象：</p>
+<p>(1).第一种：BufferedReader getReader()：获取字符输入流，只能操作字符数据；</p>
+<p>(2).第二种：ServletInputStream getInputStream()：获取字节输入流，可以操作所有类型的数据；</p>
+</li>
+<li><p>从流对象中拿数据：</p>
+<p>(1).第一种对象对应：</p>
+<p>String line=null;<br>while ((line=br.readLine()) !=null){System.out.println(line); } </p>
+<p>(2).第二种对象对应：待写</p>
+</li>
+</ol>
+</li>
+<li><p>应用BufferedReader getReader()的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemo5"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemo5</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123; </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="meta">@Override</span>   </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123; </span><br><span class="line">        <span class="comment">//获取字符流  </span></span><br><span class="line">        BufferedReader br = req.getReader();      </span><br><span class="line">        <span class="comment">//读取数据    </span></span><br><span class="line">        String line=<span class="keyword">null</span>;     </span><br><span class="line">        <span class="keyword">while</span> ((line=br.readLine()) !=<span class="keyword">null</span>)&#123;  </span><br><span class="line">            System.out.println(line);    </span><br><span class="line">        &#125;     </span><br><span class="line">        <span class="comment">//这个流不用关闭，因为是通过request得到的 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>regist.html代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--关键是form这一行响应和指定方法--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemo5"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>应用BufferedReader getReader()的截图：</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121113929600.png" alt="image-20200121113929600" style="zoom:80%;">
+
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121113907726.png" alt="image-20200121113907726" style="zoom:80%;">
+
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121114013422.png" alt="image-20200121114013422" style="zoom: 50%;">
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h5 id="其他功能："><a href="#其他功能：" class="headerlink" title="其他功能："></a><strong>其他功能：</strong></h5><ol>
+<li><p><strong>获取请求参数的通用方式（POST）</strong>：</p>
+<ol>
+<li><p>String getParameter(String name)：</p>
+<p>根据参数名称获取数值   username=zhangsan&amp;password=123，如在getParameter的括号中填入username就可以获取到zhangsan，获取同一个name属性的一个值的方法；</p>
+<p>（1）应用getParameter的 regist2.html代码：</p>
+</li>
+</ol>
+<!DOCTYPE html><html lang="en">
+       <head>
+           <meta charset="UTF-8"> 
+           <title>regist2</title>
+       <meta name="generator" content="Hexo 4.2.0"></head>
+       <body>
+           <!--action指定到的项目为requestDemoOther1-->
+           <form action="/javaLearn20119/requestDemoOther1" method="post">    
+               <input type="text" placeholder="请输入用户名：" name="username"><br>    
+               <input type="password" placeholder="请输入密码：" name="password"><br>    
+               <input type="submit" value="注册">
+           </form>
+       </body>
+   </html>
+   （1）应用getParameter的java代码：
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemoOther1"</span>)</span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemoOther1</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;    </span><br><span class="line">       <span class="meta">@Override</span>    </span><br><span class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">           <span class="comment">//得到浏览器地址里面输入的username对应的 值        </span></span><br><span class="line">           String username = req.getParameter(<span class="string">"username"</span>); </span><br><span class="line">           System.out.println(<span class="string">"get:\n"</span>+username);  </span><br><span class="line">       &#125;   </span><br><span class="line">       <span class="meta">@Override</span>  </span><br><span class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;       </span><br><span class="line">           <span class="comment">//根据参数名称获取参数  </span></span><br><span class="line">           <span class="comment">//得到 form表单里面对应的name属性的值 在浏览器里的 值    </span></span><br><span class="line">           String username = req.getParameter(<span class="string">"username"</span>);  </span><br><span class="line">           System.out.println(<span class="string">"post:\n"</span>+username);  </span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>   （1）应用getParameter的截图：</p>
+<ul>
+<li><p>调用GET方法得到的截图：（在浏览器里输入地址定位项目后，输入?username=lyc）</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121173604032.png" alt="image-20200121173604032" style="zoom:67%;">
+
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121173634031.png" alt="image-20200121173634031" style="zoom:67%;">
+</li>
+<li><p>调用POST方法得到的截图：（在浏览器里输入地址定位到.html文件，填写form表单的数据后，会action跳转到指定的项目，而项目post方法会得到名为username的值）</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121172721866.png" alt="image-20200121172721866" style="zoom:67%;">
+
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121172658639.png" alt="image-20200121172658639" style="zoom:67%;">
+
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121172903379.png" alt="image-20200121172903379" style="zoom:67%;">
+</li>
+</ul>
+</li>
+<li><p>String getParameterValues(String name)：</p>
+<p>根据参数名称获取数值的数组   hobby=xx&amp;hobby=game,如在getParameterValues的括号中填入hobby就可以获取到xx和game的数组，多用于复选框，获取同一个name属性的多个值的方法；</p>
+<p>（2）应用getParameterValues的regist2.html文件代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther1"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"game"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"sing"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"study"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"run"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>   （2）应用getParameterValues的 java代码：</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span>   </span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;     </span><br><span class="line"> <span class="comment">//根据参数名称获取参数     </span></span><br><span class="line">       <span class="comment">//得到 form表单里面对应的name属性的值 在浏览器里的 值</span></span><br><span class="line"> String[] hobbies = req.getParameterValues(<span class="string">"hobby"</span>);    </span><br><span class="line">       <span class="keyword">for</span> (String hobby:hobbies)&#123;            </span><br><span class="line">           System.out.println(hobby);                        </span><br><span class="line">       &#125;  </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>   （2）应用getParameterValues的运行截图：</p>
+   <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121175210583.png" alt="image-20200121175210583" style="zoom: 50%;">
+
+   <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121175146568.png" alt="image-20200121175146568" style="zoom:67%;">
+
+   <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121175244913.png" alt="image-20200121175244913" style="zoom: 50%;">
+
+<ol start="3">
+<li><p>Enumeration<String> getParameterNames()：获取所有请求参数的名称；</String></p>
+<p>（用此不能获得同一name属性多个值，只取第一个）</p>
+<p>（3）应用getParameterNames的java代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   Enumeration&lt;String&gt; parameterNames = req.getParameterNames();</span><br><span class="line"><span class="keyword">while</span> (parameterNames.hasMoreElements())&#123;</span><br><span class="line">    String name=parameterNames.nextElement();   </span><br><span class="line">    System.out.println(name);  </span><br><span class="line">    String value=req.getParameter(name);  </span><br><span class="line">      System.out.println(value);    </span><br><span class="line">       System.out.println(<span class="string">"---------"</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）应用getParameterNames的regist2.html文件代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther1"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span>    </span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"game"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"sing"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"study"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"run"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（3）应用getParameterNames的截图：</p>
+<p>!<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121180328850.png" alt="image-20200121180328850" style="zoom: 50%;"></p>
+  <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121180351169.png" alt="image-20200121180351169" style="zoom: 50%;">
+
+<ol start="4">
+<li><p>Map&lt;String,String[]&gt; getParameterMap()：获取所有参数的map集合，键值对集合；</p>
+<p>（用此可以取得同一name属性的一个值或者多个值，霸王）</p>
+<p>（4）应用getParameterMap的java代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String[]&gt; parameterMap = req.getParameterMap();</span><br><span class="line">  <span class="comment">//遍历Set&lt;String&gt;</span></span><br><span class="line">    keyset = parameterMap.keySet();</span><br><span class="line">  <span class="keyword">for</span> (String name:keyset)&#123;  </span><br><span class="line">      <span class="comment">//根据键获取值 </span></span><br><span class="line">         String[] values = parameterMap.get(name);  </span><br><span class="line">         System.out.println(name); </span><br><span class="line">         <span class="keyword">for</span> (String value:values)&#123; </span><br><span class="line">             System.out.println(value);  </span><br><span class="line">         &#125;   </span><br><span class="line">         System.out.println(<span class="string">"++++++++++++"</span>);</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+<p>（4）应用getParameterMap的regist2.html文件代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther1"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>    </span><br><span class="line"> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"game"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"sing"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"study"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"run"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（4）应用getParameterMap的截图：</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121200300360.png" alt="image-20200121200300360" style="zoom:67%;">
+</li>
+<li><p>解决使用.html和post方法时发生的中文乱码问题（注意：在tomcat 8以后，get方法的使用已经解决了中文乱码问题）：</p>
+<p>解决：添加一行代码于post方法里</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121201925661.png" alt="image-20200121201925661" style="zoom:67%;">
+
+  <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200121201844312.png" alt="image-20200121201844312" style="zoom:67%;">
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<ol start="3">
+<li><p><strong>请求转发：一种在服务器内部的资源跳转方式</strong></p>
+<p>步骤：</p>
+<ol>
+<li><ul>
+<li><p>通过request对象获取请求转发器对象：RequestDispatcher getRequestDispatcher(String path)</p>
+</li>
+<li><p>使用RequestDispatcher对象来进行转发：forward(ServletRequest request,ServletResponse response)</p>
+</li>
+<li><p>java代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemoOther3"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemoOther3</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"demo3被访问了..."</span>);</span><br><span class="line">        req.getRequestDispatcher(<span class="string">"/requestDemoOther2"</span>).forward(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemoOther2"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemoOther2</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"demo2被访问..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>regist3.html代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>regist3<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther3"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"game"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"sing"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"study"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"run"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<p>特点：</p>
+<ul>
+<li>浏览器地址栏路径不发生变化</li>
+<li>只能转发到当前服务器内部资源中</li>
+</ul>
+</li>
+<li><p><strong>共享数据：</strong></p>
+<p>域对象：一个有作用范围的对象，可以在范围内共享数据；</p>
+<p>request域：代表一次请求的范围；</p>
+<p>方法：</p>
+<ul>
+<li>void setAttribute(String name,Object obj)：存储数据</li>
+<li>Object getAttribute(String name)：通过键获取值</li>
+<li>void removeAttribute(String name)：通过键移除键值对</li>
+<li>java代码：</li>
+<li>regist3.html：</li>
+</ul>
+</li>
+<li><p><strong>获取ServletContext</strong>：</p>
+<ul>
+<li><p>ServletContext getServletContext()</p>
+</li>
+<li><p>java代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemoOther4"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">requestDemoOther4</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        ServletContext servletContext=req.getServletContext();</span><br><span class="line">        System.out.println(servletContext);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>regist4.html代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/javaLearn20119/requestDemoOther4"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名："</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码："</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"game"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"sing"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"study"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"run"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果：</p>
+<p>控制面板上获得org.apache.catalina.core.ApplicationContextFacade@1f45d4e7</p>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><h5 id="响应说明："><a href="#响应说明：" class="headerlink" title="响应说明："></a><strong>响应说明：</strong></h5><ol>
+<li>tomcat服务器会根据请求url中的资源路径，创建对应的ServletDemo1的对象；</li>
+<li>tomcat服务器会创建request和response对象，request对象中封装请求消息数据；</li>
+<li>tomcat将request和response两个对象传递给service方法，并调用service方法；</li>
+<li>程序员（us），可以通过request对象获取请求消息数据，通过response对象设置响应消息数据；</li>
+<li>服务器在给浏览器做出响应之前，在response对象中拿程序员设置的响应消息数据。</li>
+</ol>
+</li>
+</ul>
+</Cntext>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://music.163.com/outchain/player?type=2&id=477293112&auto=1&height=66'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://music.163.com/outchain/player?type=2&id=85571&auto=1&height=66'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、单纯和网页"><span class="toc-number">1.</span> <span class="toc-text">一、单纯和网页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基础部署方式（开发者）："><span class="toc-number">1.1.</span> <span class="toc-text">1.基础部署方式（开发者）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-更加简化的部署（运行和维护人员）："><span class="toc-number">1.2.</span> <span class="toc-text">2.更加简化的部署（运行和维护人员）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-更方便的部署（运行和维护人员）："><span class="toc-number">1.3.</span> <span class="toc-text">3.更方便的部署（运行和维护人员）：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-使用tomcat自带的-xml文件"><span class="toc-number">1.3.1.</span> <span class="toc-text">(1).使用tomcat自带的.xml文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-还可以自己新建-xml文件"><span class="toc-number">1.3.2.</span> <span class="toc-text">(2).还可以自己新建.xml文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、动态项目"><span class="toc-number">2.</span> <span class="toc-text">二、动态项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-部署tomcat于项目"><span class="toc-number">2.1.</span> <span class="toc-text">1.部署tomcat于项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-用maven的wepapp，或者用Java-Enterprise的Web-Application-4-0-新建项目："><span class="toc-number">2.1.1.</span> <span class="toc-text">(1).用maven的wepapp，或者用Java Enterprise的Web Application(4.0)新建项目：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-部署tomcat："><span class="toc-number">2.1.2.</span> <span class="toc-text">(2)部署tomcat：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-如果部署tomcat于项目后，没有target解决办法"><span class="toc-number">2.1.3.</span> <span class="toc-text">(3).如果部署tomcat于项目后，没有target解决办法:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-如果当你修改html页面后，而网页并没有修改，重启一下你的IDEA"><span class="toc-number">2.1.4.</span> <span class="toc-text">(4).如果当你修改html页面后，而网页并没有修改，重启一下你的IDEA</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Servlet入门"><span class="toc-number">2.2.</span> <span class="toc-text">2.Servlet入门</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-创建JavaEE项目，在Sources-Root目录下新建-web-servlet-ServletDemo1；"><span class="toc-number">2.2.0.1.</span> <span class="toc-text">(1).创建JavaEE项目，在Sources Root目录下新建&#x2F;web&#x2F;servlet&#x2F;ServletDemo1；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-定义一个类implements-Servlet，实现Servlet接口（注意导入servlet-api-jar，不然会认不出Servlet），即：public-class-ServletDemo1-implements-Servlet；"><span class="toc-number">2.2.0.2.</span> <span class="toc-text">(2).定义一个类implements Servlet，实现Servlet接口（注意导入servlet-api.jar，不然会认不出Servlet），即：public class ServletDemo1 implements Servlet；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-实现接口的5个方法Alt-Enter，类ServletDemo1中service-ServletRequest-servletRequest-ServletResponse-servletResponse-方法是提供服务的，可以在里面写东西-比如写System-out-println-“Hello-Servlet”"><span class="toc-number">2.2.0.3.</span> <span class="toc-text">(3).实现接口的5个方法Alt+Enter，类ServletDemo1中service(ServletRequest servletRequest, ServletResponse servletResponse)方法是提供服务的，可以在里面写东西:比如写System.out.println(“Hello Servlet”);</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-配置Servlet（Run-Debug-Configurations定位到项目的webapp）并启动项目："><span class="toc-number">2.2.0.4.</span> <span class="toc-text">(4).配置Servlet（Run&#x2F;Debug Configurations定位到项目的webapp）并启动项目：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-知识点：Servlet中的5个方法之3的说明"><span class="toc-number">2.2.0.5.</span> <span class="toc-text">(5).知识点：Servlet中的5个方法之3的说明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-步入Servlet"><span class="toc-number">2.3.</span> <span class="toc-text">3.步入Servlet</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Servlet–接口-第2点讲的-："><span class="toc-number">2.3.1.</span> <span class="toc-text">Servlet–接口(第2点讲的)：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GenericServlet–抽象类："><span class="toc-number">2.3.2.</span> <span class="toc-text">GenericServlet–抽象类：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HttpServlet–抽象类："><span class="toc-number">2.3.3.</span> <span class="toc-text">HttpServlet–抽象类：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-HTTP协议"><span class="toc-number">2.4.</span> <span class="toc-text">4. HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-（知识点）概念：Hyper-Text-Transfer-Protocol-超文本传输协议"><span class="toc-number">2.4.1.</span> <span class="toc-text">1.（知识点）概念：Hyper Text Transfer Protocol 超文本传输协议</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#传输协议：定义了客户端和服务微崭通信时，发送数据的格式。"><span class="toc-number">2.4.1.1.</span> <span class="toc-text">传输协议：定义了客户端和服务微崭通信时，发送数据的格式。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#特点："><span class="toc-number">2.4.1.2.</span> <span class="toc-text">特点：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#历史版本："><span class="toc-number">2.4.1.3.</span> <span class="toc-text">历史版本：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-（知识点）请求消息数据格式："><span class="toc-number">2.4.2.</span> <span class="toc-text">2.（知识点）请求消息数据格式：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#请求行："><span class="toc-number">2.4.2.1.</span> <span class="toc-text">请求行：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#请求头"><span class="toc-number">2.4.2.2.</span> <span class="toc-text">请求头:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#请求空行："><span class="toc-number">2.4.2.3.</span> <span class="toc-text">请求空行：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#请求体："><span class="toc-number">2.4.2.4.</span> <span class="toc-text">请求体：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Request和Response"><span class="toc-number">2.4.3.</span> <span class="toc-text">3.Request和Response:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#request对象和response对象的原理"><span class="toc-number">2.4.3.1.</span> <span class="toc-text">request对象和response对象的原理:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#request对象继承体系结构："><span class="toc-number">2.4.3.2.</span> <span class="toc-text">request对象继承体系结构：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#request功能："><span class="toc-number">2.4.3.3.</span> <span class="toc-text">request功能：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#其他功能："><span class="toc-number">2.4.3.4.</span> <span class="toc-text">其他功能：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#响应说明："><span class="toc-number">2.4.3.5.</span> <span class="toc-text">响应说明：</span></a></li></ol></li></ol></li></ol></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
