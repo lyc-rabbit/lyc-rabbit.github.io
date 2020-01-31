@@ -651,6 +651,74 @@ t,">
 <li>服务器在给浏览器做出响应之前，在response对象中拿程序员设置的响应消息数据。</li>
 </ol>
 </li>
+<li><p><strong>Responese对象：</strong></p>
+<ol>
+<li><p>功能：设置响应消息</p>
+<ol>
+<li>设置响应行<ol>
+<li>格式：Http/1.1 200 ok</li>
+<li>设置状态码：setStatus(int sc)</li>
+</ol>
+</li>
+<li>设置响应头：setHeader(String name, String value)</li>
+<li>设置响应体:<ul>
+<li>使用步骤：<ol>
+<li>获取输出流<ul>
+<li>字符输出流：PrintWriter getWriter()</li>
+<li>字节输出流：ServletOutputStream getOutputStream()</li>
+</ul>
+</li>
+<li>使用输出流，将数据输出到客户端浏览器</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>案例：</p>
+<ol>
+<li><p>完成重定向</p>
+<ul>
+<li><p>重定向：资源跳转的方式，告诉浏览器重定向，状态码302；告诉浏览器另一资源路径，响应头location：另一资源的路径；</p>
+</li>
+<li><p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/demo1"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResponseDemo1</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doGet(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//访问/ResponseDemo1，会自动跳转到ResponseDemo2</span></span><br><span class="line">        System.out.println(<span class="string">"ResponseDemo1..get"</span>);</span><br><span class="line">        <span class="comment">//1.设置状态码为302</span></span><br><span class="line">        <span class="comment">//resp.setStatus(302);</span></span><br><span class="line">        <span class="comment">//2.设置响应头location</span></span><br><span class="line">        <span class="comment">//resp.setHeader("location","/javaLearn20130/demo2");</span></span><br><span class="line">        <span class="comment">//直接设置重定向：</span></span><br><span class="line">        resp.sendRedirect(<span class="string">"/javaLearn20130/demo2"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/demo2"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResponseDemo2</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"ResponseDemo2.."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>（面试常考点）redirect重定向的特点：</p>
+<ol>
+<li><p>地址栏变化：</p>
+<p>/javaLearn20130/demo2（写明项目名）</p>
+</li>
+<li><p>重定向可以访问其他站点（服务器）的资源：</p>
+<p>在路径处可以写http://……</p>
+</li>
+<li><p>重定向是两次请求，不能使用req对象共享数据：</p>
+<p>上述demo1状态码是302，demo2状态码是200；</p>
+</li>
+</ol>
+</li>
+<li><p>（面试常考点）forward转发的特点：</p>
+<ol>
+<li>转发地址栏路径不变</li>
+<li>转发只能访问当前服务器下的资源</li>
+<li>转发是一次请求，可以使用req对象共享数据；</li>
+</ol>
+</li>
+<li><p>路径的写法：</p>
+</li>
+</ul>
+</li>
+<li><p>服务器输出字符数据到浏览器</p>
+</li>
+<li><p>服务器输出字节数据到浏览器</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><strong>ServletContext对象</strong></li>
 </ul>
 </Cntext>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
