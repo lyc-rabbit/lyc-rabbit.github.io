@@ -116,6 +116,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200114114031935.png" alt="image-20200114114031935"></p>
+<p>若hexo s没有生成地址，则输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls --depth 0</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img2018.cnblogs.com/i-beta/1585641/201912/1585641-20191201162440919-107913793.png" alt="img"></p>
+<p>根据CMD的提示的UNMET DEPENDENCY的文件，安装这些文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#如：</span><br><span class="line">npm install hexo-renderer-ejs@^1.0.0 --save</span><br></pre></td></tr></table></figure>
+
 <p>输上述命令得到hexo原生态官网地址：(允许github突破防火墙)</p>
 <p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200114165026871.png" alt="image-20200114165026871"></p>
 <p>6.上传GitHub与Coding<br>建立仓库<br>在GitHub上建立一个仓库，其名称必须为your_name.github.io,比如我的是 Doenitz.github.io。同理，在Coding上建立一个仓库，其名称最好为your_name，比如我的是 hitler97。</p>
