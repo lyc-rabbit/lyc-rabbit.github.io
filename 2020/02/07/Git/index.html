@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Git - 钰兔大王的世界</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="lyc,"> 
+    <meta name="description" content="Git一、git
+官网：http://git-scm.com/
+Linux系统（另有BitKeepper，但是收费）
+版本控制系统：
+本地版本控制系统：每个计算机自带的多个版本。若计算机之间需要相互,"> 
+    <meta name="author" content="Lyc"> 
+    <link rel="alternative" href="atom.xml" title="钰兔大王的世界" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">钰兔大王的世界</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">Git</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Git</h1>
+        <div class="stuff">
+            <span>二月 07, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h2 id="一、git"><a href="#一、git" class="headerlink" title="一、git"></a>一、git</h2><ol>
+<li><h3 id="官网：http-git-scm-com"><a href="#官网：http-git-scm-com" class="headerlink" title="官网：http://git-scm.com/"></a>官网：<a href="http://git-scm.com/" target="_blank" rel="noopener">http://git-scm.com/</a></h3></li>
+<li><h3 id="Linux系统（另有BitKeepper，但是收费）"><a href="#Linux系统（另有BitKeepper，但是收费）" class="headerlink" title="Linux系统（另有BitKeepper，但是收费）"></a>Linux系统（另有BitKeepper，但是收费）</h3></li>
+<li><h3 id="版本控制系统："><a href="#版本控制系统：" class="headerlink" title="版本控制系统："></a><a href="https://blog.csdn.net/qq_34851243/article/details/99081237" target="_blank" rel="noopener">版本控制系统</a>：</h3><ul>
+<li><p>本地版本控制系统：每个计算机自带的多个版本。若计算机之间需要相互传送文件，则需要借助服务器(gitHub或gitLab。gitHub又分为public和private，public免费，private收费；gitLab在公司内部发布)。</p>
+</li>
+<li><p>集中化版本控制系统（如：cvs svn）</p>
+</li>
+<li><p>分布式版本控制系统（如：git）</p>
+</li>
+</ul>
+</li>
+<li><h3 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h3><ul>
+<li>控制本地版本：全量（而svn只是增量），即每次你修改了一个版本的文件，所有的版本文件都会被重新记录（而svn只会记录修改了的版本文件），即可以时刻保持数据的完整性。</li>
+<li>重写提交说明：只改变说明。</li>
+<li>可以后退：几乎每步操作都可以回滚。</li>
+<li>分支系统：对稳定性和性能的不同要求。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、文件基操"><a href="#二、文件基操" class="headerlink" title="二、文件基操"></a>二、文件基操</h2><ol>
+<li><p>三个区域（知识点）：</p>
+<p>工作区：存放git所管理的文件，而git不管理的文件是脱离的，文件是红色的；</p>
+<p>暂存区：执行add命令后的文件存放的地方，文件是绿色的；</p>
+<p>对象区：执行commit命令的文件存放的地方，文件等待被push给gitHub服务器；</p>
+</li>
+<li><p>文件的三种状态（知识点）：</p>
+<p>已修改(modified)</p>
+<p>已暂存(staged)</p>
+<p>已提交(commited)</p>
+</li>
+<li><p>对文件进行操作的常用的命令：</p>
+</li>
+</ol>
+<ul>
+<li><p>==git init==作用：若本地无版本控制，即.git文件，则会生成一个给你，同时生成master分支，还有指向master的一个指针HEAD，init后该文件接受git管理；</p>
+</li>
+<li><p>==rm -rf .git==作用：会删除你的版本控制，即.git文件，同时master也没了；</p>
+</li>
+<li><p>==touch 文件名.后缀==作用：会在Git文件下生成相应文件，文件保存在工作区；</p>
+</li>
+<li><p>==git status==作用：功能强大。会反馈给你：当前git识别的文件所在的区域、以及可对它进行的操作。按照你每次工作的文件分开反馈，时间越早的文件越在下方；</p>
+</li>
+<li><p>==git mv 文件名1.后缀 文件名2.后缀==作用：用git实现rename: 文件.后缀-&gt;文件2.后缀，名字变为文件名2；</p>
+<p>若撤销重命名的操作，这个文件名写的是文件名1，这步操作会把文件1以git删除方式删除，即重命名后产生了一个内容一样的文件2，它的名字和修改的名字保持一致；</p>
+</li>
+<li><p>==mv 文件名1.后缀 文件名2.后缀==作用：用系统实现rename: 文件.后缀-&gt;文件2.后缀，名字变为文件名2；</p>
+</li>
+<li><p>==git add 文件名.后缀==作用：把touch命令生成的文件放在暂存区，git status反馈：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   lyc.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>==git add .==作用：把touch生成的所有文件放到暂存区；</p>
+</li>
+<li><p>==toch .gitignore==作用：生成.gitignore文件</p>
+<p>==vi .gitignore==作用：输入要忽略的文件名.后缀，保存退出，就可以在commit时忽略这些文件，如果是一个空目录则会自动忽略；</p>
+<p>文件夹名/（文件夹）、文件夹名/星号.后缀（文件夹下的文件）、文件夹名/星号/星号.后缀（文件夹下的文件夹下的文件）都可以作为被忽略的对象；</p>
+</li>
+<li><p>==git commit -m “提交的说明内容”==作用：将暂存区的文件放入对象区，同时会反馈提交文件的信息:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;提交lyc.txt&quot;</span><br><span class="line">[master (root-commit) 1fbfa0c] 提交lyc.txt</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 lyc.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>==git commit –amend -m “说明内容”==作用：把最近的一次提交的说明内容重置；</p>
+</li>
+<li><p>==git log==作用：反馈每次提交的信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit 1fbfa0cc2ee11c90078b0ab0e4baa5617b9fb580 (HEAD -&gt; master)</span><br><span class="line">Author: lyc-rabbit &lt;2405310636@qq.com&gt;</span><br><span class="line">Date:   Wed Jan 29 12:13:45 2020 +0800</span><br><span class="line"></span><br><span class="line">    提交lyc.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>==git log –pretty=oneline==作用：按照=oneline的格式输出日志；</p>
+</li>
+<li><p>==git log –pretty=format:”%h - %an ,%ar : %s”==作用：按照=format:”%h - %an ,%ar : %s”的格式输出日志；</p>
+</li>
+<li><p>==git log -数字==作用：反馈最近两次提交的信息；</p>
+</li>
+<li><p>==vi 文件名.后缀==作用：</p>
+<p>在弹出的窗口，按a进入插入模式，可以进行编辑；</p>
+<p>==:set number==作用：每行的数字会显示出来，该命令要退出插入模式，在下面输入；</p>
+<p>==:数字==作用：如数字9，光标就会跳到第9行，该命令要退出插入模式，在下面输入；</p>
+<p>如果下面出现一个:你按q退出去，就会回到刚刚的模式下；</p>
+<p>完成编辑后，按Esc退出插入模式，按Shift+zz保存并退出vi；</p>
+<p>vi后就把文件从对象区放到工作区了。</p>
+<img src="/2020/02/07/Git/image-20200129124329917.png" style="zoom:80%;">
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#修改后git status的反馈</span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        modified:   lyc.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>==git checkout – 文件名.后缀==作用：对相应文件，撤销最近执行的动作命令；</p>
+</li>
+<li><p>==git rm –cached 文件名.后缀==作用：将文件从暂存区退回工作区；</p>
+</li>
+<li><p>==git reset head 文件名.后缀==作用：会把你新建的放在了暂存区的文件放回工作区；</p>
+</li>
+<li><p>==git rm 文件名.后缀==作用：用git删除在对象区里相应的文件，会把文件放到暂存区；</p>
+<p>若你不想删除它了，就将文件先放回工作区，再输入取消删除动作的命令；</p>
+<p>若继续执行==git commit -m “说明内容”==，会把文件彻底删除；</p>
+</li>
+<li><p>==rm abc.txt==</p>
+<p>==git add abc.txt==</p>
+<p>==git commit -m “提交的说明内容”==作用：用操作系统来删已提交的文件，会把文件放到工作区，再add，再commit就删掉了；</p>
+</li>
+<li><p>==echo ‘添加内容’ &gt; 文件名.后缀==作用：给相应的文件添加内容；</p>
+</li>
+<li><p>==cat 文件名.后缀==作用：反馈相应文件的内容；</p>
+</li>
+<li><p>==cd ..==作用：返回文件的上一层；</p>
+</li>
+<li><p>==git reset HEAD 文件名.后缀==</p>
+<p>==git checkout – 文件名.后缀==作用：第一句命令将文件放回工作区，第二句命令将文件身上的动作撤销；</p>
+</li>
+<li><p>==通配符：*.后缀==作用：指定所有的这样的文件；</p>
+<p>==通配符：!文件名.后缀==作用：否定所有这样的文件；</p>
+</li>
+<li><p>==Ctrl+c==作用：结束本次命令，进入下一个命令；</p>
+</li>
+<li><p>==Ctrl+a==作用：使光标飞到开头；</p>
+</li>
+<li><p>==Ctrl+e==作用：使光标飞到末尾；</p>
+</li>
+<li><p>==clear或Ctrl+L==作用：清除窗口内所有内容；</p>
+</li>
+<li><p>==unknow==作用：提示命令格式不对；</p>
+</li>
+<li><p>==修改用户，在git文件中打开config文件修改你的用户名和邮箱，在修改后，在修改前提交的文件的用户会变成该用户==</p>
+<p>==格式：==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">	name&#x3D; 用户名</span><br><span class="line">	email&#x3D; 邮箱</span><br><span class="line">或</span><br><span class="line">[user]</span><br><span class="line">	name&#x3D; &quot;用户名&quot;</span><br><span class="line">	email&#x3D; &quot;邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ol start="4">
+<li><p>工作区之间的变换：</p>
+<p>工作区–add–&gt;暂存区–commit–&gt;对象区        脱离git管理的文件</p>
+<p>​        &lt;–cache–        </p>
+<p>​        &lt;—————-vi—-修改———-                        无法进行操作</p>
+<p>​        —放弃修改–checkout———&gt;    </p>
+</li>
+</ol>
+<ol start="4">
+<li>双击打开gitbash<br>   git init<br>rm -rf .git<br>   touch hello.txt<br>git status<br>   git add hello.txt<br>git status（查看当前git的状态，反馈当前分支master 且 提示未提交 且 提示可以从暂存区退回工作区(使用的命令为git rm –cached)）<br>   git add .（可以将所有文件存放在暂存区）<br>git commit（会出现一个文件，可以选择性地在文件开头添加说明，保存后，Shift+zz退出，会反馈你刚刚提交的东西的说明，其中insertions表示添加的文件内容，deletions表示删除的文件内容）<br>   vi hello.txt（会打开你指定的hello.txt文件，你可以在里面进行修改，保存）<br>git status（查看当前git的状态，由于刚刚我们对.txt文件进行了修改，该文件就从对象区退回到工作区了）<br>   git add .<br>git commit -m “提交的说明内容”（当你要添加的说明内容比较少可以直接这样写）<br>   git log（查看日志，反馈给你每次的commit和一串shal加密了的字符串并有一些说明，如Author、Date、提交的说明内容；commit排序是最先提交的在最下面；字符串中有一个由分布式id生成器产生的随机数用于区分是哪次提交的且一般数字不重复）<br>git log -2（查看最近两次的提交，git log -数字）<br>   git log –pretty=oneline（反馈shal字符串，分支，提交的说明内容，等号后面的是日志的格式，你也可以写成=format:”%h - %an ,%ar : %s”，或别的）<br>echo ‘添加内容’ &gt; hello.txt（会将添加内容给指定文件，在这里是hello.txt）</li>
+</ol>
+<h2 id="三、用户名和邮箱"><a href="#三、用户名和邮箱" class="headerlink" title="三、用户名和邮箱"></a>三、用户名和邮箱</h2><ol>
+<li><p>要操作git必备的两样东西</p>
+</li>
+<li><p>设置用户名和邮箱的3种方法：</p>
+</li>
+</ol>
+<ul>
+<li><p>git config –global（优先级最低，给整个计算机一次性设置）</p>
+</li>
+<li><p>git config –system（优先级次之，给当前计算机系统用户一次性设置，推荐）</p>
+</li>
+<li><p>git config –local（优先级最高，给当前项目一次性设置）</p>
+</li>
+</ul>
+<ol start="3">
+<li>常用命令：</li>
+</ol>
+<ul>
+<li><p>==pwd==作用：进入对用户名和邮箱的操作；</p>
+</li>
+<li><p>==cd .git/==作用：将目录转进.git文件下;</p>
+</li>
+<li><p>==ls==作用：查看当前目录下的所有文件；</p>
+</li>
+<li><p>==git config –local user.name ‘你的用户名’==作用：给当前项目添加用户名；</p>
+</li>
+<li><p>==git config –local user.email ‘你的邮箱’==作用：给当前项目添加邮箱；</p>
+</li>
+<li><p>==cat config==作用：查看–local设置后的config文件中的配置；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion &#x3D; 0</span><br><span class="line">	filemode &#x3D; false</span><br><span class="line">	bare &#x3D; false</span><br><span class="line">	logallrefupdates &#x3D; true</span><br><span class="line">	symlinks &#x3D; false</span><br><span class="line">	ignorecase &#x3D; true</span><br><span class="line">#若没有设置用户名和邮箱则没有[user]这里的</span><br><span class="line">[user]</span><br><span class="line">	name &#x3D; 钰兔大王</span><br><span class="line">	email &#x3D; 123@qq.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>==git config –system user.name ‘你的用户名’==作用：给计算机系统用户添加用户名；</p>
+</li>
+<li><p>==git config –system user.email ‘你的邮箱’==作用：给计算机系统用户添加邮箱；</p>
+</li>
+<li><p>==cat .gitconfig==作用：查看–system设置后的.gitconfig文件中的配置；</p>
+</li>
+<li><p>==git config –local –unset user.name==作用：在config文件中删除了–local时建立的user.name；</p>
+</li>
+<li><p>==git config –local –unset user.email==作用：在config文件中删除了–local时建立的user.email；</p>
+</li>
+<li><p>操作一波：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">#二、三结合</span><br><span class="line">  pwd</span><br><span class="line"></span><br><span class="line">  cd .git&#x2F;</span><br><span class="line"></span><br><span class="line">  ls</span><br><span class="line"></span><br><span class="line">  cat config</span><br><span class="line"></span><br><span class="line">  git config --local user.name &#39;你的用户名&#39;</span><br><span class="line"></span><br><span class="line">  git config --local user.email &#39;你的邮箱</span><br><span class="line"></span><br><span class="line">  cat config</span><br><span class="line"></span><br><span class="line">  git config --system user.name &#39;你的用户名‘</span><br><span class="line"></span><br><span class="line">  git config --system user.email &#39;你的邮箱&#39;</span><br><span class="line"></span><br><span class="line">  cat .gitconfig</span><br><span class="line"></span><br><span class="line">  vi config</span><br><span class="line"></span><br><span class="line">  git config --local --unset user.name</span><br><span class="line"></span><br><span class="line">  git config --local --unset user.email</span><br><span class="line"></span><br><span class="line">  cd ..</span><br><span class="line"></span><br><span class="line">  git status（提示no changes）</span><br><span class="line"></span><br><span class="line">  cat hello.txt</span><br><span class="line"></span><br><span class="line">  git checkout -- hello.txt</span><br><span class="line"></span><br><span class="line">  cat hello.txt</span><br><span class="line"></span><br><span class="line">  touch world.txt</span><br><span class="line"></span><br><span class="line">  git add world.txt</span><br><span class="line"></span><br><span class="line">  git status</span><br><span class="line"></span><br><span class="line">  git reset head world.txt</span><br><span class="line"></span><br><span class="line">  git add .</span><br><span class="line"></span><br><span class="line">  git commit -m &quot;world提交&quot;</span><br><span class="line"></span><br><span class="line">  git log</span><br><span class="line"></span><br><span class="line">  git status（反馈你，工作区和暂存区都没东西，都在对象区里）</span><br><span class="line"></span><br><span class="line">   git rm b.txt</span><br><span class="line"></span><br><span class="line">  git status</span><br><span class="line"></span><br><span class="line">  git commit -m &quot;说明内容&quot;</span><br><span class="line"></span><br><span class="line">  git status</span><br><span class="line"></span><br><span class="line">  rm abc.txt</span><br><span class="line">  </span><br><span class="line">  git add abc.txt</span><br><span class="line">  </span><br><span class="line">  git commit -m &quot;提交的说明内容&quot;</span><br><span class="line">  </span><br><span class="line">  git status</span><br><span class="line">  </span><br><span class="line">  git reset HEAD hello.txt</span><br><span class="line"></span><br><span class="line">  git check out -- hello.txt</span><br><span class="line"></span><br><span class="line">  git status</span><br><span class="line"></span><br><span class="line">  git mv hello.txt hello2.txt</span><br><span class="line"></span><br><span class="line">  git status</span><br><span class="line"></span><br><span class="line">  git reset HEAD hello.txt</span><br><span class="line"></span><br><span class="line">  git checkout -- hello.txt</span><br><span class="line"></span><br><span class="line">  ls（hello.txt和hello2.txt都在）</span><br><span class="line"></span><br><span class="line">  git status</span><br><span class="line"></span><br><span class="line">  mv hello2.txt hello22.txt</span><br><span class="line"></span><br><span class="line">  git add .</span><br><span class="line"></span><br><span class="line">  git commit -m &quot;说明内容&quot;</span><br><span class="line"></span><br><span class="line">  git status</span><br><span class="line"></span><br><span class="line">  git log -1</span><br><span class="line"></span><br><span class="line">  ls</span><br><span class="line"></span><br><span class="line">  vi hello.txt</span><br><span class="line"></span><br><span class="line">  git commit --amend -m &quot;说明内容&quot;</span><br><span class="line"></span><br><span class="line">  toch .gitignore</span><br><span class="line"></span><br><span class="line">  vi .gitignore</span><br><span class="line"></span><br><span class="line">  git status</span><br><span class="line"></span><br><span class="line">  vi .gitignore</span><br><span class="line"></span><br><span class="line">  vi .gitignore</span><br><span class="line"></span><br><span class="line">  git status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果：</p>
+<img src="/2020/02/07/Git/捕获.PNG" style="zoom:67%;">
+
+</li>
+</ul>
+<h2 id="四、分支操作"><a href="#四、分支操作" class="headerlink" title="四、分支操作"></a>四、分支操作</h2><p>开发到一般的时候，会打分支，如：branch是一个总分支，分成master和xxx两个分支；</p>
+<p>每个分支都有总分支branch的所有文件；</p>
+<p>每个又是独立的，若给master分支添加一个文件，xxx分支中不会有文件；</p>
+<p>git目录下的文件会随着当前工作区而变，会显示对象区的文件，以及正在进行vi的文件。</p>
+<ol>
+<li><p>操作分支的命令：</p>
+<p>==git branch==作用：查看分支</p>
+<p>==git branch 名字==作用：创建该名字的分支</p>
+<p>==git checkout 分支名==作用：切换到该名字的分支</p>
+<p>==git cherckout -b 分支名==作用：创建并切换到该分支</p>
+<p>==git branch -d 分支名==作用：删除改名字的分支，注意：不能删除当前的分支；若那你要删除的分支含有独有的文件，建议把独有的文件合并merged到你当前的分支下，这样就不会报错；</p>
+<p>==git merge 分支名==作用：将该分支的文件合并到当前的分支下</p>
+<p>==git checkout -D 分支名==作用：强行删除分支</p>
+<p>==git branch -v==作用：每个分支最近提交的信息，shal和”提交说明“</p>
+<p> ==cat HEAD==作用：查看head指向的分支名</p>
+<p>==git log –graph==作用：查看图形化日志</p>
+</li>
+<li><p>操作一波：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">vi a.txt</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;提交说明内容&quot;</span><br><span class="line">git branch -b dev</span><br><span class="line">cd .git</span><br><span class="line">ls</span><br><span class="line">cat HEAD</span><br><span class="line">#cat操作后反馈ref: refs&#x2F;heads&#x2F;dev</span><br><span class="line">cd ..</span><br><span class="line">git log</span><br><span class="line">#dev与master的shal值是一样的</span><br><span class="line">vi a.txt</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;dev第一次修改&quot;</span><br><span class="line">git log</span><br><span class="line">#反馈shal值</span><br><span class="line">vi a.txt</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;dev第二次修改&quot;</span><br><span class="line">git log</span><br><span class="line">git checkout master</span><br><span class="line">#用下面这个命令让落后的分支master追赶上靠前的分支dev，称为fast forward。</span><br><span class="line">#fast forward本质：让master指针一步指向最新的commit，跳过的commit会保留。</span><br><span class="line">#forward:1.两个分支 fast forward 归于一点commit</span><br><span class="line">#		 2.没有分支信息（丢失分支信息）</span><br><span class="line">#git在merge时，默认使用fast forward；也可以禁止：git merge --no-ff 分支名  则：</span><br><span class="line">#1.两个分支 fast forward 不会归于一点commit（主动合并分支 并 会前进一步）</span><br><span class="line">#2.分支信息（不丢失分支信息）</span><br><span class="line">#合并：</span><br><span class="line">#	如果冲突，</span><br><span class="line">#</span><br><span class="line">git merge dev</span><br><span class="line">git checkout dev</span><br><span class="line">vi a.txt</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;dev第三次修改&quot;</span><br><span class="line">vi a.txt</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;dev第四次修改&quot;</span><br><span class="line">git checkout dev</span><br><span class="line">git merge --no-ff master</span><br><span class="line">git log</span><br><span class="line">git log --graph</span><br><span class="line">git merge dev</span><br><span class="line">ls</span><br><span class="line">vi a.txt</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;master&quot;</span><br><span class="line">git checkout dev</span><br><span class="line">#上下两次对同一行修改，会产生冲突</span><br><span class="line">vi a.txt</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;dev&quot;</span><br><span class="line">git checkout master</span><br><span class="line">git merge dev</span><br><span class="line">#反馈冲突</span><br><span class="line">vi a.txt</span><br><span class="line">#反馈冲突信息：</span><br><span class="line">#&lt;&lt;&lt;&lt;&lt;&lt;&lt;HEAD</span><br><span class="line">#(master里修改的内容)</span><br><span class="line">#&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">#(dev里修改的内容)</span><br><span class="line">#&gt;&gt;&gt;&gt;&gt;&gt;&gt;dev</span><br><span class="line">#解决办法，将反馈信息全删掉，换成你要的内容,再add,来告知git已经解决冲突，commit</span><br><span class="line">git status</span><br><span class="line">git add a.txt</span><br><span class="line">git commit -m &quot;master解决&quot;</span><br><span class="line">git log</span><br><span class="line">git checkout dev</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://music.163.com/outchain/player?type=2&id=477293112&auto=1&height=66'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://music.163.com/outchain/player?type=2&id=85571&auto=1&height=66'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git"><span class="toc-number">1.</span> <span class="toc-text">Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、git"><span class="toc-number">1.1.</span> <span class="toc-text">一、git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#官网：http-git-scm-com"><span class="toc-number">1.1.1.</span> <span class="toc-text">官网：http:&#x2F;&#x2F;git-scm.com&#x2F;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux系统（另有BitKeepper，但是收费）"><span class="toc-number">1.1.2.</span> <span class="toc-text">Linux系统（另有BitKeepper，但是收费）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#版本控制系统："><span class="toc-number">1.1.3.</span> <span class="toc-text">版本控制系统：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优势："><span class="toc-number">1.1.4.</span> <span class="toc-text">优势：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、文件基操"><span class="toc-number">1.2.</span> <span class="toc-text">二、文件基操</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、用户名和邮箱"><span class="toc-number">1.3.</span> <span class="toc-text">三、用户名和邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、分支操作"><span class="toc-number">1.4.</span> <span class="toc-text">四、分支操作</span></a></li></ol></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
