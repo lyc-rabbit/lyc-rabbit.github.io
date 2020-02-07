@@ -75,68 +75,79 @@
 <p>3.申请GitHub账号</p>
 <p>打开GitHub官网<a href="https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。" target="_blank" rel="noopener">https://github.com/，申请其账号，并配置好SSH（关于如何配置SSH，详见我的另一篇博客）。</a></p>
 <h2 id="git账户"><a href="#git账户" class="headerlink" title="git账户"></a>git账户</h2><p>lyc-rabbit</p>
-<p>ofuckyou1999</p>
-<p><a href="mailto:2405310636@qq.com">2405310636@qq.com</a></p>
 <p>仓库名字：lyc-yy</p>
 <p>4.配置SSH</p>
-<h2 id="公钥默认密码"><a href="#公钥默认密码" class="headerlink" title="公钥默认密码"></a>公钥默认密码</h2><p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113174857833.png" alt="image-20200113174857833"></p>
-<h2 id="用记事本打开公钥–复制公钥的方法"><a href="#用记事本打开公钥–复制公钥的方法" class="headerlink" title="用记事本打开公钥–复制公钥的方法"></a>用记事本打开公钥–复制公钥的方法</h2><h3 id="直接用记事本打开"><a href="#直接用记事本打开" class="headerlink" title="直接用记事本打开"></a>直接用记事本打开</h3><p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113175038761.png" alt="image-20200113175038761"></p>
-<h3 id="用-clip-lt-ssh-id-rsa-pub来复制公钥到粘贴板上"><a href="#用-clip-lt-ssh-id-rsa-pub来复制公钥到粘贴板上" class="headerlink" title="用 clip &lt; ~/.ssh/id_rsa.pub来复制公钥到粘贴板上"></a>用 clip &lt; ~/.ssh/id_rsa.pub来复制公钥到粘贴板上</h3><p>ssh-rsa …..（后面通常都是一大串东西哦）</p>
+<h2 id="公钥默认密码"><a href="#公钥默认密码" class="headerlink" title="公钥默认密码"></a>公钥默认密码</h2><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200113174857833.png" style="zoom:80%;">
+
+<h2 id="用记事本打开公钥–复制公钥的方法"><a href="#用记事本打开公钥–复制公钥的方法" class="headerlink" title="用记事本打开公钥–复制公钥的方法"></a>用记事本打开公钥–复制公钥的方法</h2><h3 id="直接用记事本打开"><a href="#直接用记事本打开" class="headerlink" title="直接用记事本打开"></a>直接用记事本打开</h3><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200113175038761.png" style="zoom:80%;">
+
+<h3 id="用-clip-lt-ssh-id-rsa-pub来复制公钥到粘贴板上"><a href="#用-clip-lt-ssh-id-rsa-pub来复制公钥到粘贴板上" class="headerlink" title="用 clip &lt; ~/.ssh/id_rsa.pub来复制公钥到粘贴板上"></a>用 clip &lt; ~/.ssh/id_rsa.pub来复制公钥到粘贴板上</h3><p>ssh-rsa …..（以及后面通常都是一大串东西哦）</p>
 <h3 id="用查看是否存在公钥的命令来查看"><a href="#用查看是否存在公钥的命令来查看" class="headerlink" title="用查看是否存在公钥的命令来查看"></a>用查看是否存在公钥的命令来查看</h3><p>cat ~/.ssh/id_rsa.pub</p>
 <h2 id="添加公钥到远端的SSH里面"><a href="#添加公钥到远端的SSH里面" class="headerlink" title="添加公钥到远端的SSH里面"></a>添加公钥到远端的SSH里面</h2><p>比如：用的是阿里云则关联到code.aliyun.com；</p>
 <p>我们用的是github的密钥管理处:</p>
 <p>（1）github 添加 SSH ：点击自己右上角头像，选择 Settings，点击 SSH and GPG keys ，点击 New SSH key，添加 SSH 即可。</p>
 <p>成功添加公钥：</p>
 <p>C:\Users\Fantastic.ssh</p>
-<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113205619222.png" alt="image-20200113205619222"></p>
-<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113205711130.png" alt="image-20200113205711130"></p>
+<img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200113205619222.png" style="zoom:80%;">
+
+<img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200113205711130.png" style="zoom:80%;">
+
 <p>（2）阿里云 添加 SSH ：在项目主页，点击设置→SSH公钥→增加SSH密钥→把本地公钥复制到“公钥”框里→输入标题(必填项，可以设置家或者公司等标识)→最后点击“增加密钥”即可。<br>原文链接：<a href="https://blog.csdn.net/qq_42351033/article/details/99182662" target="_blank" rel="noopener">https://blog.csdn.net/qq_42351033/article/details/99182662</a></p>
 <p>5.搭建Hexo</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，<strong>cd</strong>进这个文件夹，输入下面的命令来进行安装。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113210827331.png" alt="image-20200113210827331"></p>
+<img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200113210827331.png" style="zoom:80%;">
+
 <h3 id="升级-非必需"><a href="#升级-非必需" class="headerlink" title="升级(非必需)"></a>升级(非必需)</h3><p>更新hexo到最新版。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update hexo -g</span><br></pre></td></tr></table></figure>
 
 <h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>在文件夹里右键，点击Git Bush，输入下面的命令。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113211159557.png" alt="image-20200113211159557"></p>
+<img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200113211159557.png" style="zoom:80%;">
+
 <h3 id="生成网站"><a href="#生成网站" class="headerlink" title="生成网站"></a>生成网站</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
 
 <p>或者</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113212446467.png" alt="image-20200113212446467"></p>
+<img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200113212446467.png" style="zoom:80%;">
+
 <h3 id="本地服务器调试"><a href="#本地服务器调试" class="headerlink" title="本地服务器调试"></a>本地服务器调试</h3><p>右击选中仓库，选择gitbush输入命令(也用此命令来预览修改博客后的效果，是满意的效果后才部署到.io上哦)：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
 <p>或者</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200114114031935.png" alt="image-20200114114031935"></p>
+<img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200114114031935.png" style="zoom:80%;">
+
 <p>若hexo s没有生成地址，则输入以下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls --depth 0</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img2018.cnblogs.com/i-beta/1585641/201912/1585641-20191201162440919-107913793.png" alt="img"></p>
+<img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/捕获.PNG" style="zoom:80%;">
+
 <p>根据CMD的提示的UNMET DEPENDENCY的文件，安装这些文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#如：</span><br><span class="line">npm install hexo-renderer-ejs@^1.0.0 --save</span><br></pre></td></tr></table></figure>
 
 <p>输上述命令得到hexo原生态官网地址：(允许github突破防火墙)</p>
-<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200114165026871.png" alt="image-20200114165026871"></p>
+<img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200114165026871.png" style="zoom:80%;">
+
 <p>6.上传GitHub与Coding<br>建立仓库<br>在GitHub上建立一个仓库，其名称必须为your_name.github.io,比如我的是 Doenitz.github.io。同理，在Coding上建立一个仓库，其名称最好为your_name，比如我的是 hitler97。</p>
 <p>配置文件<br>打开根目录下的_config.yml，找到Deployment，然后按照如下修改（注意：远程可用的配置在后文）：</p>
 <p>deploy:<br>  type: git<br>  repository:<br>  github:<a href="mailto:git@github.com">git@github.com</a>:your_name/your_name.github.io.git<br>  coding: <a href="mailto:git@git.coding.net">git@git.coding.net</a>:your_name/your_name.git<br>  branch: master</p>
 <p>比如我就按以下形式配置：</p>
 <p>deploy:<br>  type: git<br>  repository:<br>    github: <a href="mailto:git@github.com">git@github.com</a>:Doenitz/Doenitz.github.io.git<br>    coding: <a href="mailto:git@git.coding.net">git@git.coding.net</a>:hitler97/hitler97.git<br>    branch: master<br>我的:</p>
-<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200113222402929.png" alt="image-20200113222402929"></p>
+<img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200113222402929.png" style="zoom:80%;">
+
 <p>7.编写、发布文章<br>打开Git Bush，新建一篇文章：</p>
 <p>hexo new “article title”<br>这时候在博客目录 \hexo\source\ _posts 下将会看到 article title.md 文件，用MarkDown编辑器编辑好文章之后即可发布</p>
 <p>右击选中仓库使用gitbush输入命令：(不必打开server)</p>
 <p>hexo new “钰兔大王的第一个博客”</p>
-<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200114115515936.png" alt="image-20200114115515936"></p>
-<p><img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200114115606559.png" alt="image-20200114115606559"></p>
+<img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200114115515936.png" style="zoom:80%;">
+
+<img src="/2020/01/22/hexo+git+node%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20200114115606559.png" style="zoom:80%;">
+
 <p>文章：</p>
 <p>hexo g    //  生成<br>hexo d    //  部署</p>
 <p>或者</p>

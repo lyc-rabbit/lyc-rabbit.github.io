@@ -96,7 +96,7 @@
 </ol>
 <h2 id="三、案例实现："><a href="#三、案例实现：" class="headerlink" title="三、案例实现："></a>三、案例实现：</h2><ol>
 <li><p>案例最终目录：</p>
-<img src="/2020/01/24/tomcat+web+Idea+navicat%E7%99%BB%E5%BD%95%E6%A1%88%E4%BE%8B/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200124121011192.png" alt="image-20200124121011192" style="zoom:50%;">
+<img src="/2020/01/24/tomcat+web+Idea+navicat%E7%99%BB%E5%BD%95%E6%A1%88%E4%BE%8B/image-20200124121011192.png" alt="image-20200124121011192" style="zoom:50%;">
 </li>
 <li><p>创建项目：</p>
 <ul>
@@ -117,7 +117,7 @@
 <p>spring-tx-4.3.6.RELEASE；(JdbcTemplate)</p>
 </li>
 <li><p>tomcat配置：</p>
-<img src="/2020/01/24/tomcat+web+Idea+navicat%E7%99%BB%E5%BD%95%E6%A1%88%E4%BE%8B/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200124110059503.png" alt="image-20200124110059503" style="zoom: 50%;">
+<img src="/2020/01/24/tomcat+web+Idea+navicat%E7%99%BB%E5%BD%95%E6%A1%88%E4%BE%8B/image-20200124110059503.png" alt="image-20200124110059503" style="zoom: 50%;">
 </li>
 <li><p>druid.properties文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 配置数据库的连接参数</span><br><span class="line">driverClassName&#x3D;com.mysql.cj.jdbc.Driver</span><br><span class="line">url&#x3D;jdbc:mysql:&#x2F;&#x2F;127.0.0.1:3306&#x2F;javalearn20123?serverTimezone&#x3D;UTC&amp;characterEncoding&#x3D;UTF-8&amp;useSSL&#x3D;false</span><br><span class="line">username&#x3D;root</span><br><span class="line">password&#x3D;root</span><br><span class="line">#url中的javalearn20123改写成你要连接的数据库，username和password对应你数据库的用户</span><br><span class="line"># 配置连接池的参数</span><br><span class="line">initialSize&#x3D;5</span><br><span class="line">maxActive&#x3D;10</span><br><span class="line">maxWait&#x3D;3000</span><br><span class="line">minIdle&#x3D;3</span><br><span class="line">#这个.properties要直接放在Source Root文件下</span><br></pre></td></tr></table></figure>

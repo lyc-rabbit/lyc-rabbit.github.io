@@ -80,17 +80,20 @@ n,">
 <li><p>在终端（CMD）直接输入，查看版本号，确定是否已经安装好：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/01/26/npm%EF%BC%88Node%20Package%20Manager%EF%BC%89/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200126122157415.png" alt="image-20200126122157415"></p>
+<img src="/2020/01/26/npm%EF%BC%88Node%20Package%20Manager%EF%BC%89/image-20200126122157415.png">
+
 </li>
 </ul>
 <h3 id="更新npm："><a href="#更新npm：" class="headerlink" title="更新npm："></a>更新npm：</h3><ul>
 <li><p>在终端（CMD）直接输入，来更新npm：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install npm@5.4.0</span><br><span class="line">#其中5.4.0是你所要下载的npm的版本号</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/01/26/npm%EF%BC%88Node%20Package%20Manager%EF%BC%89/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200126122251312.png" alt="image-20200126122251312"></p>
+<img src="/2020/01/26/npm%EF%BC%88Node%20Package%20Manager%EF%BC%89/image-20200126122251312.png">
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install npm@latest -g</span><br><span class="line">#其中latest是最新的，-g表示部署到全局</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/01/26/npm%EF%BC%88Node%20Package%20Manager%EF%BC%89/C:%5CUsers%5CFantastic%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200126122324373.png" alt="image-20200126122324373"></p>
+<img src="/2020/01/26/npm%EF%BC%88Node%20Package%20Manager%EF%BC%89/image-20200126122324373.png">
+
 </li>
 </ul>
 <h2 id="二、npm的常用操作"><a href="#二、npm的常用操作" class="headerlink" title="二、npm的常用操作"></a>二、npm的常用操作</h2><h3 id="下载内容到项目、取用、卸载内容、更新内容："><a href="#下载内容到项目、取用、卸载内容、更新内容：" class="headerlink" title="下载内容到项目、取用、卸载内容、更新内容："></a>下载内容到项目、取用、卸载内容、更新内容：</h3><p>直接在bootcdn里面查找相应的.js的地址，在.html文件里引用:</p>
@@ -103,12 +106,12 @@ n,">
 <li><p>进入项目目录：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd 项目名</span><br><span class="line">#如：</span><br><span class="line">cd 20.2</span><br></pre></td></tr></table></figure>
 
-<img src="/2020/01/26/npm%EF%BC%88Node%20Package%20Manager%EF%BC%89/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200126133233936.png" alt="image-20200126133233936" style="zoom:67%;">
+<img src="/2020/01/26/npm%EF%BC%88Node%20Package%20Manager%EF%BC%89/image-20200126133233936.png" alt="image-20200126133233936" style="zoom:67%;">
 </li>
 <li><p>初始化：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">或</span><br><span class="line">npm init --yes</span><br><span class="line">#即所有都设置为默认</span><br><span class="line">#用于生成package.json</span><br></pre></td></tr></table></figure>
 
-<img src="/2020/01/26/npm%EF%BC%88Node%20Package%20Manager%EF%BC%89/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200126133408579.png" alt="image-20200126133408579" style="zoom:50%;">
+<img src="/2020/01/26/npm%EF%BC%88Node%20Package%20Manager%EF%BC%89/image-20200126133408579.png" alt="image-20200126133408579" style="zoom:50%;">
 
 <p>在当前项目目录下生成该文件，重要的内容（“文件名”:版本号）：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"dependencies":&#123;</span><br><span class="line">    "bootstrap": "^3.3.7",</span><br><span class="line">    "jquery": "^3.2.1",</span><br><span class="line">    "vue": "^2.4.2"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
