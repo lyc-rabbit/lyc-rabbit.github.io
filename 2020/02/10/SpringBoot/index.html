@@ -94,14 +94,87 @@ Spr,">
 </ul>
 </li>
 <li><p>缺点：需要非常了解API</p>
+<img src="/2020/02/10/SpringBoot/2.png">
 </li>
 </ul>
 </li>
-<li><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><p>2014，Martin Fowler</p>
+<li><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a><a href="https://martinfowler.com/articles/microservices.html#MicroservicesAndSoa" target="_blank" rel="noopener">微服务</a></h3><ul>
+<li><p>微服务</p>
+<p>2014，Martin Fowler</p>
 <p>微服务：架构风格</p>
 <p>一个应用应该是一组小型服务；</p>
+<p>可以通过HTTP的方式进行互通；</p>
+<p>一个微服务架构把每个功能元素放进一个独立的服务中，每一个功能元素最终都是一个可独立替换和独立升级的软件单元…并且通过跨服务器分发这些服务器进行扩展，只在需要时才复制；</p>
 </li>
-<li><h3 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h3></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>单体应用：ALL IN ONE；</p>
+<p>一个单体应用程序把它所有的功能放在一个单一进程中…并且通过在多个服务器上复制这个单体进行扩展；</p>
+<img src="/2020/02/10/SpringBoot/1.PNG">
+
+
+
+</li>
+</ul>
+<ol start="3">
+<li><h3 id="写一个简单的程序"><a href="#写一个简单的程序" class="headerlink" title="写一个简单的程序"></a>写一个简单的程序</h3><p>功能：浏览器发送hello请求，服务器接受请求并处理，响应Hello World字符串；</p>
+<ol>
+<li><p><a href="http://www.gulixueyuan.com/" target="_blank" rel="noopener">学习springboot前提</a>：</p>
+<ul>
+<li>Spring框架的使用经验</li>
+<li>熟练使用Maven进行项目构建和依赖管理</li>
+<li>熟练使用Eclipse或者IDEA</li>
+</ul>
+</li>
+<li><p>环境约束：</p>
+<ul>
+<li><p>jdk1.8（SpringBoot 1.7以上）</p>
+</li>
+<li><p>用CMD查看版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>maven3.x（maven 3.3以上）：</p>
+<p>修改设置：maven-&gt;conf-&gt;settings.xml-&gt; <profiles>标签内部</profiles></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;profiles&gt;</span><br><span class="line">    &lt;id&gt;jdk-1.8&lt;/id&gt;</span><br><span class="line">    &lt;activation&gt;</span><br><span class="line">    	&lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</span><br><span class="line">     	&lt;jdk&gt;1.8&lt;/jdk&gt;</span><br><span class="line">    &lt;/activation&gt;</span><br><span class="line">    &lt;properties&gt;</span><br><span class="line">    	&lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;</span><br><span class="line">    	&lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;</span><br><span class="line">    	&lt;maven.compiler.compilerVersion&gt;1.8&lt;/maven.compiler.compilerVersion&gt;</span><br><span class="line">    &lt;/properties&gt;</span><br><span class="line">&lt;/profiles&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用CMD查看版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn -V</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>IntelliJ IDEA 2017（或者STS）:</p>
+<p>修改设置：IDEA-&gt;config-&gt;settings-&gt;Build,Execution,Deployment-&gt;Build Tools-&gt;Maven</p>
+<p>Maven home directory:…\apache-maven-3.3.9</p>
+<p>User settings file:…\apache-maven-3.3.9\settings.xml</p>
+<p>Local repository:…\apache-maven-3.3.9\respository</p>
+</li>
+<li><p>Spring Boot 1.5.9.RELEASE</p>
+</li>
+</ul>
+</li>
+<li><p><a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener">实现</a>：</p>
+<ol>
+<li><p>创建一个maven工程；（jar）maven-&gt;jdk-&gt;next-&gt;Groupld:com.atguigu-&gt;Artfactid(模块名):spring-boot-01-helloworld-&gt;project location-&gt;Enable Auto-Import</p>
+</li>
+<li><p>导入Spring Boot的依赖：</p>
+<p>spring-boot-starter-web</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- https:<span class="comment">//mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web --&gt;</span></span><br><span class="line">   &lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;1.5.9.RELEASE&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写一个主程序： </p>
+<p>Source Root–&gt;com.atguigu–&gt;HelloWorldMainApplication</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldMainApplication</span></span>&#123;</span><br><span class="line">   	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">           <span class="comment">//Spring应用启动起来</span></span><br><span class="line">       SpringApplication.run(HelloWorldMainApplication<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">   	&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>com.atguigu–&gt;controller–&gt;HelloController</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span></span>&#123;</span><br><span class="line">       <span class="meta">@ResponseBody</span></span><br><span class="line">   	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">       <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">"Hello World!"</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行主程序测试</p>
+</li>
+<li><p>简化部署</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
 <li><h3 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h3></li>
 </ol>
 
@@ -138,7 +211,7 @@ Spr,">
     </div>
     
         <div class='side'>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringBoot"><span class="toc-number">1.</span> <span class="toc-text">SpringBoot</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Spring-Boot入门"><span class="toc-number">1.1.</span> <span class="toc-text">一、Spring Boot入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微服务"><span class="toc-number">1.1.2.</span> <span class="toc-text">微服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HelloWorld"><span class="toc-number">1.1.3.</span> <span class="toc-text">HelloWorld</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理分析"><span class="toc-number">1.1.4.</span> <span class="toc-text">原理分析</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringBoot"><span class="toc-number">1.</span> <span class="toc-text">SpringBoot</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Spring-Boot入门"><span class="toc-number">1.1.</span> <span class="toc-text">一、Spring Boot入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微服务"><span class="toc-number">1.1.2.</span> <span class="toc-text">微服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写一个简单的程序"><span class="toc-number">1.1.3.</span> <span class="toc-text">写一个简单的程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理分析"><span class="toc-number">1.1.4.</span> <span class="toc-text">原理分析</span></a></li></ol></li></ol></li></ol>
         </div>
     
 </div>
