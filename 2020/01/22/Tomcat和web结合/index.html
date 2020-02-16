@@ -104,13 +104,7 @@ t,">
 <li>修改：</li>
 </ul>
 <p>文本打开tomcat/conf/server.xml（应确保startup.bat已经关闭），找到并修改，保存，关闭一条龙：</p>
-<HOST>
-
-<!--标签里面部署项目-->
-
-<Cntext docbase="D:\software\tomcat9.0\webapps\hello" path="/lyc">
-
-</Cntext></HOST>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;HOST&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--标签里面部署项目--&gt;</span><br><span class="line"></span><br><span class="line">&lt;Cntext docBase&#x3D;&quot;D:\software\tomcat9.0\webapps\hello&quot; path&#x3D;&quot;&#x2F;lyc&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;HOST&gt;</span><br></pre></td></tr></table></figure>
 
 <p>其中docBase是.html在本地的目录，而path是虚拟目录由自己定义，用于浏览器对其进行访问。</p>
 <img src="/2020/01/22/Tomcat%E5%92%8Cweb%E7%BB%93%E5%90%88/Users\Fantastic\AppData\Roaming\Typora\typora-user-images\image-20200117215212801.png" alt="image-20200117215212801" style="zoom: 67%;">
@@ -127,8 +121,7 @@ t,">
 <li>新建：</li>
 </ul>
 <p>tomcat/conf/Catalina/localhost/新建.xml文件，文本打开.xml文件并在文件内写：</p>
-<Cntext docbase="D:\software\tomcat9.0\webapps\hello">
-
+<p><code>&lt;Cntext docBase=&quot;D:\software\tomcat9.0\webapps\hello&quot;/&gt;</code></p>
 <p>其中没有path（虚拟路径）；</p>
 <ul>
 <li>查看：</li>
@@ -180,10 +173,10 @@ t,">
 <li><p>其中:</p>
 <ul>
 <li><p>后文基于Servlet2.5版本：</p>
-<p><servlet-name>给此servlet取名</servlet-name>;</p>
-<p><servlet-class>指定class类的路径即全类名，从sources root文件下开始指定</servlet-class>;</p>
-<p><servlet-name>指定哪个servlet</servlet-name>;</p>
-<p><url-pattern>给指定的servlet设置虚拟路径</url-pattern>。</p>
+<p><code>&lt;servlet-name&gt;</code>给此servlet取名<code>&lt;/servlet-name&gt;</code>;</p>
+<p><code>&lt;servlet-class&gt;</code>指定class类的路径即全类名，从sources root文件下开始指定<code>&lt;/servlet-class&gt;</code>;</p>
+<p><code>&lt;servlet-name&gt;</code>指定哪个servlet<code>&lt;/servlet-name&gt;</code>;</p>
+<p><code>&lt;url-pattern&gt;</code>给指定的servlet设置虚拟路径<code>&lt;/url-pattern&gt;</code>。</p>
 </li>
 <li><p>Servlet第二种配置，如果用的是Servlet3.0版本时：</p>
 <p>支持注解配置，可以不用web.xml了</p>
@@ -216,8 +209,8 @@ t,">
 <ul>
 <li>理解：当服务器接收到客户端浏览器的请求后，会解析请求URL路径，获取访问Servlet的资源路径即/demo1；</li>
 </ul>
-<p>​                查找web.xml文件，是否有对应的<url-pattern>标签体内容和资源路径一致即demo1；</url-pattern></p>
-<p>​                    如果有，则在找到对应的<servlet-class>全类名，tomcat将全类名对应的字节码文件加载进内存</servlet-class></p>
+<p>​                查找web.xml文件，是否有对应的<code>&lt;url-pattern&gt;</code>标签体内容和资源路径一致即demo1；</p>
+<p>​                    如果有，则在找到对应的<code>&lt;servlet-class&gt;</code>全类名，tomcat将全类名对应的字节码文件加载进内存</p>
 <p>​                  （Class.forName()）并创建对象（class.newInstance()），然后调用方法。</p>
 <h5 id="5-知识点：Servlet中的5个方法之3的说明"><a href="#5-知识点：Servlet中的5个方法之3的说明" class="headerlink" title="(5).知识点：Servlet中的5个方法之3的说明"></a>(5).知识点：Servlet中的5个方法之3的说明</h5><p>[1].Servlet被创建：执行init方法，只执行一次：</p>
 <p>Servlet的init方法，只执行一次，说明一个Servlet在内存中只存在一个对象，Servlet是单例的；</p>
@@ -228,9 +221,9 @@ t,">
 <p>Servlet什么时候被创建？</p>
 <ul>
 <li>默认情况，第一次被访问时，Servlet被创建</li>
-<li>可以配置执行Servlet的创建时机：在<servlet></servlet>标签里添加<load-on-startup></load-on-startup><ul>
-<li>第一次被访问时(就是在浏览器)，创建，<load-on-startup>值为负整数</load-on-startup>，默认值为-1;</li>
-<li>在服务器启动时(就是启动项目)，创建，<load-on-startup>值为0或正整数</load-on-startup>;</li>
+<li>可以配置执行Servlet的创建时机：在<code>&lt;servlet&gt;&lt;/servlet&gt;</code>标签里添加<code>&lt;load-on-startup&gt;&lt;/load-on-startup&gt;</code><ul>
+<li>第一次被访问时(就是在浏览器)，创建，<code>&lt;load-on-startup&gt;</code>值为负整数<code>&lt;/load-on-startup&gt;</code>，默认值为-1;</li>
+<li>在服务器启动时(就是启动项目)，创建，<code>&lt;load-on-startup&gt;</code>值为0或正整数<code>&lt;/load-on-startup&gt;</code>;</li>
 </ul>
 </li>
 </ul>
@@ -842,8 +835,24 @@ Hi,response
 <li><p>removeAttribute(String name)</p>
 </li>
 <li><p>代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@WebServlet</span>(<span class="string">"/context3"</span>)</span><br><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletContext3</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">         ServletContext context=<span class="keyword">this</span>.getServletContext();</span><br><span class="line">         context.setAttribute(<span class="string">"lyc"</span>,<span class="string">"happy"</span>);</span><br><span class="line"> </span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">         <span class="keyword">this</span>.doPost(req,resp);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="meta">@WebServlet</span>(<span class="string">"/context4"</span>)</span><br><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletContext4</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">         ServletContext context=<span class="keyword">this</span>.getServletContext();</span><br><span class="line">         Object lyc=context.getAttribute(<span class="string">"lyc"</span>);</span><br><span class="line">         System.out.println(lyc);</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">         <span class="keyword">this</span>.doPost(req,resp);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/context1"</span>)</span><br><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletContext1</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        ServletContext context1=req.getServletContext();</span><br><span class="line">         ServletContext context2=<span class="keyword">this</span>.getServletContext();</span><br><span class="line"></span><br><span class="line">         System.out.println(context1);</span><br><span class="line">        System.out.println(context2);</span><br><span class="line"> </span><br><span class="line">        System.out.println(context1==context2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/context3"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletContext3</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        ServletContext context=<span class="keyword">this</span>.getServletContext();</span><br><span class="line">        context.setAttribute(<span class="string">"lyc"</span>,<span class="string">"happy"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/context4"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletContext4</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        ServletContext context=<span class="keyword">this</span>.getServletContext();</span><br><span class="line">        Object lyc=context.getAttribute(<span class="string">"lyc"</span>);</span><br><span class="line">        System.out.println(lyc);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@WebServlet(“/context1”)<br>public class ServletContext1 extends HttpServlet {<br>   @Override</p>
+<pre><code>protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+   ServletContext context1=req.getServletContext();
+    ServletContext context2=this.getServletContext();
+
+    System.out.println(context1);
+   System.out.println(context2);
+
+   System.out.println(context1==context2);</code></pre><p>   }</p>
+<p>   @Override<br>   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {</p>
+<pre><code>this.doPost(req,resp);</code></pre><p>   }<br>}</p>
 </li>
+</ol>
+</li>
+</ol>
+<ol start="5">
 <li><p>效果：</p>
 <p>网址：</p>
 <p><a href="http://localhost:8080/javaLearn20130/context3" target="_blank" rel="noopener">http://localhost:8080/javaLearn20130/context3</a></p>
@@ -852,7 +861,7 @@ Hi,response
 <p>org.apache.catalina.core.ApplicationContextFacade@60b97066<br>org.apache.catalina.core.ApplicationContextFacade@60b97066<br>true</p>
 </li>
 </ol>
-</li>
+<ol start="3">
 <li><p>获取文件的真实路径（服务器路径）</p>
 <ol>
 <li><p>String getRealPath(String path)</p>
@@ -871,7 +880,7 @@ Hi,response
 </ol>
 </li>
 </ol>
-</Cntext>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
                 <source type="audio/mpeg" src="">
