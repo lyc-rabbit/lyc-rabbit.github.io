@@ -103,7 +103,7 @@ JDBC–&amp;gt;Dbutils(QueryRunner)–&amp;gt;JdbcTemplate：工具：
 </ul>
 </li>
 </ol>
-<h2 id="三、简单项目的实现-Hello-World"><a href="#三、简单项目的实现-Hello-World" class="headerlink" title="三、简单项目的实现 Hello World"></a>三、简单项目的实现 Hello World</h2><ol>
+<h2 id="三、简单项目的实现–旧版本"><a href="#三、简单项目的实现–旧版本" class="headerlink" title="三、简单项目的实现–旧版本"></a>三、简单项目的实现–旧版本</h2><ol>
 <li><p>创建数据库（沿用我之前项目javaLearn20123创建的数据库mysql下javaLearn20123数据库user表）</p>
 </li>
 <li><p>顺序：</p>
@@ -144,7 +144,7 @@ JDBC–&amp;gt;Dbutils(QueryRunner)–&amp;gt;JdbcTemplate：工具：
 <li>命名空间可任意标记；</li>
 <li>id是唯一标识，在引用该sql语句时应用到；</li>
 <li>resultType指定的user.Employee是<code>&lt;select&gt;</code>标签包含的sql语句返回值的类型；</li>
-<li>user.Employee表示定位到Source Root下user包下的Employee类，该类就对应数据库中的表，返回值就是它的对象；</li>
+<li>user.Employee表示定位到Source Root下user包下的Employee类，即全类名，该类就对应数据库中的表，返回值就是它的对象；</li>
 <li>sql语句的写法：<ul>
 <li>当你在Java创建的Employee属性列不与数据库属性列的列名对应的时候，取别名：<ul>
 <li><code>select id,username xxx,password xxx from user where id = #{id}</code>先写数据库属性列名，再写别名；</li>
@@ -187,16 +187,119 @@ JDBC–&amp;gt;Dbutils(QueryRunner)–&amp;gt;JdbcTemplate：工具：
 <li><p>Source Root下创建test文件夹</p>
 <ul>
 <li><p>创建MybatiesTest类，用这个类来做一个小检查</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.ibatis.io.Resources;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> user.Employee;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatiesTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *1、根据xml配置文件（全局配置文件）创建一个SqlSessionFactory对象</span></span><br><span class="line"><span class="comment">     * 有数据源一些运行环境信息</span></span><br><span class="line"><span class="comment">     * 2、sql映射文件，配置了每一个sql，以及sql的封装规则等</span></span><br><span class="line"><span class="comment">     * 3、将sql映射文件注册在全局配置文件中</span></span><br><span class="line"><span class="comment">     * 4、代码：</span></span><br><span class="line"><span class="comment">     *    1）、根据全局配置文件得到sqlSessionFactory；</span></span><br><span class="line"><span class="comment">     *    2）、使用sqlSession工厂，获得sqlSession对象使用他来执行增删改查</span></span><br><span class="line"><span class="comment">     *     一个sqlSession就是代表和数据库的一次会话，用完关闭</span></span><br><span class="line"><span class="comment">     *    3）、使用sql的唯一标识来告诉mybaties执行哪个sql，sql都保存在sql映射文件</span></span><br><span class="line"><span class="comment">     *  <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        InputStream inputStream = Resources.getResourceAsStream(<span class="string">"mybaties-conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">        SqlSession openSession = sqlSessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2、获取sqlSession示例，能直接执行已经映射的sql语句</span></span><br><span class="line">        <span class="comment">//sql唯一的标识，statement ...</span></span><br><span class="line">        <span class="comment">//执行sql要用的参数：parameter A parameter object...</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Employee user = openSession.selectOne(<span class="string">"com.ecjtu.mybaties.EmloyeeMapper.selectEmp"</span>, <span class="number">1</span>);</span><br><span class="line">          System.out.println(user);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            openSession.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.ibatis.io.Resources;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> user.Employee;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatiesTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *1、根据xml配置文件（全局配置文件）创建一个SqlSessionFactory对象</span></span><br><span class="line"><span class="comment">     * 有数据源一些运行环境信息</span></span><br><span class="line"><span class="comment">     * 2、sql映射文件，配置了每一个sql，以及sql的封装规则等</span></span><br><span class="line"><span class="comment">     * 3、将sql映射文件注册在全局配置文件中</span></span><br><span class="line"><span class="comment">     * 4、代码：</span></span><br><span class="line"><span class="comment">     *    1）、根据全局配置文件得到sqlSessionFactory；</span></span><br><span class="line"><span class="comment">     *    2）、使用sqlSession工厂，获得sqlSession对象使用他来执行增删改查</span></span><br><span class="line"><span class="comment">     *     一个sqlSession就是代表和数据库的一次会话，用完关闭</span></span><br><span class="line"><span class="comment">     *    3）、使用sql的唯一标识来告诉mybaties执行哪个sql，sql都保存在sql映射文件</span></span><br><span class="line"><span class="comment">     *  <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        InputStream inputStream = Resources.getResourceAsStream(<span class="string">"mybaties-conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">        SqlSession openSession = sqlSessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2、获取sqlSession示例，能直接执行已经映射的sql语句</span></span><br><span class="line">        <span class="comment">//sql唯一的标识，statement ...</span></span><br><span class="line">        <span class="comment">//执行sql要用的参数：parameter A parameter object...</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//openSession.selectOne 第一个参数指定namespace下的id，第二个参数即传值；</span></span><br><span class="line">            Employee user = openSession.selectOne(<span class="string">"com.ecjtu.mybaties.EmloyeeMapper.selectEmp"</span>, <span class="number">1</span>);</span><br><span class="line">          System.out.println(user);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            openSession.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、简单项目–利用接口式"><a href="#四、简单项目–利用接口式" class="headerlink" title="四、简单项目–利用接口式"></a>四、简单项目–利用接口式</h2><ol>
+<li><p>顺序（除划线部分，都用上述内容）：</p>
+<ul>
+<li>创建 数据库、表格、属性列、内容</li>
+<li>导入 jar</li>
+<li>配置 log4j.properties</li>
+<li>配置 mybaties-conf.xml</li>
+<li>创建 Employee类</li>
+<li><u>创建 EmployeeMapper.java接口</u></li>
+<li><u>配置 EmloyeeMapper.xml</u></li>
+<li><u>创建 MybatiesTest测试类</u></li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>Source Root文件夹下创建dao包，其下创建EmployeeMapper接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> user.Employee;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">EmployeeMapper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Employee <span class="title">getEmployeeById</span><span class="params">(Integer id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>resources目录下创建EmployeeMapper.xml：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">        PUBLIC <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line">        <span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span><br><span class="line">&lt;mapper namespace=<span class="string">"dao.EmployeeMapper"</span>&gt;</span><br><span class="line">    &lt;!--id修改成dao.EmloyeeMapper下的类名，即与该接口绑定--&gt;</span><br><span class="line">    &lt;select id=<span class="string">"getEmployeeById"</span> resultType=<span class="string">"user.Employee"</span>&gt;</span><br><span class="line">        select * from user where id = #&#123;id&#125;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>openSession.selectOne 第一个参数指定namespace下的id，第二个参数即传值；</li>
+<li><p>namespace用全类名指定接口</p>
+</li>
+<li><p>id绑定接口下的方法</p>
+</li>
+<li><p>该.xml相当于实现接口EmployeeMapper</p>
+</li>
+<li><p>绑定成功标志：</p>
+<img src="/2020/02/14/Mybaties/2.PNG" style="zoom: 67%;">
+
+<img src="/2020/02/14/Mybaties/3.PNG" style="zoom: 67%;">
+</li>
+</ul>
+</li>
+<li><p>Source Root文件夹下创建test包，其下创建 MybatiesTest测试类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dao.EmployeeMapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.io.Resources;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> user.Employee;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatiesTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 1、根据xml配置文件（全局配置文件）创建一个SqlSessionFactory对象</span></span><br><span class="line"><span class="comment">     * 有数据源一些运行环境信息</span></span><br><span class="line"><span class="comment">     * 2、sql映射文件，配置了每一个sql，以及sql的封装规则等</span></span><br><span class="line"><span class="comment">     * 3、将sql映射文件注册在全局配置文件中</span></span><br><span class="line"><span class="comment">     * 4、代码：</span></span><br><span class="line"><span class="comment">     *      1）、根据全局配置文件得到sqlSessionFactory；</span></span><br><span class="line"><span class="comment">     *      2）、使用sqlSession工厂，获得sqlSession对象使用他来执行增删改查</span></span><br><span class="line"><span class="comment">     *      一个sqlSession就是代表和数据库的一次会话，用完关闭</span></span><br><span class="line"><span class="comment">     *      3）、使用sql的唯一标识来告诉mybaties执行哪个sql，sql都保存在sql映射文件</span></span><br><span class="line"><span class="comment">     *  <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SqlSessionFactory <span class="title">getSqlSessionFactory</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//获取sqlSessionFactory</span></span><br><span class="line">        String resource = <span class="string">"mybaties-conf.xml"</span>;</span><br><span class="line">        InputStream inputStream=Resources.getResourceAsStream(resource);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">        <span class="comment">//1、获取sqlSessionFactory对象</span></span><br><span class="line">        SqlSessionFactory sqlSessionFactory=getSqlSessionFactory();</span><br><span class="line">        <span class="comment">//2、获取sqlSession对象</span></span><br><span class="line">        SqlSession openSession = sqlSessionFactory.openSession();</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="comment">//3、获取接口的实现类对象</span></span><br><span class="line">        <span class="comment">//会为接口自动的创建一个代理对象，代理对象去执行增删改查</span></span><br><span class="line">        EmployeeMapper mapper=openSession.getMapper(EmployeeMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        Employee employee=mapper.getEmployeeById(<span class="number">1</span>);</span><br><span class="line">        System.out.println(employee);&#125;</span><br><span class="line">        <span class="keyword">finally</span> &#123;</span><br><span class="line">            openSession.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="5">
+<li><p>小结：</p>
+<ol>
+<li><p>接口式编程</p>
+<p>原生                Dao            ==&gt;        DaoImpl</p>
+<p>mybaties        Mapper    ==&gt;        xxMapper.xml</p>
+</li>
+<li><p>SqlSession代表和数据库的一次会话，用完必须关闭；</p>
+</li>
+<li><p>SqlSession和connection都是非线程的，是安全的，每次使用都应该去获取新的对象，不能放在共享的成员变量中；</p>
+</li>
+<li><p>mapper接口没有实现类，但是mybaties会为这个接口生成一个代理对象；</p>
+<p>（将接口和xml进行绑定）</p>
+<p>EmployeeMapper employeeMapper =sqlSession.getMapper(EmployeeMapper.class);</p>
+</li>
+<li><p>两个重要的配置文件，由mybaties.jar管束：</p>
+<p>mybaties的全局配置文件：包含数据库连接池信息，事务管理器信息等…系统运行环境信息；</p>
+<p>sql映射文件：保存了每一个sql语句的映射信息：将sql抽取出来；</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="五、认识mybaties-conf-xml文件"><a href="#五、认识mybaties-conf-xml文件" class="headerlink" title="五、认识mybaties-conf.xml文件"></a>五、认识mybaties-conf.xml文件</h2><ol>
+<li><p>在上述两种简单项目的编写过程中，mybaties-conf.xml连接数据库还可以写成：</p>
+<ul>
+<li><p>与Source Root同级的resources目录下创建dbconfig.properties文件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driver=com.mysql.cj.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql:<span class="comment">//localhost:3306/javalearn20123?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone = GMT</span></span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=<span class="number">000000</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>与Source Root同级的resources目录下修改mybaties-conf.xml文件：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration</span><br><span class="line">        PUBLIC <span class="string">"-//mybatis.org//DTD Config 3.0//EN"</span></span><br><span class="line">        <span class="string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;!--指明dbconfig.properties--&gt;</span><br><span class="line">    &lt;properties resource="dbconfig.properties"&gt;&lt;/properties&gt;</span><br><span class="line">    &lt;environments <span class="keyword">default</span>=<span class="string">"development"</span>&gt;</span><br><span class="line">        &lt;environment id=<span class="string">"development"</span>&gt;</span><br><span class="line">            &lt;transactionManager type=<span class="string">"JDBC"</span>/&gt;</span><br><span class="line">            &lt;dataSource type=<span class="string">"POOLED"</span>&gt;</span><br><span class="line">    			&lt;!--用$&#123;名字&#125;从dbconfig.properties取出名字对应的值--&gt;</span><br><span class="line">                &lt;property name=<span class="string">"driver"</span> value=<span class="string">"$&#123;jdbc.driver&#125;"</span>/&gt;</span><br><span class="line">                &lt;property name=<span class="string">"url"</span> value=<span class="string">"$&#123;jdbc.url&#125;"</span>/&gt;</span><br><span class="line">                &lt;property name=<span class="string">"username"</span> value=<span class="string">"$&#123;jdbc.username&#125;"</span>/&gt;</span><br><span class="line">                &lt;property name=<span class="string">"password"</span> value=<span class="string">"$&#123;jdbc.password&#125;"</span>/&gt;</span><br><span class="line">            &lt;/dataSource&gt;</span><br><span class="line">        &lt;/environment&gt;</span><br><span class="line">    &lt;/environments&gt;</span><br><span class="line">    &lt;mappers&gt;</span><br><span class="line">        &lt;mapper resource=<span class="string">"EmployeeMapper.xml"</span>/&gt;</span><br><span class="line">    &lt;/mappers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ol start="2">
+<li><p>解决数据库表的列名 与 java属性名 不一致的方法：</p>
+<ul>
+<li>在mybaties-conf.xml文件中<code>&lt;configuration&gt;</code>标签中<code>&lt;environments&gt;</code>标签前，添加</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;settings&gt;</span><br><span class="line">    	&lt;!--settings包含很多重要的设置，setting包含每一个设置项，name设置项目名，value设置项取值--&gt;</span><br><span class="line">        &lt;setting name=<span class="string">"mapUnderscoreToCamelCase"</span> value=<span class="string">"true"</span>/&gt;</span><br><span class="line">&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>需要满足的规则：<ul>
+<li>数据库中命名：与后面的单词用_连接，A_COLUMN；</li>
+<li>java属性命名：驼峰命名规则，后面的单词首字母大写，aColumn；</li>
 </ul>
 </li>
 </ul>
-<h2 id="四、"><a href="#四、" class="headerlink" title="四、"></a>四、</h2></li>
+</li>
+<li></li>
 </ol>
-<p>未完待续….</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
@@ -231,7 +334,7 @@ JDBC–&amp;gt;Dbutils(QueryRunner)–&amp;gt;JdbcTemplate：工具：
     </div>
     
         <div class='side'>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybaties-3框架"><span class="toc-number">1.</span> <span class="toc-text">Mybaties 3框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、初识Mybaties"><span class="toc-number">1.1.</span> <span class="toc-text">一、初识Mybaties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、下载Mybaties"><span class="toc-number">1.2.</span> <span class="toc-text">二、下载Mybaties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、简单项目的实现-Hello-World"><span class="toc-number">1.3.</span> <span class="toc-text">三、简单项目的实现 Hello World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、"><span class="toc-number">1.4.</span> <span class="toc-text">四、</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybaties-3框架"><span class="toc-number">1.</span> <span class="toc-text">Mybaties 3框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、初识Mybaties"><span class="toc-number">1.1.</span> <span class="toc-text">一、初识Mybaties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、下载Mybaties"><span class="toc-number">1.2.</span> <span class="toc-text">二、下载Mybaties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、简单项目的实现–旧版本"><span class="toc-number">1.3.</span> <span class="toc-text">三、简单项目的实现–旧版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、简单项目–利用接口式"><span class="toc-number">1.4.</span> <span class="toc-text">四、简单项目–利用接口式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、认识mybaties-conf-xml文件"><span class="toc-number">1.5.</span> <span class="toc-text">五、认识mybaties-conf.xml文件</span></a></li></ol></li></ol>
         </div>
     
 </div>
