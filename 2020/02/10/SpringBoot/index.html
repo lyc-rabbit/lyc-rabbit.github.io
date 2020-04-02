@@ -16,8 +16,8 @@
 J2EE笨重的开发、繁多的配置、低下的开发效率、复杂的部署流程、第三方技术集成难度大。
 
 解决：
-“Spring全家桶”时代
-Spr,"> 
+“Spring全家桶”时代：
+Sp,"> 
     <meta name="author" content="Lyc"> 
     <link rel="alternative" href="atom.xml" title="钰兔大王的世界" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -78,7 +78,7 @@ Spr,">
 <p>J2EE笨重的开发、繁多的配置、低下的开发效率、复杂的部署流程、第三方技术集成难度大。</p>
 </li>
 <li><p>解决：</p>
-<p>“Spring全家桶”时代</p>
+<p>“Spring全家桶”时代：</p>
 <p>Spring Boot –&gt;J2EE一站式解决方案</p>
 <p>Spring Cloud –&gt;分布式整体解决方案</p>
 </li>
@@ -121,80 +121,138 @@ Spr,">
 <ol start="3">
 <li><h3 id="写一个简单的程序"><a href="#写一个简单的程序" class="headerlink" title="写一个简单的程序"></a>写一个简单的程序</h3><p>功能：浏览器发送hello请求，服务器接受请求并处理，响应Hello World字符串；</p>
 <ol>
-<li><p><a href="http://www.gulixueyuan.com/" target="_blank" rel="noopener">学习springboot前提</a>：</p>
-<ul>
+<li><h4 id="学习springboot前提："><a href="#学习springboot前提：" class="headerlink" title="学习springboot前提："></a><a href="http://www.gulixueyuan.com/" target="_blank" rel="noopener">学习springboot前提</a>：</h4><ul>
 <li>Spring框架的使用经验</li>
 <li>熟练使用Maven进行项目构建和依赖管理</li>
 <li>熟练使用Eclipse或者IDEA</li>
 </ul>
 </li>
-<li><p>环境约束：</p>
-<ul>
-<li><p>jdk1.8（官方推荐SpringBoot 1.7以上）</p>
+<li><h4 id="环境约束："><a href="#环境约束：" class="headerlink" title="环境约束："></a>环境约束：</h4><ul>
+<li><p>（1）jdk1.8（官方推荐SpringBoot 1.7以上）</p>
 </li>
 <li><p>用CMD查看jdk版本：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>maven3.x（官方推荐maven 3.3以上）：</p>
+<li><p>（2）maven3.x（官方推荐maven 3.3以上）：</p>
 <p>修改设置：maven-&gt;conf-&gt;settings.xml-&gt;<code>&lt;profiles&gt;</code>标签内部</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;profiles&gt;</span><br><span class="line">    &lt;id&gt;jdk-1.8&lt;/id&gt;</span><br><span class="line">    &lt;activation&gt;</span><br><span class="line">    	&lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</span><br><span class="line">     	&lt;jdk&gt;1.8&lt;/jdk&gt;</span><br><span class="line">    &lt;/activation&gt;</span><br><span class="line">    &lt;properties&gt;</span><br><span class="line">    	&lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;</span><br><span class="line">    	&lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;</span><br><span class="line">    	&lt;maven.compiler.compilerVersion&gt;1.8&lt;/maven.compiler.compilerVersion&gt;</span><br><span class="line">    &lt;/properties&gt;</span><br><span class="line">&lt;/profiles&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>用CMD查看maven版本：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn -V</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>IntelliJ IDEA 2017（或者spring官方推荐STS）:</p>
+<li><p>（3）使用工具：IntelliJ IDEA 2017（或者spring官方推荐STS）</p>
 </li>
-<li><p>修改设置：IDEA-&gt;config-&gt;settings-&gt;Build,Execution,Deployment-&gt;Build Tools-&gt;Maven</p>
+<li><p>(如有必要)修改设置：IDEA-&gt;config-&gt;settings-&gt;Build,Execution,Deployment-&gt;Build Tools-&gt;Maven</p>
 <p>Maven home directory:…\apache-maven-3.3.9</p>
 <p>User settings file:…\apache-maven-3.3.9\settings.xml</p>
 <p>Local repository:…\apache-maven-3.3.9\respository</p>
 </li>
-<li><p>依赖：Spring Boot 1.5.9.RELEASE</p>
+<li><p>基本依赖：</p>
+<ul>
+<li>junit-4.12 jar   (运行项目时需要)</li>
+<li>spring-boot-starter-web-1.5.7.RELEASE   (springboot)</li>
+<li>spring-boot-starter-thymeleaf1.5.7.RELEASE   (springboot)</li>
+<li>spring-boot-starter-thymeleaf   (springboot)</li>
+</ul>
 </li>
 </ul>
 </li>
-<li><p><a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener">实现</a>：</p>
-<ol>
-<li><p>创建一个maven工程；（jar）maven-&gt;jdk-&gt;next-&gt;Groupld:com.xxx-&gt;Artfactid(模块名):xxx(springdemo)</p>
-</li>
-<li><p>导入Spring Boot的依赖：</p>
-<p>spring-boot-starter-web</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   &lt;parent&gt;</span><br><span class="line">   	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">   		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">   		&lt;version&gt;1.5.7.RELEASE&lt;/version&gt;</span><br><span class="line">   		&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">   &lt;/parent&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">       &lt;!-- https:<span class="comment">//mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web --&gt;</span></span><br><span class="line">&lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.5.7.RELEASE&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;/dependencies&gt;</span><br><span class="line">       <span class="comment">//会导入很多jar</span></span><br><span class="line">       <span class="comment">//另外需要Junit包</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编写一个程序： 功能：浏览器发送hello请求，服务器接受请求并处理，相应Hello World字符串；</p>
-</li>
-<li><p>Source Root–&gt;com.lyc–&gt;HelloWorldMainApplication</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主程序</span></span><br><span class="line">   <span class="comment">//告诉springboot这是主程序</span></span><br><span class="line">   <span class="meta">@SpringBootApplication</span></span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldMainApplication</span></span>&#123;</span><br><span class="line">   	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">           <span class="comment">//目的：让Spring应用启动起来</span></span><br><span class="line">       SpringApplication.run(HelloWorldMainApplication<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">   	&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<li><h4 id="实现："><a href="#实现：" class="headerlink" title="实现："></a><a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener">实现</a>：</h4><ol>
+<li><h5 id="创建一个springboot工程："><a href="#创建一个springboot工程：" class="headerlink" title="创建一个springboot工程："></a><a href="https://www.cnblogs.com/little-rain/p/11063967.html" target="_blank" rel="noopener">创建一个springboot工程</a>：</h5><ul>
+<li>Spring-Assistant–&gt;Default <a href="http://start.spring.io--&gt;next--&gt;next" target="_blank" rel="noopener">http://start.spring.io--&gt;next--&gt;next</a></li>
+<li>Web–&gt;Spring Web</li>
+<li>Template–&gt;Thymeleaf</li>
+<li>SQL–&gt;Spring DataJRA   &amp;&amp;   MySQL Driver</li>
+<li>Groupld:com.xxx-&gt;Artfactid(模块名):xxx(springdemo)-&gt;finish</li>
+</ul>
 </li>
 </ol>
 </li>
-<li><p>com.lyc–&gt;controller–&gt;HelloController</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span></span>&#123;</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="comment">//将return的内容返回给浏览器页面</span></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="comment">//接收浏览器的hello请求</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello World!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><h5 id="添加依赖："><a href="#添加依赖：" class="headerlink" title="添加依赖："></a>添加依赖：</h5><ul>
+<li>junit-4.12 jar   (运行项目时需要)</li>
+<li>spring-boot-starter-web   (Starter for building web, including RESTful, applications using Spring MVC. Uses Tomcat as the default embedded container)</li>
+<li>spring-boot-starter-thymeleaf    (Starter for building MVC web applications using Thymeleaf views)</li>
+<li>spring-boot-starter-test-1.5.7.RELEASE    (测试需要)</li>
+<li>spring-boot-starter-tomcat-1.5.7.RELEASE    (tomcat)</li>
+<li>spring-boot-starter-data-jpa   ( Starter for using Spring Data JPA with Hibernate)</li>
+<li>spring-boot-maven-plugin   (打包项目成jar)<ul>
+<li>mysql-connector-java-8.0.15  (连接数据库)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="该程序的功能"><a href="#该程序的功能" class="headerlink" title="该程序的功能:"></a>该程序的功能:</h5><p>浏览器发送hello请求，服务器接受请求并处理，相应Hello World字符串；</p>
+</li>
+<li><h5 id="创建主程序："><a href="#创建主程序：" class="headerlink" title="创建主程序："></a>创建主程序：</h5><h5 id="Source-Root–-gt-com-lyc-dao–-gt-HelloWorldMainApplication"><a href="#Source-Root–-gt-com-lyc-dao–-gt-HelloWorldMainApplication" class="headerlink" title="Source Root–&gt;com.lyc.dao–&gt;HelloWorldMainApplication"></a>Source Root–&gt;com.lyc.dao–&gt;HelloWorldMainApplication</h5>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="comment">//主程序,运行主程序测试，此处即main方法</span></span><br><span class="line"><span class="comment">//告诉springboot这是主程序</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldMainApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(HelloWorldMainApplication<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
+
+</li>
+</ol>
+</li>
+</ol>
+<ol start="5">
+<li><h5 id="交互页面："><a href="#交互页面：" class="headerlink" title="交互页面："></a>交互页面：</h5><p>com.lyc.controller–&gt;HelloController</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span></span>&#123;</span><br><span class="line">       <span class="meta">@ResponseBody</span></span><br><span class="line">       <span class="comment">//将return的内容返回给浏览器页面</span></span><br><span class="line">   	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">       <span class="comment">//接收浏览器的hello请求</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">"Hello World!"</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
 <ol start="6">
-<li><p>运行主程序测试：运行主程序，此处即main方法</p>
-<p>最终pom.xml文件：</p>
-<p>或手动导入junit-4.12 jar、spring-boot-starter-web-1.5.7.RELEASE、和spring-boot-starter-thymeleaf1.5.7.RELEASE。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.7.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">	&lt;groupId&gt;com.example&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;demo&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;name&gt;demo&lt;/name&gt;</span><br><span class="line">	&lt;description&gt;Demo project for Spring Boot&lt;/description&gt;</span><br><span class="line"></span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;1.5.7.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">			&lt;exclusions&gt;</span><br><span class="line">				&lt;exclusion&gt;</span><br><span class="line">					&lt;groupId&gt;org.junit.vintage&lt;/groupId&gt;</span><br><span class="line">					&lt;artifactId&gt;junit-vintage-engine&lt;/artifactId&gt;</span><br><span class="line">				&lt;/exclusion&gt;</span><br><span class="line">			&lt;/exclusions&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+<li><h5 id="pom-xml文件"><a href="#pom-xml文件" class="headerlink" title="pom.xml文件"></a>pom.xml文件</h5>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.7.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">	&lt;groupId&gt;com.example&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;demo&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;name&gt;demo&lt;/name&gt;</span><br><span class="line">	&lt;description&gt;Demo project for Spring Boot&lt;/description&gt;</span><br><span class="line"></span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;1.5.7.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">        &lt;!--spring-boot-starter-web会给项目导入很多jar--&gt;</span><br><span class="line">		&lt;dependency&gt;&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">			&lt;exclusions&gt;</span><br><span class="line">				&lt;exclusion&gt;&lt;groupId&gt;org.junit.vintage&lt;/groupId&gt;</span><br><span class="line">					&lt;artifactId&gt;junit-vintage-engine&lt;/artifactId&gt;</span><br><span class="line">				&lt;/exclusion&gt;</span><br><span class="line">			&lt;/exclusions&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br><span class="line">        &lt;!--如果网络不好等，导致无法正常加载jar到项目，则可选择手动导入jar--&gt;</span><br></pre></td></tr></table></figure>
 
-<p>运行截图：</p>
-<img src="/2020/02/10/SpringBoot/4.PNG">
+
+
+</li>
+</ol>
+<ol start="7">
+<li><h5 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a>运行截图</h5><img src="/2020/02/10/SpringBoot/4.PNG">
 
 <img src="/2020/02/10/SpringBoot/3.PNG">
-</li>
-<li><p>简化部署</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br><span class="line">    &lt;!--这段代码将程序打包成一个可执行的jar包--&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li><h5 id="简化部署"><a href="#简化部署" class="headerlink" title="简化部署"></a>简化部署</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br><span class="line">    &lt;!--这个插件可以将程序打包成一个可执行的jar包--&gt;</span><br></pre></td></tr></table></figure>
 
 
 
-</li>
-</ol>
 </li>
 </ol>
 </li>
 </ol>
 <ol start="4">
-<li><h3 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h3></li>
+<li><h3 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h3><ol>
+<li><h5 id="父项目"><a href="#父项目" class="headerlink" title="父项目"></a>父项目</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--项目继承了spring-boot-starter-parent--&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.7.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">&lt;!--他的父项目是--&gt;</span><br><span class="line">    &lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.7.RELEASE&lt;/version&gt;</span><br><span class="line">     &lt;/parent&gt;</span><br><span class="line">&lt;!--他来真正管理Spring Boot应用里面的所有依赖版本--&gt;</span><br><span class="line">    &lt;!-- Dependency versions --&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Spring Boot 的版本的仲裁中心：</p>
+<p>​    即，以后导入依赖默认是不需要写版本号的（除非导入的依赖，没有在dependencies里面被管理）。</p>
+</li>
+<li><h5 id="spring-boot-starter-web"><a href="#spring-boot-starter-web" class="headerlink" title="spring-boot-starter-web"></a>spring-boot-starter-web</h5><ul>
+<li><p>Spring Boot 将所有的场景都抽取出来，做成一个一个的starters（启动器）。只需要在项目里面引入这些功能相应的starters的相关场景，该场景的所有依赖都会被导入进来，版本由spring自动控制。</p>
+</li>
+<li><p><a href="https://docs.spring.io/spring-boot/docs/1.5.9.RELEASE/reference/htmlsingle/#using-boot-starter" target="_blank" rel="noopener">spring-boot-starter-</a>：spring-boot==场景启动器==；</p>
+</li>
+<li><p>spring-boot-starter-web：用来导入web模块，正常运行所依赖的组件；</p>
+</li>
+<li><p>spring-boot-starter-amqp：高级消息队列</p>
+</li>
+<li><p>spring-boot-starter-aop：aop</p>
+</li>
+<li><p>spring-boot-starter-data-jpa：数据库jpa访问</p>
+</li>
+<li><p>spring-boot-starter-data-redis：数据库redis模块</p>
+</li>
+<li><p>spring-boot-starter-mail：邮件开发</p>
+</li>
+<li><p>spring-boot-starter-web：web开发</p>
+</li>
+<li><p>场景 同行的 POM 中介绍了该场景会导入的 jar</p>
+</li>
+</ul>
+</li>
+<li></li>
+</ol>
+</li>
 </ol>
 <p>未完待续….</p>
 
@@ -231,7 +289,7 @@ Spr,">
     </div>
     
         <div class='side'>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringBoot"><span class="toc-number">1.</span> <span class="toc-text">SpringBoot</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Spring-Boot入门"><span class="toc-number">1.1.</span> <span class="toc-text">一、Spring Boot入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微服务"><span class="toc-number">1.1.2.</span> <span class="toc-text">微服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写一个简单的程序"><span class="toc-number">1.1.3.</span> <span class="toc-text">写一个简单的程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理分析"><span class="toc-number">1.1.4.</span> <span class="toc-text">原理分析</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringBoot"><span class="toc-number">1.</span> <span class="toc-text">SpringBoot</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Spring-Boot入门"><span class="toc-number">1.1.</span> <span class="toc-text">一、Spring Boot入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微服务"><span class="toc-number">1.1.2.</span> <span class="toc-text">微服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写一个简单的程序"><span class="toc-number">1.1.3.</span> <span class="toc-text">写一个简单的程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#学习springboot前提："><span class="toc-number">1.1.3.1.</span> <span class="toc-text">学习springboot前提：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#环境约束："><span class="toc-number">1.1.3.2.</span> <span class="toc-text">环境约束：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现："><span class="toc-number">1.1.3.3.</span> <span class="toc-text">实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#创建一个springboot工程："><span class="toc-number">1.1.3.3.1.</span> <span class="toc-text">创建一个springboot工程：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加依赖："><span class="toc-number">1.1.3.3.2.</span> <span class="toc-text">添加依赖：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#该程序的功能"><span class="toc-number">1.1.3.3.3.</span> <span class="toc-text">该程序的功能:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建主程序："><span class="toc-number">1.1.3.3.4.</span> <span class="toc-text">创建主程序：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Source-Root–-gt-com-lyc-dao–-gt-HelloWorldMainApplication"><span class="toc-number">1.1.3.3.5.</span> <span class="toc-text">Source Root–&gt;com.lyc.dao–&gt;HelloWorldMainApplication</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#交互页面："><span class="toc-number">1.1.3.3.6.</span> <span class="toc-text">交互页面：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#pom-xml文件"><span class="toc-number">1.1.3.3.7.</span> <span class="toc-text">pom.xml文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#运行截图"><span class="toc-number">1.1.3.3.8.</span> <span class="toc-text">运行截图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#简化部署"><span class="toc-number">1.1.3.3.9.</span> <span class="toc-text">简化部署</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理分析"><span class="toc-number">1.1.4.</span> <span class="toc-text">原理分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#父项目"><span class="toc-number">1.1.4.0.1.</span> <span class="toc-text">父项目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#spring-boot-starter-web"><span class="toc-number">1.1.4.0.2.</span> <span class="toc-text">spring-boot-starter-web</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
         </div>
     
 </div>
